@@ -98,13 +98,9 @@
 		BDB6FC861F92A15B00A15655 /* Twohys Game Engine */ = {
 			isa = PBXGroup;
 			children = (
-				BDB6FC871F92A15B00A15655 /* AppDelegate.swift */,
+				BDB6FCB61F92A19200A15655 /* Other FIles */,
 				BDB6FC891F92A15B00A15655 /* ViewController.swift */,
-				BDB6FC8E1F92A15B00A15655 /* Assets.xcassets */,
 				BDB6FC901F92A15B00A15655 /* Main.storyboard */,
-				BDB6FC931F92A15B00A15655 /* Info.plist */,
-				BDB6FC941F92A15B00A15655 /* Twohys_Game_Engine.entitlements */,
-				BDB6FC8B1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld */,
 			);
 			path = "Twohys Game Engine";
 			sourceTree = "<group>";
@@ -125,6 +121,18 @@
 				BDB6FCAA1F92A15B00A15655 /* Info.plist */,
 			);
 			path = "Twohys Game EngineUITests";
+			sourceTree = "<group>";
+		};
+		BDB6FCB61F92A19200A15655 /* Other FIles */ = {
+			isa = PBXGroup;
+			children = (
+				BDB6FC931F92A15B00A15655 /* Info.plist */,
+				BDB6FC8B1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld */,
+				BDB6FC941F92A15B00A15655 /* Twohys_Game_Engine.entitlements */,
+				BDB6FC8E1F92A15B00A15655 /* Assets.xcassets */,
+				BDB6FC871F92A15B00A15655 /* AppDelegate.swift */,
+			);
+			path = "Other FIles";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,11 +427,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Twohys Game Engine/Twohys_Game_Engine.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Twohys Game Engine/Other Files/Twohys_Game_Engine.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9QQ2JZFGTQ;
-				INFOPLIST_FILE = "Twohys Game Engine/Info.plist";
+				INFOPLIST_FILE = "Twohys Game Engine/Other Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "flophouseattrocities.Twohys-Game-Engine";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -435,11 +443,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Twohys Game Engine/Twohys_Game_Engine.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Twohys Game Engine/Other Files/Twohys_Game_Engine.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9QQ2JZFGTQ;
-				INFOPLIST_FILE = "Twohys Game Engine/Info.plist";
+				INFOPLIST_FILE = "Twohys Game Engine/Other Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "flophouseattrocities.Twohys-Game-Engine";
 				PRODUCT_NAME = "$(TARGET_NAME)";

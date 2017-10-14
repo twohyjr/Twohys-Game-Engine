@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC871F92A15B00A15655 /* AppDelegate.swift */; };
-		BDB6FC8A1F92A15B00A15655 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC891F92A15B00A15655 /* ViewController.swift */; };
 		BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC8B1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld */; };
 		BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB6FC8E1F92A15B00A15655 /* Assets.xcassets */; };
 		BDB6FC921F92A15B00A15655 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB6FC901F92A15B00A15655 /* Main.storyboard */; };
 		BDB6FC9E1F92A15B00A15655 /* Twohys_Game_EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC9D1F92A15B00A15655 /* Twohys_Game_EngineTests.swift */; };
 		BDB6FCA91F92A15B00A15655 /* Twohys_Game_EngineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCA81F92A15B00A15655 /* Twohys_Game_EngineUITests.swift */; };
+		BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCB71F92A2CE00A15655 /* MainView.swift */; };
+		BDB6FCBB1F92A36500A15655 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCBA1F92A36500A15655 /* Renderer.swift */; };
+		BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */; };
+		BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCC01F92AC9B00A15655 /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		BDB6FC841F92A15B00A15655 /* Twohys Game Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twohys Game Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB6FC871F92A15B00A15655 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BDB6FC891F92A15B00A15655 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BDB6FC8C1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Twohys_Game_Engine.xcdatamodel; sourceTree = "<group>"; };
 		BDB6FC8E1F92A15B00A15655 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDB6FC911F92A15B00A15655 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +50,10 @@
 		BDB6FCA41F92A15B00A15655 /* Twohys Game EngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Twohys Game EngineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB6FCA81F92A15B00A15655 /* Twohys_Game_EngineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twohys_Game_EngineUITests.swift; sourceTree = "<group>"; };
 		BDB6FCAA1F92A15B00A15655 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDB6FCB71F92A2CE00A15655 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BDB6FCBA1F92A36500A15655 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
+		BDB6FCC01F92AC9B00A15655 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +104,10 @@
 		BDB6FC861F92A15B00A15655 /* Twohys Game Engine */ = {
 			isa = PBXGroup;
 			children = (
+				BDB6FCBF1F92AC8400A15655 /* Types */,
+				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
+				BDB6FCB91F92A30D00A15655 /* Views */,
 				BDB6FCB61F92A19200A15655 /* Other FIles */,
-				BDB6FC891F92A15B00A15655 /* ViewController.swift */,
-				BDB6FC901F92A15B00A15655 /* Main.storyboard */,
 			);
 			path = "Twohys Game Engine";
 			sourceTree = "<group>";
@@ -133,6 +140,32 @@
 				BDB6FC871F92A15B00A15655 /* AppDelegate.swift */,
 			);
 			path = "Other FIles";
+			sourceTree = "<group>";
+		};
+		BDB6FCB91F92A30D00A15655 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BDB6FC901F92A15B00A15655 /* Main.storyboard */,
+				BDB6FCB71F92A2CE00A15655 /* MainView.swift */,
+				BDB6FCBA1F92A36500A15655 /* Renderer.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BDB6FCBC1F92A73E00A15655 /* Metal Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */,
+			);
+			path = "Metal Shaders";
+			sourceTree = "<group>";
+		};
+		BDB6FCBF1F92AC8400A15655 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				BDB6FCC01F92AC9B00A15655 /* Types.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,8 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDB6FC8A1F92A15B00A15655 /* ViewController.swift in Sources */,
+				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,
+				BDB6FCBB1F92A36500A15655 /* Renderer.swift in Sources */,
 				BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */,
+				BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */,
+				BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */,
 				BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

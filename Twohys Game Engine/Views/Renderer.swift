@@ -6,8 +6,10 @@ class Renderer: NSObject{
     var commandQueue: MTLCommandQueue!
     
     var vertices: [Vertex]!
+    var indices: [UInt16]!
     
     var vertexBuffer: MTLBuffer!
+    var indexBuffer: MTLBuffer!
     
     init(device: MTLDevice){
         super.init()
@@ -44,7 +46,10 @@ class Renderer: NSObject{
             Vertex(position: float3( 1,-1, 0), color: float4(0,0,1,1))
         ]
         
+        indices = [0,1,2]
+        
         vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
+        indexBuffer = device.makeBuffer(bytes: indices, length: MemoryLayout<UInt16>.size * indices.count, options: [])
     }
 }
 
@@ -64,7 +69,7 @@ extension Renderer: MTKViewDelegate{
         commandEncoder?.popDebugGroup()
         
         commandEncoder?.pushDebugGroup("Draw Primitives")
-        commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
+        commandEncoder?.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0)
         commandEncoder?.popDebugGroup()
         
         commandEncoder?.endEncoding()

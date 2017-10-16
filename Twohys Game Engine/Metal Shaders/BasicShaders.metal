@@ -2,10 +2,10 @@
 using namespace metal;
 
 struct VertexIn{
-    float3 position;
-    float4 color;
-    float3 normal;
-    float2 textureCoordinate;
+    float4 position [[ attribute(0) ]];
+    float4 color [[ attribute(1) ]];
+    float3 normal [[ attribute(2) ]];
+    float2 textureCoordinate [[ attribute(3) ]];
 };
 
 struct VertexOut{
@@ -15,12 +15,11 @@ struct VertexOut{
     float2 textureCoordinate;
 };
 
-vertex VertexOut basic_vertex_function(device VertexIn *vIn [[ buffer(0) ]],
-                                    uint vid [[ vertex_id ]]){
+vertex VertexOut basic_vertex_function(VertexIn vIn [[ stage_in ]]){
     VertexOut vOut;
-    vOut.position = float4(vIn[vid].position, 1);
-    vOut.color = vIn[vid].color;
-    vOut.normal = vIn[vid].normal;
+    vOut.position = vIn.position;
+    vOut.color = vIn.color;
+    vOut.normal = vIn.normal;
     return vOut;
 }
 

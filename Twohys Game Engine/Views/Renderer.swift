@@ -33,6 +33,7 @@ class Renderer: NSObject{
         renderPipelineDescriptor.fragmentFunction = fragmentFunction
         
         let vertexDescriptor = MTLVertexDescriptor()
+        
         //Position
         vertexDescriptor.attributes[0].format = .float3
         vertexDescriptor.attributes[0].bufferIndex = 0

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD15673E1F97CDD4000FEDE1 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD15673D1F97CDD4000FEDE1 /* Renderable.swift */; };
+		BD1567401F97CF4F000FEDE1 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD15673F1F97CF4F000FEDE1 /* Primitive.swift */; };
 		BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC871F92A15B00A15655 /* AppDelegate.swift */; };
 		BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC8B1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld */; };
 		BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB6FC8E1F92A15B00A15655 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD15673D1F97CDD4000FEDE1 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		BD15673F1F97CF4F000FEDE1 /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		BDB6FC841F92A15B00A15655 /* Twohys Game Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twohys Game Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB6FC871F92A15B00A15655 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDB6FC8C1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Twohys_Game_Engine.xcdatamodel; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
 				BDB6FCB91F92A30D00A15655 /* Views */,
 				BDB6FCB61F92A19200A15655 /* Other FIles */,
+				BD15673D1F97CDD4000FEDE1 /* Renderable.swift */,
+				BD15673F1F97CF4F000FEDE1 /* Primitive.swift */,
 			);
 			path = "Twohys Game Engine";
 			sourceTree = "<group>";
@@ -307,6 +313,8 @@
 				BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */,
 				BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */,
 				BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */,
+				BD15673E1F97CDD4000FEDE1 /* Renderable.swift in Sources */,
+				BD1567401F97CF4F000FEDE1 /* Primitive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

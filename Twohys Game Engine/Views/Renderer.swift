@@ -75,7 +75,10 @@ class Renderer: NSObject{
         indices = [0,1,2]
         
         vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
+        vertexBuffer.label = "Vertex Buffer"
+        
         indexBuffer = device.makeBuffer(bytes: indices, length: MemoryLayout<UInt16>.size * indices.count, options: [])
+        indexBuffer.label = "Index Buffer"
     }
 }
 

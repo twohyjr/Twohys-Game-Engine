@@ -1,8 +1,8 @@
 import MetalKit
 
-class Primitive{
+class Primitive: Node{
     
-    var renderPipelineState: MTLRenderPipelineDescriptor!
+    var renderPipelineState: MTLRenderPipelineState!
     
     var vertexDescriptor: MTLVertexDescriptor{
         let vertexDescriptor = MTLVertexDescriptor()
@@ -32,8 +32,8 @@ class Primitive{
         return vertexDescriptor
     }
     
-    var vertexFunctionName: String!
-    var fragmentFunctionName: String!
+    var vertexFunctionName: String = "basic_vertex_function"
+    var fragmentFunctionName: String = "basic_fragment_function"
     
     var vertices: [Vertex] = []
     var indices: [UInt16] = []
@@ -42,17 +42,18 @@ class Primitive{
     var indexBuffer: MTLBuffer!
     
     init(device: MTLDevice){
-        self.renderPipelineState = buildRenderPipelineState(device: device)
+        super.init()
+        renderPipelineState = buildRenderPipelineState(device: device)
         buildVertices()
         buildIndices()
-        buildBuffers()
+        buildBuffers(device:device)
     }
     
     func buildVertices(){ }
     
     func buildIndices(){ }
     
-    func buildBuffers(){
+    func buildBuffers(device: MTLDevice){
         vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
         vertexBuffer.label = "Vertex Buffer"
         
@@ -63,5 +64,17 @@ class Primitive{
 }
 
 extension Primitive: Renderable{
+    
+    func draw(renderCommandEncoder: MTLRenderCommandEncoder){
+        renderCommandEncoder.setRenderPipelineState(renderPipelineState)
+        
+        renderCommandEncoder.pushDebugGroup("Set Vertex Buffer")
+        renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        renderCommandEncoder.popDebugGroup()
+        
+        renderCommandEncoder.pushDebugGroup("Draw Primitives")
+        renderCommandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0)
+        renderCommandEncoder.popDebugGroup()
+    }
     
 }

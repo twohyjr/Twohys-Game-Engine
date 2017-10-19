@@ -2,12 +2,13 @@ import MetalKit
 
 protocol Renderable{
     
-    var renderPipelineState: MTLRenderPipelineDescriptor! { get set }
+    var renderPipelineState: MTLRenderPipelineState! { get }
     var vertexDescriptor: MTLVertexDescriptor { get }
     
-    var vertexFunctionName: String! { get set }
-    var fragmentFunctionName: String! { get set }
+    var vertexFunctionName: String { get set }
+    var fragmentFunctionName: String { get set }
     
+    func draw(renderCommandEncoder: MTLRenderCommandEncoder)
 }
 
 extension Renderable{

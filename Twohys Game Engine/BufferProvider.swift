@@ -20,13 +20,9 @@ class BufferProvider: NSObject {
     
     public func nextUniformsBuffer<T>(uniforms: inout T) -> MTLBuffer {
         let buffer = uniformsBuffers[avaliableBufferIndex]
-
         let bufferPointer = buffer.contents()
-        
         bufferPointer.copyBytes(from: &uniforms, count: MemoryLayout<T>.size)
-        
         avaliableBufferIndex = (avaliableBufferIndex + 1) % 3
-        
         return buffer
     }
     

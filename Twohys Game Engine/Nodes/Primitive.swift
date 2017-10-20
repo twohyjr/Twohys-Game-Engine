@@ -3,7 +3,7 @@ import MetalKit
 class Primitive: Node{
     
     var renderPipelineState: MTLRenderPipelineState!
-    
+
     var vertexDescriptor: MTLVertexDescriptor{
         let vertexDescriptor = MTLVertexDescriptor()
         
@@ -41,9 +41,12 @@ class Primitive: Node{
     var vertexBuffer: MTLBuffer!
     var indexBuffer: MTLBuffer!
     
+    var modelConstants = ModelConstants()
+    
     init(device: MTLDevice){
         super.init()
         renderPipelineState = buildRenderPipelineState(device: device)
+        bufferProvider = BufferProvider(device: device, inflightBuffersCount: 3, sizeOfUniformsBuffer: MemoryLayout<ModelConstants>.size)
         buildVertices()
         buildIndices()
         buildBuffers(device:device)
@@ -60,7 +63,6 @@ class Primitive: Node{
         indexBuffer = device.makeBuffer(bytes: indices, length: MemoryLayout<UInt16>.size * indices.count, options: [])
         indexBuffer.label = "Index Buffer"
     }
-    
 }
 
 extension Primitive: Renderable{
@@ -70,6 +72,12 @@ extension Primitive: Renderable{
         
         renderCommandEncoder.pushDebugGroup("Set Vertex Buffer")
         renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        renderCommandEncoder.popDebugGroup()
+        
+        let modelConstantBuffer: MTLBuffer = bufferProvider.nextUniformsBuffer(uniforms: &modelConstants)
+        
+        renderCommandEncoder.pushDebugGroup("Setting Model Constant Buffer")
+        renderCommandEncoder.setVertexBuffer(modelConstantBuffer, offset: 0, index: 1)
         renderCommandEncoder.popDebugGroup()
         
         renderCommandEncoder.pushDebugGroup("Draw Primitives")

@@ -7,7 +7,6 @@ class BasicScene: Scene{
         let triangle = Triangle(device: device)
         
         add(child: triangle)
-        
     }
     
 }

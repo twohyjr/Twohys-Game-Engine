@@ -15,15 +15,20 @@ struct VertexOut{
     float2 textureCoordinate;
 };
 
-struct Constants{
+struct SceneConstants{
+    float moveBy;
+};
+
+struct ModelConstants{
     float moveBy;
 };
 
 vertex VertexOut basic_vertex_function(const VertexIn vIn [[ stage_in ]],
-                                       constant Constants &constants [[ buffer(1) ]]){
+                                       constant ModelConstants &modelConstants [[ buffer(1) ]],
+                                       constant SceneConstants &sceneConstants [[ buffer(2) ]]){
     VertexOut vOut;
     vOut.position = float4(vIn.position,1);
-    vOut.position.x += cos(constants.moveBy);
+    vOut.position.x += cos(sceneConstants.moveBy);
     vOut.color = vIn.color;
     vOut.normal = vIn.normal;
     return vOut;

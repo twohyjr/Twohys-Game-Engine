@@ -7,6 +7,10 @@ struct Vertex{
     var textureCoordinate: float2
 }
 
-struct Constants{
+struct SceneConstants{
+    var moveBy: Float = 0
+}
+
+struct ModelConstants{
     var moveBy: Float = 0
 }

@@ -17,6 +17,8 @@ class Renderer: NSObject{
     }
 }
 
+var constants = Constants()
+
 extension Renderer: MTKViewDelegate{
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {  }
     
@@ -24,6 +26,11 @@ extension Renderer: MTKViewDelegate{
         guard let drawable = view.currentDrawable, let renderPassDescriptor = view.currentRenderPassDescriptor else { return }
         let commandBuffer = commandQueue.makeCommandBuffer()
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
+        
+        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
+        constants.moveBy += deltaTime
+        
+        commandEncoder?.setVertexBytes(&constants, length: MemoryLayout<Constants>.stride, index: 1)
         
         scene.render(renderCommandEncoder: commandEncoder!)
         

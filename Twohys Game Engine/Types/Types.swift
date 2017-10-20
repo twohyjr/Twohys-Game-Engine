@@ -6,3 +6,7 @@ struct Vertex{
     var normal: float3
     var textureCoordinate: float2
 }
+
+struct Constants{
+    var moveBy: Float = 0
+}

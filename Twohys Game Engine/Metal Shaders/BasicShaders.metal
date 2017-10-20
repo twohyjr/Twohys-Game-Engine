@@ -15,9 +15,15 @@ struct VertexOut{
     float2 textureCoordinate;
 };
 
-vertex VertexOut basic_vertex_function(VertexIn vIn [[ stage_in ]]){
+struct Constants{
+    float moveBy;
+};
+
+vertex VertexOut basic_vertex_function(const VertexIn vIn [[ stage_in ]],
+                                       constant Constants &constants [[ buffer(1) ]]){
     VertexOut vOut;
     vOut.position = float4(vIn.position,1);
+    vOut.position.x += sin(constants.moveBy);
     vOut.color = vIn.color;
     vOut.normal = vIn.normal;
     return vOut;

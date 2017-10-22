@@ -2,38 +2,26 @@
 using namespace metal;
 
 struct VertexIn{
-    float3 position [[ attribute(0) ]];
-    float4 color [[ attribute(1) ]];
-    float3 normal [[ attribute(2) ]];
-    float2 textureCoordinate [[ attribute(3) ]];
+    float3 position;
+    float4 color;
 };
 
 struct VertexOut{
     float4 position [[ position ]];
     float4 color;
-    float3 normal;
-    float2 textureCoordinate;
 };
 
-struct SceneConstants{
-    float moveBy;
-};
-
-struct ModelConstants{
-    float moveBy;
-};
-
-vertex VertexOut basic_vertex_function(const VertexIn vIn [[ stage_in ]],
-                                       constant ModelConstants &modelConstants [[ buffer(1) ]],
-                                       constant SceneConstants &sceneConstants [[ buffer(2) ]]){
+vertex VertexOut vertexShader(device VertexIn *vIn [[ buffer(0) ]],
+                              uint vertexID [[ vertex_id ]]){
+    
     VertexOut vOut;
-    vOut.position = float4(vIn.position,1);
-    vOut.position.x += cos(sceneConstants.moveBy);
-    vOut.color = vIn.color;
-    vOut.normal = vIn.normal;
+    vOut.position = float4(vIn[vertexID].position,1);
+    vOut.color = vIn[vertexID].color;
+    
     return vOut;
 }
 
-fragment float4 basic_fragment_function(VertexOut vIn [[ stage_in ]]){
+fragment float4 fragmentShader(VertexOut vIn [[ stage_in ]]){
     return vIn.color;
 }
+

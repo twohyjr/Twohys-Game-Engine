@@ -707,7 +707,7 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="MainView" customModule="Twohys_Game_Engine" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="1062" height="690"/>
+                        <rect key="frame" x="0.0" y="0.0" width="700" height="700"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>

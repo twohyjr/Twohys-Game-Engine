@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD15673E1F97CDD4000FEDE1 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD15673D1F97CDD4000FEDE1 /* Renderable.swift */; };
-		BD1567401F97CF4F000FEDE1 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD15673F1F97CF4F000FEDE1 /* Primitive.swift */; };
-		BD15677F1F9833EC000FEDE1 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD15677E1F9833EC000FEDE1 /* Triangle.swift */; };
-		BD1567821F98361D000FEDE1 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1567811F98361D000FEDE1 /* Node.swift */; };
-		BD1567841F98364D000FEDE1 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1567831F98364D000FEDE1 /* Scene.swift */; };
-		BD1567861F98386C000FEDE1 /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1567851F98386C000FEDE1 /* BasicScene.swift */; };
 		BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC871F92A15B00A15655 /* AppDelegate.swift */; };
 		BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC8B1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld */; };
 		BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB6FC8E1F92A15B00A15655 /* Assets.xcassets */; };
@@ -44,12 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BD15673D1F97CDD4000FEDE1 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
-		BD15673F1F97CF4F000FEDE1 /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
-		BD15677E1F9833EC000FEDE1 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
-		BD1567811F98361D000FEDE1 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		BD1567831F98364D000FEDE1 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		BD1567851F98386C000FEDE1 /* BasicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
 		BDB6FC841F92A15B00A15655 /* Twohys Game Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twohys Game Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB6FC871F92A15B00A15655 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDB6FC8C1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Twohys_Game_Engine.xcdatamodel; sourceTree = "<group>"; };
@@ -95,42 +83,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BD1567801F983612000FEDE1 /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-				BD1567811F98361D000FEDE1 /* Node.swift */,
-				BD1567881F9839B8000FEDE1 /* Models */,
-				BD15673F1F97CF4F000FEDE1 /* Primitive.swift */,
-				BD1567871F9839A1000FEDE1 /* Scenes */,
-			);
-			path = Nodes;
-			sourceTree = "<group>";
-		};
-		BD1567871F9839A1000FEDE1 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				BD1567851F98386C000FEDE1 /* BasicScene.swift */,
-				BD1567831F98364D000FEDE1 /* Scene.swift */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
-		BD1567881F9839B8000FEDE1 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				BD15677E1F9833EC000FEDE1 /* Triangle.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		BD1567891F9839C7000FEDE1 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				BD15673D1F97CDD4000FEDE1 /* Renderable.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		BDB6FC7B1F92A15B00A15655 = {
 			isa = PBXGroup;
 			children = (
@@ -154,8 +106,6 @@
 		BDB6FC861F92A15B00A15655 /* Twohys Game Engine */ = {
 			isa = PBXGroup;
 			children = (
-				BD1567891F9839C7000FEDE1 /* Protocols */,
-				BD1567801F983612000FEDE1 /* Nodes */,
 				BDB6FCBF1F92AC8400A15655 /* Types */,
 				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
 				BDB6FCB91F92A30D00A15655 /* Views */,
@@ -355,18 +305,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,
-				BD1567821F98361D000FEDE1 /* Node.swift in Sources */,
 				BDB6FCBB1F92A36500A15655 /* Renderer.swift in Sources */,
-				BD1567861F98386C000FEDE1 /* BasicScene.swift in Sources */,
 				BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */,
-				BD15677F1F9833EC000FEDE1 /* Triangle.swift in Sources */,
 				BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */,
 				BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */,
 				BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */,
 				BDC814FB1F998D5A00DF5529 /* BufferProvider.swift in Sources */,
-				BD15673E1F97CDD4000FEDE1 /* Renderable.swift in Sources */,
-				BD1567401F97CF4F000FEDE1 /* Primitive.swift in Sources */,
-				BD1567841F98364D000FEDE1 /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,8 +2,8 @@
 using namespace metal;
 
 struct VertexIn{
-    float3 position;
-    float4 color;
+    float3 position [[ attribute(0) ]];
+    float4 color [[ attribute(1) ]];
 };
 
 struct VertexOut{
@@ -11,12 +11,11 @@ struct VertexOut{
     float4 color;
 };
 
-vertex VertexOut vertexShader(device VertexIn *vIn [[ buffer(0) ]],
-                              uint vertexID [[ vertex_id ]]){
+vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]]){
     
     VertexOut vOut;
-    vOut.position = float4(vIn[vertexID].position,1);
-    vOut.color = vIn[vertexID].color;
+    vOut.position = float4(vIn.position,1);
+    vOut.color = vIn.color;
     
     return vOut;
 }

@@ -29,19 +29,19 @@ class Renderer: NSObject{
         renderPipelineDescriptor.fragmentFunction = fragmentFunction
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
         
-//        var vertexDescriptor: MTLVertexDescriptor{
-//            let vertexDescriptor = MTLVertexDescriptor()
-//
-//            //Position
-//            vertexDescriptor.attributes[0].format = .float3
-//            vertexDescriptor.attributes[0].bufferIndex = 0
-//            vertexDescriptor.attributes[0].offset = 0
-//
-//            //Color
-//            vertexDescriptor.attributes[1].format = .float4
-//            vertexDescriptor.attributes[1].bufferIndex = 0
-//            vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.size
-//
+        var vertexDescriptor: MTLVertexDescriptor{
+            let vertexDescriptor = MTLVertexDescriptor()
+
+            //Position
+            vertexDescriptor.attributes[0].format = .float3
+            vertexDescriptor.attributes[0].bufferIndex = 0
+            vertexDescriptor.attributes[0].offset = 0
+
+            //Color
+            vertexDescriptor.attributes[1].format = .float4
+            vertexDescriptor.attributes[1].bufferIndex = 0
+            vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.size
+
 //            //Normal
 //            vertexDescriptor.attributes[2].format = .float3
 //            vertexDescriptor.attributes[2].bufferIndex = 0
@@ -52,12 +52,12 @@ class Renderer: NSObject{
 //            vertexDescriptor.attributes[3].bufferIndex = 0
 //            vertexDescriptor.attributes[3].offset = MemoryLayout<float3>.size + MemoryLayout<float4>.size + MemoryLayout<float3>.size
 //
-//            vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
-//
-//            return vertexDescriptor
-//        }
-//
-//        renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
+            vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
+
+            return vertexDescriptor
+        }
+
+        renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
         
         do{
             renderPipelineState = try device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
@@ -71,7 +71,7 @@ class Renderer: NSObject{
         
         vertices = []
         
-        let trianglesPerSection: Int = 2048 * 1000
+        let trianglesPerSection: Int = 256
         var lastPos: float2 = float2(0)
         let size: Float = 0.8
         
@@ -86,13 +86,8 @@ class Renderer: NSObject{
             vertices.append(Vertex(position: float3(pos.x, pos.y, 0), color: float4(red, green, blue, 1)))
             vertices.append(Vertex(position: float3(lastPos.x, lastPos.y, 0), color: float4(red, green, blue, 1)))
             lastPos = pos
-            
         }
-        
-        
         vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.size * vertices.count, options: [])
-        
-        
     }
     
     

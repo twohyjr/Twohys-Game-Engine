@@ -11,10 +11,15 @@ struct VertexOut{
     float4 color;
 };
 
-vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]]){
+struct ModelConstants{
+    float4x4 modelMatrix;
+};
+
+vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
+                              constant ModelConstants &modelConstants [[ buffer(1) ]]){
     
     VertexOut vOut;
-    vOut.position = float4(vIn.position,1);
+    vOut.position = float4(vIn.position,1)  * modelConstants.modelMatrix;
     vOut.color = vIn.color;
     
     return vOut;

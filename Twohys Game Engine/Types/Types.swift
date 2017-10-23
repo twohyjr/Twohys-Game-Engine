@@ -12,3 +12,7 @@ struct Vertex{
     var color: float4
 }
 
+struct ModelConstants{
+    var modelMatrix: matrix_float4x4 = matrix_identity_float4x4
+}
+

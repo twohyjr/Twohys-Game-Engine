@@ -1,9 +1,5 @@
 import MetalKit
 
-func radians(fromDegrees degrees: Float) -> Float{
-    return (degrees / 180) * Float.pi
-}
-
 class Renderer: NSObject{
     
     var renderPipelineState: MTLRenderPipelineState!
@@ -11,6 +7,8 @@ class Renderer: NSObject{
     
     var vertices: [Vertex]!
     var vertexBuffer: MTLBuffer!
+    
+    var modelConstants = ModelConstants()
     
     init(device: MTLDevice, mtkView: MTKView){
         super.init()
@@ -105,6 +103,11 @@ extension Renderer: MTKViewDelegate{
         commandEncoder?.setRenderPipelineState(renderPipelineState)
         
         //        commandEncoder?.setTriangleFillMode(.lines)
+        
+        let deltaTime = 1 / Float(view.preferredFramesPerSecond)
+        modelConstants.modelMatrix.rotate(angle: deltaTime, axis: float3(0,0,1))
+        modelConstants.modelMatrix.rotate(angle: deltaTime, axis: float3(1,0,0))
+        commandEncoder?.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.size, index: 1)
         
         commandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)

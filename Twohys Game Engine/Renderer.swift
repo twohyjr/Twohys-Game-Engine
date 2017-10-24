@@ -4,7 +4,7 @@ class Renderer: NSObject{
     
     var renderPipelineState: MTLRenderPipelineState!
     var commandQueue: MTLCommandQueue!
-    var renderPipelineStateProvider: RenderPipelineStateProvider!
+    var renderPipelineStateProvider: FlashPipelineStateProvider!
     
     var scene: Scene!
     
@@ -14,7 +14,7 @@ class Renderer: NSObject{
     init(device: MTLDevice, mtkView: MTKView){
         super.init()
         commandQueue = device.makeCommandQueue()
-        RenderPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
+        FlashPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
         scene = Scene(device: device)
     }
 
@@ -29,7 +29,7 @@ extension Renderer: MTKViewDelegate{
         
         let commandBuffer = commandQueue.makeCommandBuffer()
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
-
+        
         scene.render(renderCommandEncoder: commandEncoder!)
         
         commandEncoder?.endEncoding()

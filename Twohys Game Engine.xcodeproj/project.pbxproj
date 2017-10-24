@@ -18,7 +18,7 @@
 		BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */; };
 		BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCC01F92AC9B00A15655 /* Types.swift */; };
 		BDB9BB451F9EAC90009385F8 /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BB441F9EAC90009385F8 /* Maths.swift */; };
-		BDF087BE1F9EDE3400F68ACD /* RenderPipelineStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BD1F9EDE3400F68ACD /* RenderPipelineStateProvider.swift */; };
+		BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */; };
 		BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */; };
 		BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */; };
 		BDF087C51F9EEA4D00F68ACD /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087C41F9EEA4D00F68ACD /* Node.swift */; };
@@ -64,7 +64,7 @@
 		BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
 		BDB6FCC01F92AC9B00A15655 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		BDB9BB441F9EAC90009385F8 /* Maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
-		BDF087BD1F9EDE3400F68ACD /* RenderPipelineStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPipelineStateProvider.swift; sourceTree = "<group>"; };
+		BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineStateProvider.swift; sourceTree = "<group>"; };
 		BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineState.swift; sourceTree = "<group>"; };
 		BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableFlashPipelineState.swift; sourceTree = "<group>"; };
 		BDF087C41F9EEA4D00F68ACD /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -99,6 +99,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD8B92E01F9FA33D00F925E0 /* Node Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDF087C41F9EEA4D00F68ACD /* Node.swift */,
+				BD8B92E21F9FA37C00F925E0 /* Scene Files */,
+				BD8B92E31F9FA39800F925E0 /* Primitives */,
+			);
+			path = "Node Files";
+			sourceTree = "<group>";
+		};
+		BD8B92E11F9FA36500F925E0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BDF087C61F9EEAD700F68ACD /* Renderable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BD8B92E21F9FA37C00F925E0 /* Scene Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDF087CC1F9EEDE700F68ACD /* Scene.swift */,
+			);
+			path = "Scene Files";
+			sourceTree = "<group>";
+		};
+		BD8B92E31F9FA39800F925E0 /* Primitives */ = {
+			isa = PBXGroup;
+			children = (
+				BDF087C81F9EEB9300F68ACD /* Primitive.swift */,
+				BDF087CA1F9EECAB00F68ACD /* Circle.swift */,
+			);
+			path = Primitives;
+			sourceTree = "<group>";
+		};
 		BDB6FC7B1F92A15B00A15655 = {
 			isa = PBXGroup;
 			children = (
@@ -122,17 +157,14 @@
 		BDB6FC861F92A15B00A15655 /* Twohys Game Engine */ = {
 			isa = PBXGroup;
 			children = (
+				BD8B92E11F9FA36500F925E0 /* Protocols */,
+				BD8B92E01F9FA33D00F925E0 /* Node Files */,
 				BDF087C31F9EE9CF00F68ACD /* FlashPipelineStates */,
 				BDF087BC1F9EDD4A00F68ACD /* Maths */,
 				BDB6FCBF1F92AC8400A15655 /* Types */,
 				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
 				BDB6FCB91F92A30D00A15655 /* Views */,
-				BDF087C41F9EEA4D00F68ACD /* Node.swift */,
 				BDB6FCBA1F92A36500A15655 /* Renderer.swift */,
-				BDF087C61F9EEAD700F68ACD /* Renderable.swift */,
-				BDF087C81F9EEB9300F68ACD /* Primitive.swift */,
-				BDF087CA1F9EECAB00F68ACD /* Circle.swift */,
-				BDF087CC1F9EEDE700F68ACD /* Scene.swift */,
 				BDB6FCB61F92A19200A15655 /* Other FIles */,
 			);
 			path = "Twohys Game Engine";
@@ -205,7 +237,7 @@
 		BDF087C31F9EE9CF00F68ACD /* FlashPipelineStates */ = {
 			isa = PBXGroup;
 			children = (
-				BDF087BD1F9EDE3400F68ACD /* RenderPipelineStateProvider.swift */,
+				BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */,
 				BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */,
 				BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */,
 			);
@@ -359,7 +391,7 @@
 				BDF087C91F9EEB9300F68ACD /* Primitive.swift in Sources */,
 				BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */,
 				BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */,
-				BDF087BE1F9EDE3400F68ACD /* RenderPipelineStateProvider.swift in Sources */,
+				BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,7 +4,7 @@ public enum FlashPipelineStateType {
     case RENDERABLE
 }
 
-class RenderPipelineStateProvider{
+class FlashPipelineStateProvider{
     
     private static var _pipelineStates: [FlashPipelineStateType:FlashPipelineState] = [:]
     private static var _device: MTLDevice!

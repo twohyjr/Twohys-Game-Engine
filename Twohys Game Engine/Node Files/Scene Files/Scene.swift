@@ -5,7 +5,10 @@ class Scene: Node{
     init(device: MTLDevice){
         super.init()
         
-        add(child: Circle(device: device, circleVertexCount: 256))
+        for _ in 0..<100{
+            add(child: Circle(device: device, circleVertexCount: 128))
+        }
+        
         
     }
     

@@ -7,3 +7,11 @@ struct Vertex{
     let textureCoordinate: float2
 }
 
+struct ModelConstants{
+    var modelViewMatrix: matrix_float4x4 = matrix_identity_float4x4
+}
+
+struct SceneConstants{
+    var projectionMatrix: matrix_float4x4 = matrix_identity_float4x4
+}
+

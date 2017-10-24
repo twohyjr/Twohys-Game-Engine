@@ -40,8 +40,8 @@ extension Renderer: MTKViewDelegate{
         let commandBuffer = commandQueue.makeCommandBuffer()
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
         commandEncoder?.setDepthStencilState(depthStencilState)
-        
-        scene.render(renderCommandEncoder: commandEncoder!)
+        let deltaTime: Float = 1 / Float(view.preferredFramesPerSecond)
+        scene.render(renderCommandEncoder: commandEncoder!, deltaTime: deltaTime)
         
         commandEncoder?.endEncoding()
         commandBuffer?.present(drawable)

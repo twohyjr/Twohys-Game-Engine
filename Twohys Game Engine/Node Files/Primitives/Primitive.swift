@@ -16,7 +16,6 @@ class Primitive: Node{
     func buildVertices(){ }
     
     func buildBuffers(device: MTLDevice){
-        
         vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [MTLResourceOptions.storageModeManaged])
     }
 }

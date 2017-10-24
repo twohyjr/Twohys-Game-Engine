@@ -13,7 +13,17 @@ struct VertexOut{
     float4 color;
 };
 
-vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]]){
+struct ModelConstants{
+    float4x4 modelViewMatrix;
+};
+
+struct SceneConstants{
+    float4x4 projectionMatrix;
+};
+
+vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
+                              constant SceneConstants &sceneConstants [[ buffer(1) ]],
+                              constant ModelConstants &modelConstants [[ buffer(2) ]]){
     
     VertexOut vOut;
     vOut.position = float4(vIn.position,1);

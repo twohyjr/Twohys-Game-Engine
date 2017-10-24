@@ -6,7 +6,7 @@ class Scene: Node{
         super.init()
         
         for _ in 0..<100{
-            add(child: Circle(device: device, circleVertexCount: 128))
+            add(child: Circle(device: device, circleVertexCount: 2048))
         }
         
         

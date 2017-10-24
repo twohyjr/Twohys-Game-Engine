@@ -6,6 +6,8 @@ class Renderer: NSObject{
     var commandQueue: MTLCommandQueue!
     var renderPipelineStateProvider: FlashPipelineStateProvider!
     
+    var depthStencilState: MTLDepthStencilState!
+    
     var scene: Scene!
     
     var vertices: [Vertex]!
@@ -16,6 +18,14 @@ class Renderer: NSObject{
         commandQueue = device.makeCommandQueue()
         FlashPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
         scene = Scene(device: device)
+        buildDepthStencilState(device: device)
+    }
+    
+    func buildDepthStencilState(device: MTLDevice){
+        let depthStencilDescriptor = MTLDepthStencilDescriptor()
+        depthStencilDescriptor.isDepthWriteEnabled = true
+        depthStencilDescriptor.depthCompareFunction = .less
+        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
     }
 
 }
@@ -29,6 +39,7 @@ extension Renderer: MTKViewDelegate{
         
         let commandBuffer = commandQueue.makeCommandBuffer()
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
+        commandEncoder?.setDepthStencilState(depthStencilState)
         
         scene.render(renderCommandEncoder: commandEncoder!)
         

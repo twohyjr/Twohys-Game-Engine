@@ -18,6 +18,7 @@ extension FlashPipelineState{
         renderPipelineDescriptor.vertexFunction = vertexFunction
         renderPipelineDescriptor.fragmentFunction = fragmentFunction
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = _mtkView.colorPixelFormat
+        renderPipelineDescriptor.depthAttachmentPixelFormat = _mtkView.depthStencilPixelFormat
         
         renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
         

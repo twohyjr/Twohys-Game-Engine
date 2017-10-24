@@ -18,7 +18,6 @@
 		BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */; };
 		BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCC01F92AC9B00A15655 /* Types.swift */; };
 		BDB9BB451F9EAC90009385F8 /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BB441F9EAC90009385F8 /* Maths.swift */; };
-		BDC814FB1F998D5A00DF5529 /* BufferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC814FA1F998D5A00DF5529 /* BufferProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +56,6 @@
 		BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
 		BDB6FCC01F92AC9B00A15655 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		BDB9BB441F9EAC90009385F8 /* Maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
-		BDC814FA1F998D5A00DF5529 /* BufferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,12 +106,12 @@
 		BDB6FC861F92A15B00A15655 /* Twohys Game Engine */ = {
 			isa = PBXGroup;
 			children = (
+				BDF087BC1F9EDD4A00F68ACD /* Maths */,
 				BDB6FCBF1F92AC8400A15655 /* Types */,
 				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
 				BDB6FCB91F92A30D00A15655 /* Views */,
+				BDB6FCBA1F92A36500A15655 /* Renderer.swift */,
 				BDB6FCB61F92A19200A15655 /* Other FIles */,
-				BDC814FA1F998D5A00DF5529 /* BufferProvider.swift */,
-				BDB9BB441F9EAC90009385F8 /* Maths.swift */,
 			);
 			path = "Twohys Game Engine";
 			sourceTree = "<group>";
@@ -153,7 +151,6 @@
 			children = (
 				BDB6FC901F92A15B00A15655 /* Main.storyboard */,
 				BDB6FCB71F92A2CE00A15655 /* MainView.swift */,
-				BDB6FCBA1F92A36500A15655 /* Renderer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +169,15 @@
 				BDB6FCC01F92AC9B00A15655 /* Types.swift */,
 			);
 			path = Types;
+			sourceTree = "<group>";
+		};
+		BDF087BC1F9EDD4A00F68ACD /* Maths */ = {
+			isa = PBXGroup;
+			children = (
+				BDB9BB441F9EAC90009385F8 /* Maths.swift */,
+			);
+			name = Maths;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +320,6 @@
 				BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */,
 				BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */,
 				BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */,
-				BDC814FB1F998D5A00DF5529 /* BufferProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

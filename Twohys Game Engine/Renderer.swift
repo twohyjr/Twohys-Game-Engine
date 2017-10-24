@@ -4,6 +4,7 @@ class Renderer: NSObject{
     
     var renderPipelineState: MTLRenderPipelineState!
     var commandQueue: MTLCommandQueue!
+    var renderPipelineStateProvider: RenderPipelineStateProvider!
     
     var vertices: [Vertex]!
     var vertexBuffer: MTLBuffer!
@@ -11,67 +12,31 @@ class Renderer: NSObject{
     init(device: MTLDevice, mtkView: MTKView){
         super.init()
         commandQueue = device.makeCommandQueue()
-        buildRenderPipelineState(device: device, view: mtkView)
+        RenderPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
         buildBuffers(device: device)
-    }
-    
-    func buildRenderPipelineState(device: MTLDevice, view: MTKView){
-        let library = device.makeDefaultLibrary()
-        let vertexFunction = library?.makeFunction(name: "vertexShader")
-        let fragmentFunction = library?.makeFunction(name: "fragmentShader")
-        
-        let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
-        renderPipelineDescriptor.vertexFunction = vertexFunction
-        renderPipelineDescriptor.fragmentFunction = fragmentFunction
-        renderPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
-        
-        var vertexDescriptor: MTLVertexDescriptor{
-            let vertexDescriptor = MTLVertexDescriptor()
-
-            //Position
-            vertexDescriptor.attributes[0].format = .float3
-            vertexDescriptor.attributes[0].bufferIndex = 0
-            vertexDescriptor.attributes[0].offset = 0
-
-            //Color
-            vertexDescriptor.attributes[1].format = .float4
-            vertexDescriptor.attributes[1].bufferIndex = 0
-            vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.size
-
-            //Normal
-            vertexDescriptor.attributes[2].format = .float3
-            vertexDescriptor.attributes[2].bufferIndex = 0
-            vertexDescriptor.attributes[2].offset = MemoryLayout<float3>.size + MemoryLayout<float4>.size
-
-            //Texture Coordinate
-            vertexDescriptor.attributes[3].format = .float2
-            vertexDescriptor.attributes[3].bufferIndex = 0
-            vertexDescriptor.attributes[3].offset = MemoryLayout<float3>.size + MemoryLayout<float4>.size + MemoryLayout<float3>.size
-
-            vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
-
-            return vertexDescriptor
-        }
-
-        renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
-        
-        do{
-            renderPipelineState = try device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
-        }catch{
-            print("\(error)")
-        }
-        
     }
     
     func buildBuffers(device: MTLDevice){
         
         vertices = []
         
-        vertices.append(Vertex(position: float3( 0, 1, 0), color: float4(1, 0, 0, 1)))
-        vertices.append(Vertex(position: float3(-1,-1, 0), color: float4(0, 1, 0, 1)))
-        vertices.append(Vertex(position: float3( 1,-1, 0), color: float4(0, 0, 1, 1)))
+        let trianglesPerSection: Int = 64
+        var lastPos: float2 = float2(0)
+        let size: Float = 0.8
         
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.size * vertices.count, options: [])
+        for i in (0 ... trianglesPerSection).reversed() {
+            let red = Float(CGFloat(Float(arc4random()) / Float(UINT32_MAX)))
+            let green = Float(CGFloat(Float(arc4random()) / Float(UINT32_MAX)))
+            let blue = Float(CGFloat(Float(arc4random()) / Float(UINT32_MAX)))
+            
+            let val: Float = i == 0 ? 0 :  Float((360.0 / Double(trianglesPerSection)) * Double(i))
+            let pos = float2(size * cos(radians(fromDegrees:  val)), size * sin(radians(fromDegrees:  val)))
+            vertices.append(Vertex(position: float3(0, 0, 0), color: float4(red, green, blue, 1), normal: float3(1,2,3), textureCoordinate: float2(0,1)))
+            vertices.append(Vertex(position: float3(pos.x, pos.y, 0), color: float4(red, green, blue, 1), normal: float3(1,2,3), textureCoordinate: float2(0,1)))
+            vertices.append(Vertex(position: float3(lastPos.x, lastPos.y, 0), color: float4(red, green, blue, 1), normal: float3(1,2,3), textureCoordinate: float2(0,1)))
+            lastPos = pos
+        }
+        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
     }
     
     
@@ -86,7 +51,7 @@ extension Renderer: MTKViewDelegate{
         
         let commandBuffer = commandQueue.makeCommandBuffer()
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
-        commandEncoder?.setRenderPipelineState(renderPipelineState)
+        commandEncoder?.setRenderPipelineState(RenderPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.RENDERABLE))
         
         commandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         commandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)

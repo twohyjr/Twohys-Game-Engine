@@ -13,7 +13,7 @@ struct VertexOut{
     float4 color;
 };
 
-vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]]){
+vertex VertexOut vertexShader(VertexIn vIn [[ stage_in ]]){
     
     VertexOut vOut;
     vOut.position = float4(vIn.position,1);

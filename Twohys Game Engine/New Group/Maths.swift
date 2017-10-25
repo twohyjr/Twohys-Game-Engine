@@ -1,7 +1,7 @@
 import MetalKit
 
 func radians(fromDegrees degrees: Float) -> Float{
-    return (degrees / 180) * Float(Double.pi)
+    return (degrees / 180) * Float.pi
 }
 
 extension matrix_float4x4{

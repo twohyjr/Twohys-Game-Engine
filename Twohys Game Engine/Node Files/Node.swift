@@ -4,7 +4,7 @@ class Node{
     
     var children: [Node] = []
     
-    var position = float3(0)
+    var position = float3(0,0,0)
     var rotation = float3(0)
     var scale = float3(1)
     

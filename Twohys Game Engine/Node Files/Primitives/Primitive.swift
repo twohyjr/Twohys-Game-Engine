@@ -2,6 +2,7 @@ import MetalKit
 
 class Primitive: Node{
     var _renderPipelineState: MTLRenderPipelineState!
+    var modelConstants = ModelConstants()
     
     var vertices: [Vertex]!
     var vertexBuffer: MTLBuffer!
@@ -21,8 +22,11 @@ class Primitive: Node{
 }
 
 extension Primitive: Renderable{
-    func draw(renderCommandEncoder: MTLRenderCommandEncoder) {
+    func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
+        modelConstants.modelViewMatrix = modelViewMatrix
         renderCommandEncoder.setRenderPipelineState(FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.RENDERABLE))
+        
+        renderCommandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 2)
         renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
     }

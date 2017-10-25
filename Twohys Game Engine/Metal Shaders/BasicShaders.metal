@@ -26,7 +26,8 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
                               constant ModelConstants &modelConstants [[ buffer(2) ]]){
     
     VertexOut vOut;
-    vOut.position = float4(vIn.position,1);
+    float4 worldPosition = modelConstants.modelViewMatrix * float4(vIn.position,1);
+    vOut.position = sceneConstants.projectionMatrix *  worldPosition;
     vOut.color = vIn.color;
     
     return vOut;

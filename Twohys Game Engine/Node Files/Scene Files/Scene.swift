@@ -3,20 +3,17 @@ import MetalKit
 class Scene: Node{
     
     var sceneConstants = SceneConstants()
-    
+    var circle: Circle!
     init(device: MTLDevice){
+        circle = Circle(device: device, circleVertexCount: 256)
         super.init()
-        
-        for _ in 0..<100{
-            add(child: Circle(device: device, circleVertexCount: 2048))
-        }
+        add(child: circle)
     }
     
     func render(renderCommandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
-        sceneConstants.projectionMatrix.rotate(angle: deltaTime, axis: float3(0,0,1))
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, index: 1)
         for child in children{
-            child.render(renderCommandEncoder: renderCommandEncoder)
+            child.render(renderCommandEncoder: renderCommandEncoder, parentModelMatrix: matrix_identity_float4x4)
         }
     }
     

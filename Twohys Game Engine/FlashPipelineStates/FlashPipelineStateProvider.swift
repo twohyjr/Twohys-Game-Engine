@@ -2,6 +2,7 @@ import MetalKit
 
 public enum FlashPipelineStateType {
     case RENDERABLE
+    case INSTANCES
 }
 
 class FlashPipelineStateProvider{
@@ -20,6 +21,9 @@ class FlashPipelineStateProvider{
             switch flashPipelineStateType {
                 case FlashPipelineStateType.RENDERABLE:
                     _pipelineStates.updateValue(RenderableFlashPipelineState(device: _device, mtkView: _mtkView), forKey: flashPipelineStateType)
+                case FlashPipelineStateType.INSTANCES:
+                    _pipelineStates.updateValue(InstancesFlashPipelineState(device: _device, mtkView: _mtkView), forKey: flashPipelineStateType)
+
             }
         }
         return (_pipelineStates[flashPipelineStateType]!.renderPipelineState)

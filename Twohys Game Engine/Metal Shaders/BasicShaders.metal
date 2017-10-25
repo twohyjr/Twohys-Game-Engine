@@ -33,6 +33,18 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     return vOut;
 }
 
+vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
+                                      constant SceneConstants &sceneConstants [[ buffer(1) ]],
+                                      constant ModelConstants *modelConstants [[ buffer(2) ]],
+                                      uint instanceID [[ instance_id ]]){
+    
+    VertexOut vOut;
+    ModelConstants constants = modelConstants[instanceID];
+    vOut.position = sceneConstants.projectionMatrix *  constants.modelViewMatrix * float4(vIn.position,1);
+    vOut.color = vIn.color;
+    return vOut;
+}
+
 fragment float4 fragmentShader(VertexOut vIn [[ stage_in ]]){
     return vIn.color;
 }

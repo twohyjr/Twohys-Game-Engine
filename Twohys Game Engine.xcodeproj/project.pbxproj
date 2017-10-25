@@ -27,6 +27,8 @@
 		BDF087C91F9EEB9300F68ACD /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087C81F9EEB9300F68ACD /* Primitive.swift */; };
 		BDF087CB1F9EECAB00F68ACD /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087CA1F9EECAB00F68ACD /* Circle.swift */; };
 		BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087CC1F9EEDE700F68ACD /* Scene.swift */; };
+		BDFB85671FA035D4004820BC /* InstancesFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFB85661FA035D4004820BC /* InstancesFlashPipelineState.swift */; };
+		BDFB85691FA0366B004820BC /* Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFB85681FA0366B004820BC /* Instances.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		BDF087C81F9EEB9300F68ACD /* Primitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		BDF087CA1F9EECAB00F68ACD /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		BDF087CC1F9EEDE700F68ACD /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		BDFB85661FA035D4004820BC /* InstancesFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstancesFlashPipelineState.swift; sourceTree = "<group>"; };
+		BDFB85681FA0366B004820BC /* Instances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instances.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			children = (
 				BDF087C81F9EEB9300F68ACD /* Primitive.swift */,
 				BDF087CA1F9EECAB00F68ACD /* Circle.swift */,
+				BDFB85681FA0366B004820BC /* Instances.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */,
 				BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */,
 				BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */,
+				BDFB85661FA035D4004820BC /* InstancesFlashPipelineState.swift */,
 			);
 			path = FlashPipelineStates;
 			sourceTree = "<group>";
@@ -387,12 +393,14 @@
 				BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */,
 				BDF087C71F9EEAD700F68ACD /* Renderable.swift in Sources */,
 				BDF087C51F9EEA4D00F68ACD /* Node.swift in Sources */,
+				BDFB85671FA035D4004820BC /* InstancesFlashPipelineState.swift in Sources */,
 				BDB6FCBB1F92A36500A15655 /* Renderer.swift in Sources */,
 				BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */,
 				BDF087CB1F9EECAB00F68ACD /* Circle.swift in Sources */,
 				BDB9BB451F9EAC90009385F8 /* Maths.swift in Sources */,
 				BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */,
 				BDF087C91F9EEB9300F68ACD /* Primitive.swift in Sources */,
+				BDFB85691FA0366B004820BC /* Instances.swift in Sources */,
 				BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */,
 				BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */,
 				BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */,

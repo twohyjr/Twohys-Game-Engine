@@ -7,6 +7,9 @@ class Scene: Node{
     init(device: MTLDevice){
         circle = Circle(device: device, circleVertexCount: 256)
         super.init()
+        
+        circle.rotation.y = -25
+        
         add(child: circle)
     }
     

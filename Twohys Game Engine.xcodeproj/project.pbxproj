@@ -111,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				BDF087C41F9EEA4D00F68ACD /* Node.swift */,
+				BDE460DC1FA02C8D00F126CB /* Camera.swift */,
 				BD8B92E21F9FA37C00F925E0 /* Scene Files */,
 				BD8B92E31F9FA39800F925E0 /* Primitives */,
 			);
@@ -175,7 +176,6 @@
 				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
 				BDB6FCB91F92A30D00A15655 /* Views */,
 				BDB6FCBA1F92A36500A15655 /* Renderer.swift */,
-				BDE460DC1FA02C8D00F126CB /* Camera.swift */,
 				BDB6FCB61F92A19200A15655 /* Other FIles */,
 			);
 			path = "Twohys Game Engine";

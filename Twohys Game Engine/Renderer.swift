@@ -36,10 +36,11 @@ extension Renderer: MTKViewDelegate{
     
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable, let passDescriptor = view.currentRenderPassDescriptor else { return }
-        
+
         let commandBuffer = commandQueue.makeCommandBuffer()
         let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
         commandEncoder?.setDepthStencilState(depthStencilState)
+        
         let deltaTime: Float = 1 / Float(view.preferredFramesPerSecond)
         scene.render(renderCommandEncoder: commandEncoder!, deltaTime: deltaTime)
         

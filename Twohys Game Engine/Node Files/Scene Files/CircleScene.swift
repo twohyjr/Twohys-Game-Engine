@@ -31,12 +31,12 @@ class CircleScene: Scene{
     
     override func render(renderCommandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
         for n in instance.nodes{
-            n.rotation.z += deltaTime
+            n.rotation.z += deltaTime * 3
         }
         if(camera.position.z >= -230){
             camera.position.z -= deltaTime * 5
         }else{
-            camera.rotation.z += deltaTime / 2.0
+            camera.rotation.x += deltaTime / 2.0
         }
     
         sceneConstants.projectionMatrix = camera.projectionMatrix

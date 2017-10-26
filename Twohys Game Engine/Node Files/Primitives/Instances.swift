@@ -16,6 +16,7 @@ class Instance: Node{
         self.primitive = primitive
         generate(instanceCount: instanceCount)
         createInstanceBuffer(device: device)
+        bufferProvider = BufferProvider(device: device, inflightBuffersCount: 3, sizeOfUniformsBuffer: MemoryLayout<ModelConstants>.stride * nodes.count)
         _renderPipelineState = FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.RENDERABLE)
 
     }
@@ -33,15 +34,14 @@ class Instance: Node{
 
 extension Instance: Renderable{
     func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
-        guard let instanceBuffer = self.instanceBuffer, nodes.count > 0 else { return }
         renderCommandEncoder.setRenderPipelineState(FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.INSTANCES))
-
-        var pointer = instanceBuffer.contents().bindMemory(to: ModelConstants.self, capacity: nodes.count)
+        let buffer = bufferProvider.nextUniformsBuffer(uniforms: &nodes)
+        var pointer = buffer.contents().bindMemory(to: ModelConstants.self, capacity: nodes.count)
         for node in nodes{
             pointer.pointee.modelViewMatrix = matrix_multiply(modelViewMatrix, node.modelMatrix)
             pointer = pointer.advanced(by: 1)
         }
-        renderCommandEncoder.setVertexBuffer(instanceBuffer, offset: 0, index: 2)
+        renderCommandEncoder.setVertexBuffer(buffer, offset: 0, index: 2)
         
         renderCommandEncoder.setVertexBuffer(primitive.vertexBuffer, offset: 0, index: 0)
         renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: primitive.vertices.count, instanceCount: nodes.count)

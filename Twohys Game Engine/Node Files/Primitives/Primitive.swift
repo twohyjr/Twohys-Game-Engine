@@ -11,6 +11,7 @@ class Primitive: Node{
         super.init()
         buildVertices()
         buildBuffers(device: device)
+        bufferProvider = BufferProvider(device: device, inflightBuffersCount: 3, sizeOfUniformsBuffer: MemoryLayout<ModelConstants>.stride)
         _renderPipelineState = FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.RENDERABLE)
     }
     

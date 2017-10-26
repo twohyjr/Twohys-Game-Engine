@@ -29,6 +29,7 @@
 		BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087CC1F9EEDE700F68ACD /* Scene.swift */; };
 		BDFB85671FA035D4004820BC /* InstancesFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFB85661FA035D4004820BC /* InstancesFlashPipelineState.swift */; };
 		BDFB85691FA0366B004820BC /* Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFB85681FA0366B004820BC /* Instances.swift */; };
+		BDFB856B1FA16B15004820BC /* CircleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFB856A1FA16B15004820BC /* CircleScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		BDF087CC1F9EEDE700F68ACD /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		BDFB85661FA035D4004820BC /* InstancesFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstancesFlashPipelineState.swift; sourceTree = "<group>"; };
 		BDFB85681FA0366B004820BC /* Instances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instances.swift; sourceTree = "<group>"; };
+		BDFB856A1FA16B15004820BC /* CircleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				BDF087CC1F9EEDE700F68ACD /* Scene.swift */,
+				BDFB856A1FA16B15004820BC /* CircleScene.swift */,
 			);
 			path = "Scene Files";
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */,
 				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,
 				BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */,
+				BDFB856B1FA16B15004820BC /* CircleScene.swift in Sources */,
 				BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */,
 				BDF087C71F9EEAD700F68ACD /* Renderable.swift in Sources */,
 				BDF087C51F9EEA4D00F68ACD /* Node.swift in Sources */,

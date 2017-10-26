@@ -1,7 +1,6 @@
 import MetalKit
 
 class Node{
-    var bufferProvider: BufferProvider!
     
     var children: [Node] = []
     
@@ -30,7 +29,6 @@ class Node{
         }
         let modelViewMatrix: matrix_float4x4 = matrix_multiply(parentModelMatrix, modelMatrix)
         if let renderable = self as? Renderable{
-            bufferProvider.avaliableResourcesSemaphore.wait()
             renderable.draw(renderCommandEncoder: renderCommandEncoder, modelViewMatrix: modelViewMatrix)
         }
     }

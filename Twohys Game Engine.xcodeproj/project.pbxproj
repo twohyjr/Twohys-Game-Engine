@@ -18,6 +18,8 @@
 		BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */; };
 		BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCC01F92AC9B00A15655 /* Types.swift */; };
 		BDB9BB451F9EAC90009385F8 /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BB441F9EAC90009385F8 /* Maths.swift */; };
+		BDCB36381FA1914500716697 /* PlaygroundScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36371FA1914500716697 /* PlaygroundScene1.swift */; };
+		BDCB363A1FA1926F00716697 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36391FA1926F00716697 /* Cube.swift */; };
 		BDE460DD1FA02C8D00F126CB /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE460DC1FA02C8D00F126CB /* Camera.swift */; };
 		BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */; };
 		BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */; };
@@ -68,6 +70,8 @@
 		BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
 		BDB6FCC01F92AC9B00A15655 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		BDB9BB441F9EAC90009385F8 /* Maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
+		BDCB36371FA1914500716697 /* PlaygroundScene1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundScene1.swift; sourceTree = "<group>"; };
+		BDCB36391FA1926F00716697 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		BDE460DC1FA02C8D00F126CB /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineStateProvider.swift; sourceTree = "<group>"; };
 		BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineState.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			children = (
 				BDF087CC1F9EEDE700F68ACD /* Scene.swift */,
 				BDFB856A1FA16B15004820BC /* CircleScene.swift */,
+				BDCB36371FA1914500716697 /* PlaygroundScene1.swift */,
 			);
 			path = "Scene Files";
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				BDF087C81F9EEB9300F68ACD /* Primitive.swift */,
 				BDF087CA1F9EECAB00F68ACD /* Circle.swift */,
 				BDFB85681FA0366B004820BC /* Instances.swift */,
+				BDCB36391FA1926F00716697 /* Cube.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -394,10 +400,12 @@
 				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,
 				BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */,
 				BDFB856B1FA16B15004820BC /* CircleScene.swift in Sources */,
+				BDCB363A1FA1926F00716697 /* Cube.swift in Sources */,
 				BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */,
 				BDF087C71F9EEAD700F68ACD /* Renderable.swift in Sources */,
 				BDF087C51F9EEA4D00F68ACD /* Node.swift in Sources */,
 				BDFB85671FA035D4004820BC /* InstancesFlashPipelineState.swift in Sources */,
+				BDCB36381FA1914500716697 /* PlaygroundScene1.swift in Sources */,
 				BDB6FCBB1F92A36500A15655 /* Renderer.swift in Sources */,
 				BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */,
 				BDF087CB1F9EECAB00F68ACD /* Circle.swift in Sources */,

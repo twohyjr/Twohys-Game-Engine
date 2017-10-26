@@ -7,6 +7,9 @@ class Primitive: Node{
     var vertices: [Vertex]!
     var vertexBuffer: MTLBuffer!
     
+    var indices: [UInt16]!
+    var indexBuffer: MTLBuffer!
+    
     init(device: MTLDevice){
         super.init()
         buildVertices()
@@ -18,6 +21,9 @@ class Primitive: Node{
     
     func buildBuffers(device: MTLDevice){
         vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [MTLResourceOptions.storageModeManaged])
+        if(indices.count > 0){
+            indexBuffer = device.makeBuffer(bytes: indices, length: MemoryLayout<UInt16>.size * indices.count, options: [])
+        }
     }
 }
 
@@ -28,6 +34,10 @@ extension Primitive: Renderable{
         
         renderCommandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 2)
         renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
+        if(indices.count > 0){
+            renderCommandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0)
+        }else{
+            renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
+        }
     }
 }

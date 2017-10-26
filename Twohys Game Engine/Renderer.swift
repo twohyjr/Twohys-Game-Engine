@@ -17,7 +17,7 @@ class Renderer: NSObject{
         super.init()
         commandQueue = device.makeCommandQueue()
         FlashPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
-        scene = CircleScene(device: device)
+        scene = PlaygroundScene1(device: device)
         buildDepthStencilState(device: device)
     }
     

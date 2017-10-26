@@ -4,10 +4,10 @@ class Primitive: Node{
     var _renderPipelineState: MTLRenderPipelineState!
     var modelConstants = ModelConstants()
     
-    var vertices: [Vertex]!
+    var vertices: [Vertex] = []
     var vertexBuffer: MTLBuffer!
     
-    var indices: [UInt16]!
+    var indices: [UInt16] = []
     var indexBuffer: MTLBuffer!
     
     init(device: MTLDevice){

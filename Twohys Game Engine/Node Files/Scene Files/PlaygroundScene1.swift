@@ -2,11 +2,11 @@ import MetalKit
 
 class PlaygroundScene1: Scene{
     
-    var cube: Cube!
+    var quad: Quad!
     override func buildScene(device: MTLDevice) {
-        camera.position.z = -10
-        cube = Cube(device: device)
-        add(child: cube)
+        camera.position.z = -4
+        quad = Quad(device: device)
+        add(child: quad)
     }
     
     override func updateCamera(deltaTime: Float) {
@@ -14,8 +14,8 @@ class PlaygroundScene1: Scene{
     }
     
     override func updateModels(deltaTime: Float) {
-        cube.rotation.x += deltaTime
-        cube.rotation.y += deltaTime
+        quad.rotation.x += deltaTime
+        quad.rotation.y += deltaTime
     }
 }
 

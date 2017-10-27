@@ -8,6 +8,8 @@ class Renderer: NSObject{
     
     var depthStencilState: MTLDepthStencilState!
     
+    var samplerState: MTLSamplerState!
+
     var scene: Scene!
     
     var vertices: [Vertex]!
@@ -19,13 +21,23 @@ class Renderer: NSObject{
         FlashPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
         scene = PlaygroundScene1(device: device)
         buildDepthStencilState(device: device)
+        buildSamplerState(device: device)
     }
     
     func buildDepthStencilState(device: MTLDevice){
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
         depthStencilDescriptor.isDepthWriteEnabled = true
         depthStencilDescriptor.depthCompareFunction = .less
+        depthStencilDescriptor.label = "Twohy's Depth Stencil Descriptor"
         depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
+    }
+    
+    func buildSamplerState(device: MTLDevice){
+        let samplerDescriptor = MTLSamplerDescriptor()
+        samplerDescriptor.minFilter = .linear
+        samplerDescriptor.magFilter = .linear
+        samplerDescriptor.label = "Twohy's Sampler"
+        samplerState = device.makeSamplerState(descriptor: samplerDescriptor)
     }
 
 }
@@ -38,13 +50,15 @@ extension Renderer: MTKViewDelegate{
         guard let drawable = view.currentDrawable, let passDescriptor = view.currentRenderPassDescriptor else { return }
 
         let commandBuffer = commandQueue.makeCommandBuffer()
-        let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
-        commandEncoder?.setDepthStencilState(depthStencilState)
+        let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
+        renderCommandEncoder?.setDepthStencilState(depthStencilState)
+        renderCommandEncoder?.setFragmentSamplerState(samplerState, index: 0)
+        //renderCommandEncoder?.setCullMode(.front)
         
         let deltaTime: Float = 1 / Float(view.preferredFramesPerSecond)
-        scene.render(renderCommandEncoder: commandEncoder!, deltaTime: deltaTime)
+        scene.render(renderCommandEncoder: renderCommandEncoder!, deltaTime: deltaTime)
         
-        commandEncoder?.endEncoding()
+        renderCommandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
         commandBuffer?.commit()
         

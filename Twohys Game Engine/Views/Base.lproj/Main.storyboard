@@ -696,18 +696,6 @@
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
-                    <touchBar key="touchBar" id="U7F-ac-BiZ">
-                        <touchBarItems>
-                            <touchBarItem id="Mqf-ii-UjD">
-                                <viewController key="viewController" id="Azk-12-qdJ">
-                                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-p8-OnV" customClass="MainView" customModule="Twohys_Game_Engine" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="685" height="30"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </view>
-                                </viewController>
-                            </touchBarItem>
-                        </touchBarItems>
-                    </touchBar>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
@@ -728,8 +716,8 @@
                         <touchBarItems>
                             <touchBarItem id="r33-lD-uQY">
                                 <viewController key="viewController" id="lMn-Q0-RIP">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J1o-En-NLM">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1o-En-NLM">
+                                        <rect key="frame" x="0.0" y="0.0" width="84" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Hello" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OwU-5I-ayx">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

@@ -3,6 +3,7 @@ import MetalKit
 public enum FlashPipelineStateType {
     case RENDERABLE
     case INSTANCES
+    case TEXTUREABLE
 }
 
 class FlashPipelineStateProvider{
@@ -23,7 +24,8 @@ class FlashPipelineStateProvider{
                     _pipelineStates.updateValue(RenderableFlashPipelineState(device: _device, mtkView: _mtkView), forKey: flashPipelineStateType)
                 case FlashPipelineStateType.INSTANCES:
                     _pipelineStates.updateValue(InstancesFlashPipelineState(device: _device, mtkView: _mtkView), forKey: flashPipelineStateType)
-
+                case FlashPipelineStateType.TEXTUREABLE:
+                    _pipelineStates.updateValue(TexturableFlashPipelineState(device: _device, mtkView: _mtkView), forKey: flashPipelineStateType)
             }
         }
         return (_pipelineStates[flashPipelineStateType]!.renderPipelineState)

@@ -5,7 +5,7 @@ class PlaygroundScene1: Scene{
     var quad: Quad!
     override func buildScene(device: MTLDevice) {
         camera.position.z = -4
-        quad = Quad(device: device)
+        quad = Quad(device: device, textureName: "bright.png")
         add(child: quad)
     }
     
@@ -15,7 +15,6 @@ class PlaygroundScene1: Scene{
     
     override func updateModels(deltaTime: Float) {
         quad.rotation.x += deltaTime
-        quad.rotation.y += deltaTime
     }
 }
 

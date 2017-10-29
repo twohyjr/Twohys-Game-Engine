@@ -716,8 +716,8 @@
                         <touchBarItems>
                             <touchBarItem id="r33-lD-uQY">
                                 <viewController key="viewController" id="lMn-Q0-RIP">
-                                    <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1o-En-NLM">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="41"/>
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J1o-En-NLM">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Hello" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OwU-5I-ayx">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

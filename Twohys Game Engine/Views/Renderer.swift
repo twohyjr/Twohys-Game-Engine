@@ -46,6 +46,11 @@ extension Renderer: MTKViewDelegate{
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {  }
     
+    func updateTrackingArea(view: MTKView){
+        let area = NSTrackingArea(rect: view.bounds, options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved, NSTrackingArea.Options.enabledDuringMouseDrag], owner: view, userInfo: nil)
+        view.addTrackingArea(area)
+    }
+    
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable, let passDescriptor = view.currentRenderPassDescriptor else { return }
 
@@ -53,7 +58,7 @@ extension Renderer: MTKViewDelegate{
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
         renderCommandEncoder?.setDepthStencilState(depthStencilState)
         renderCommandEncoder?.setFragmentSamplerState(samplerState, index: 0)
-        //renderCommandEncoder?.setCullMode(.front)
+        renderCommandEncoder?.setCullMode(.front)
         
         let deltaTime: Float = 1 / Float(view.preferredFramesPerSecond)
         scene.render(renderCommandEncoder: renderCommandEncoder!, deltaTime: deltaTime)

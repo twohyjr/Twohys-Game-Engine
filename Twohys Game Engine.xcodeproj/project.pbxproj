@@ -10,6 +10,8 @@
 		BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1211FA255AB00EC67C6 /* Texturable.swift */; };
 		BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */ = {isa = PBXBuildFile; fileRef = BD12E1251FA2CBC500EC67C6 /* bright.png */; };
 		BD12E1281FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */; };
+		BDB027691FA54F6D0064A544 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB027681FA54F6D0064A544 /* Terrain.swift */; };
+		BDB0276B1FA550F70064A544 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB0276A1FA550F70064A544 /* InputHandler.swift */; };
 		BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC871F92A15B00A15655 /* AppDelegate.swift */; };
 		BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC8B1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld */; };
 		BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB6FC8E1F92A15B00A15655 /* Assets.xcassets */; };
@@ -59,6 +61,8 @@
 		BD12E1211FA255AB00EC67C6 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		BD12E1251FA2CBC500EC67C6 /* bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bright.png; path = ../../../../../../Desktop/bright.png; sourceTree = "<group>"; };
 		BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturableFlashPipelineState.swift; sourceTree = "<group>"; };
+		BDB027681FA54F6D0064A544 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
+		BDB0276A1FA550F70064A544 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
 		BDB6FC841F92A15B00A15655 /* Twohys Game Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twohys Game Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB6FC871F92A15B00A15655 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDB6FC8C1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Twohys_Game_Engine.xcdatamodel; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				BDE460DC1FA02C8D00F126CB /* Camera.swift */,
 				BD8B92E21F9FA37C00F925E0 /* Scene Files */,
 				BD8B92E31F9FA39800F925E0 /* Primitives */,
+				BDB027681FA54F6D0064A544 /* Terrain.swift */,
 			);
 			path = "Node Files";
 			sourceTree = "<group>";
@@ -207,8 +212,7 @@
 				BDF087BC1F9EDD4A00F68ACD /* Maths */,
 				BDB6FCBF1F92AC8400A15655 /* Types */,
 				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
-				BDB6FCB91F92A30D00A15655 /* Views */,
-				BDB6FCBA1F92A36500A15655 /* Renderer.swift */,
+				BDB6FCB91F92A30D00A15655 /* Window */,
 				BDB6FCB61F92A19200A15655 /* Other FIles */,
 			);
 			path = "Twohys Game Engine";
@@ -244,12 +248,15 @@
 			path = "Other FIles";
 			sourceTree = "<group>";
 		};
-		BDB6FCB91F92A30D00A15655 /* Views */ = {
+		BDB6FCB91F92A30D00A15655 /* Window */ = {
 			isa = PBXGroup;
 			children = (
 				BDB6FC901F92A15B00A15655 /* Main.storyboard */,
 				BDB6FCB71F92A2CE00A15655 /* MainView.swift */,
+				BDB6FCBA1F92A36500A15655 /* Renderer.swift */,
+				BDB0276A1FA550F70064A544 /* InputHandler.swift */,
 			);
+			name = Window;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -446,8 +453,10 @@
 				BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */,
 				BDFB85691FA0366B004820BC /* Instances.swift in Sources */,
 				BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */,
+				BDB027691FA54F6D0064A544 /* Terrain.swift in Sources */,
 				BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */,
 				BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */,
+				BDB0276B1FA550F70064A544 /* InputHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

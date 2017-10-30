@@ -185,12 +185,8 @@
 		BD8B92E31F9FA39800F925E0 /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
-				BDB027681FA54F6D0064A544 /* Terrain.swift */,
 				BDF087C81F9EEB9300F68ACD /* Primitive.swift */,
-				BDF087CA1F9EECAB00F68ACD /* Circle.swift */,
 				BDFB85681FA0366B004820BC /* Instances.swift */,
-				BDCB36391FA1926F00716697 /* Cube.swift */,
-				BDCB363F1FA2516200716697 /* Quad.swift */,
 				BDB792E41FA79B9900A8367F /* Model.swift */,
 			);
 			path = Primitives;
@@ -302,9 +298,29 @@
 		BDB792EB1FA7E1B100A8367F /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				BDB792EC1FA7E1CA00A8367F /* Armadillo.swift */,
+				BDB792EE1FA7E3C200A8367F /* File Models */,
+				BDB792EF1FA7E3D400A8367F /* Custom Models */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		BDB792EE1FA7E3C200A8367F /* File Models */ = {
+			isa = PBXGroup;
+			children = (
+				BDB792EC1FA7E1CA00A8367F /* Armadillo.swift */,
+			);
+			path = "File Models";
+			sourceTree = "<group>";
+		};
+		BDB792EF1FA7E3D400A8367F /* Custom Models */ = {
+			isa = PBXGroup;
+			children = (
+				BDB027681FA54F6D0064A544 /* Terrain.swift */,
+				BDF087CA1F9EECAB00F68ACD /* Circle.swift */,
+				BDCB363F1FA2516200716697 /* Quad.swift */,
+				BDCB36391FA1926F00716697 /* Cube.swift */,
+			);
+			path = "Custom Models";
 			sourceTree = "<group>";
 		};
 		BDF087BC1F9EDD4A00F68ACD /* Maths */ = {

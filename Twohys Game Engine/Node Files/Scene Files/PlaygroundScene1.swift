@@ -3,9 +3,18 @@ import MetalKit
 class PlaygroundScene1: Scene{
     
     var quad: Quad!
+    var terrain: Terrain!
     override func buildScene(device: MTLDevice) {
         camera.position.z = -4
         quad = Quad(device: device, textureName: "bright.png")
+        
+        terrain = Terrain(device: device, textureName: "grass.png")
+        terrain.position.y = -1
+        terrain.position.x = -50
+        terrain.position.z = -100
+        camera.rotation.x = -25
+        camera.position.z = -10
+        add(child: terrain)
         add(child: quad)
     }
     
@@ -15,13 +24,6 @@ class PlaygroundScene1: Scene{
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Up)){camera.position.y += 0.05}
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Right)){camera.position.x += 0.05}
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Left)){camera.position.x -= 0.05}
-        
-        //Rotation
-        if(InputHandler.getMousePosition().x >= 600.0){
-            camera.rotation.y += 0.01
-        }else if (InputHandler.getMousePosition().x >= 1.0 && InputHandler.getMousePosition().x <= 100.0){
-            camera.rotation.y -= 0.01
-        }
     }
     
     override func updateModels(deltaTime: Float) {

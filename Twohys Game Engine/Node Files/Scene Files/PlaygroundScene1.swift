@@ -4,8 +4,9 @@ class PlaygroundScene1: Scene{
     
     var object: Cube!
     override func buildScene(device: MTLDevice) {
-        camera.position.z = -4
+        camera.position.z = -3
         object = Cube(device: device)
+        object.scale = float3(0.5)
         
 //      let terrain: Terrain = Terrain(device: device, textureName: "grass.png")
 //      terrain.position.y = 0
@@ -14,7 +15,6 @@ class PlaygroundScene1: Scene{
 //      add(child: terrain)
         
         camera.rotation.x = -50
-        camera.position.z = -3
         add(child: object)
     }
     

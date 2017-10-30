@@ -149,7 +149,6 @@
 				BDE460DC1FA02C8D00F126CB /* Camera.swift */,
 				BD8B92E21F9FA37C00F925E0 /* Scene Files */,
 				BD8B92E31F9FA39800F925E0 /* Primitives */,
-				BDB027681FA54F6D0064A544 /* Terrain.swift */,
 			);
 			path = "Node Files";
 			sourceTree = "<group>";
@@ -176,6 +175,7 @@
 		BD8B92E31F9FA39800F925E0 /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
+				BDB027681FA54F6D0064A544 /* Terrain.swift */,
 				BDF087C81F9EEB9300F68ACD /* Primitive.swift */,
 				BDF087CA1F9EECAB00F68ACD /* Circle.swift */,
 				BDFB85681FA0366B004820BC /* Instances.swift */,

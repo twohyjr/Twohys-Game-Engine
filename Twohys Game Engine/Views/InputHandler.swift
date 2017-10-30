@@ -1,6 +1,8 @@
 import MetalKit
 
 enum KEY_CODES: Int {
+    case Key_K = 40
+    case Key_L = 37
     case Key_Z = 6
     case Key_X = 7
     case Key_W = 13
@@ -11,7 +13,9 @@ enum KEY_CODES: Int {
     case Key_2 = 19
     case Key_3 = 20
     case Key_4 = 21
-    
+    case Angle_Bracket_Left = 43
+    case Angle_Bracket_Right = 47
+
     case Key_Arrow_Up = 126
     case Key_Arrow_Down = 125
     case Key_Arrow_Left = 123
@@ -31,6 +35,7 @@ class InputHandler{
     }
     
     public static func setKeyPressed(key: UInt16, isOn: Bool){
+        print(key)
         keyList[Int(key)] = isOn
     }
     

@@ -3,19 +3,18 @@ import MetalKit
 class PlaygroundScene1: Scene{
     
     var object: Cube!
-    var terrain: Terrain!
     override func buildScene(device: MTLDevice) {
         camera.position.z = -4
         object = Cube(device: device)
-        object.position.y = 0.5
         
-        terrain = Terrain(device: device, textureName: "grass.png")
-        terrain.position.y = 0
-        terrain.position.x = -50
-        terrain.position.z = -100
-        camera.rotation.x = -25
-        camera.position.z = -10
-        add(child: terrain)
+//      let terrain: Terrain = Terrain(device: device, textureName: "grass.png")
+//      terrain.position.y = 0
+//      terrain.position.x = -50
+//      terrain.position.z = -100
+//      add(child: terrain)
+        
+        camera.rotation.x = -50
+        camera.position.z = -3
         add(child: object)
     }
     
@@ -35,6 +34,12 @@ class PlaygroundScene1: Scene{
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_A)){object.position.x -= 0.05}
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Z)){object.position.y += 0.05}
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_X)){object.position.y -= 0.05}
+        
+        if(InputHandler.isKeyPressed(key: KEY_CODES.Angle_Bracket_Left)){object.rotation.y -= 0.05}
+        if(InputHandler.isKeyPressed(key: KEY_CODES.Angle_Bracket_Right)){object.rotation.y += 0.05}
+        
+        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_K)){object.rotation.x -= 0.05}
+        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_L)){object.rotation.x += 0.05}
     }
 }
 

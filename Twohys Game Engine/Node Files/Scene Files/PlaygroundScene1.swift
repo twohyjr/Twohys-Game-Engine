@@ -2,15 +2,15 @@ import MetalKit
 
 class PlaygroundScene1: Scene{
     
-    var object: Cube!
+    var object: Model!
     override func buildScene(device: MTLDevice) {
         light.brightness = 1.5
 //        light.diffuseIntensity = 1.0
         
         
-        object = Cube(device: device)
+        object = Model(device: device, modelName: "dragon", textureName: "")
         object.position.z = -5
-        object.shininess = 25
+        object.shininess = 10
         object.specularIntensity = 1
         add(child: object)
     }

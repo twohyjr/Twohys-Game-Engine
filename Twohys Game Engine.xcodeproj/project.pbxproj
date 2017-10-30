@@ -22,6 +22,8 @@
 		BDB6FCBB1F92A36500A15655 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCBA1F92A36500A15655 /* Renderer.swift */; };
 		BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */; };
 		BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCC01F92AC9B00A15655 /* Types.swift */; };
+		BDB792E51FA79B9900A8367F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB792E41FA79B9900A8367F /* Model.swift */; };
+		BDB792E81FA7A08E00A8367F /* dragon.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDB792E71FA7A08D00A8367F /* dragon.obj */; };
 		BDB9BB451F9EAC90009385F8 /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BB441F9EAC90009385F8 /* Maths.swift */; };
 		BDCB36381FA1914500716697 /* PlaygroundScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36371FA1914500716697 /* PlaygroundScene1.swift */; };
 		BDCB363A1FA1926F00716697 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36391FA1926F00716697 /* Cube.swift */; };
@@ -82,6 +84,8 @@
 		BDB6FCBA1F92A36500A15655 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
 		BDB6FCC01F92AC9B00A15655 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		BDB792E41FA79B9900A8367F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BDB792E71FA7A08D00A8367F /* dragon.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dragon.obj; path = ../../../../../../Desktop/dragon.obj; sourceTree = "<group>"; };
 		BDB9BB441F9EAC90009385F8 /* Maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
 		BDCB36371FA1914500716697 /* PlaygroundScene1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundScene1.swift; sourceTree = "<group>"; };
 		BDCB36391FA1926F00716697 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 		BD12E1231FA2CB4D00EC67C6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BDB792E61FA79FE200A8367F /* Models */,
 				BD12E1241FA2CB5400EC67C6 /* Images */,
 			);
 			path = Assets;
@@ -183,6 +188,7 @@
 				BDFB85681FA0366B004820BC /* Instances.swift */,
 				BDCB36391FA1926F00716697 /* Cube.swift */,
 				BDCB363F1FA2516200716697 /* Quad.swift */,
+				BDB792E41FA79B9900A8367F /* Model.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -280,6 +286,14 @@
 				BDB6FCC01F92AC9B00A15655 /* Types.swift */,
 			);
 			path = Types;
+			sourceTree = "<group>";
+		};
+		BDB792E61FA79FE200A8367F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BDB792E71FA7A08D00A8367F /* dragon.obj */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BDF087BC1F9EDD4A00F68ACD /* Maths */ = {
@@ -411,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDE3FB421FA6AAB400BBFF7E /* grass.png in Resources */,
+				BDB792E81FA7A08E00A8367F /* dragon.obj in Resources */,
 				BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */,
 				BDB6FC921F92A15B00A15655 /* Main.storyboard in Resources */,
 				BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */,
@@ -445,6 +460,7 @@
 				BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */,
 				BDFB856B1FA16B15004820BC /* CircleScene.swift in Sources */,
 				BDCB363A1FA1926F00716697 /* Cube.swift in Sources */,
+				BDB792E51FA79B9900A8367F /* Model.swift in Sources */,
 				BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */,
 				BDF087C71F9EEAD700F68ACD /* Renderable.swift in Sources */,
 				BDE3FB461FA6C3BB00BBFF7E /* PerlinGenerator.swift in Sources */,

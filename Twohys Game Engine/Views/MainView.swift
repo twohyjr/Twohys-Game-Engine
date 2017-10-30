@@ -11,8 +11,6 @@ import MetalKit
 class MainView: MTKView {
     
     var renderer: Renderer!
-    
-    static var mousePosition = float2(0,0)
 
     required init(coder: NSCoder) {
         super.init(coder: coder)
@@ -27,14 +25,14 @@ class MainView: MTKView {
 
     }
     
-     override var acceptsFirstResponder: Bool { return true }
+    override var acceptsFirstResponder: Bool { return true }
     
     override func mouseMoved(with event: NSEvent) {
         let x: Float = Float(event.locationInWindow.x)
         let y: Float = Float(event.locationInWindow.y)
-        MainView.mousePosition = float2(x,y)
+        InputHandler.setMousePosition(position: float2(x,y))
         
-        Swift.print("Mouse Position: \(x), \(y)")
+        //Swift.print("Mouse Position: \(x), \(y)")
     }
     
     override func keyDown(with event: NSEvent) {
@@ -44,10 +42,4 @@ class MainView: MTKView {
     override func keyUp(with event: NSEvent) {
         InputHandler.setKeyPressed(key: event.keyCode, isOn: false)
     }
-    
-    public static func getMousePosition()->float2{
-        return mousePosition
-    }
-    
-    
 }

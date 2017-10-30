@@ -58,7 +58,7 @@ extension Renderer: MTKViewDelegate{
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
         renderCommandEncoder?.setDepthStencilState(depthStencilState)
         renderCommandEncoder?.setFragmentSamplerState(samplerState, index: 0)
-        renderCommandEncoder?.setCullMode(.front)
+        //renderCommandEncoder?.setCullMode(.front)
         
         let deltaTime: Float = 1 / Float(view.preferredFramesPerSecond)
         scene.render(renderCommandEncoder: renderCommandEncoder!, deltaTime: deltaTime)

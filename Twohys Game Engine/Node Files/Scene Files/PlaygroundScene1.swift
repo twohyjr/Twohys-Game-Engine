@@ -8,6 +8,17 @@ class PlaygroundScene1: Scene{
         object = Cube(device: device)
         object.scale = float3(0.5)
         
+        light.color = float3(1,0,1)
+        light.direction = float3(0,0,-1)
+        light.ambientIntensity = 0.1
+        light.diffuseIntensity = 0.5
+        
+        //REPRESENTS THE LIGHT POSITION
+//        let circle = Circle(device: device, circleVertexCount: 128)
+//        circle.scale = float3(0.1)
+//        circle.position = light.direction
+//        add(child: circle)
+        
 //      let terrain: Terrain = Terrain(device: device, textureName: "grass.png")
 //      terrain.position.y = 0
 //      terrain.position.x = -50

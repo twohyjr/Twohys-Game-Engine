@@ -4,6 +4,7 @@ class Scene: Node{
     
     var sceneConstants = SceneConstants()
     var camera = Camera()
+    var light = Light()
 
     init(device: MTLDevice){
         super.init()
@@ -23,6 +24,7 @@ class Scene: Node{
     func doRender(renderCommandEncoder: MTLRenderCommandEncoder){
         sceneConstants.projectionMatrix = camera.projectionMatrix
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, index: 1)
+        renderCommandEncoder.setFragmentBytes(&light, length: MemoryLayout<Light>.stride, index: 1)
         for child in children{
             child.render(renderCommandEncoder: renderCommandEncoder, parentModelMatrix: camera.viewMatrix)
         }

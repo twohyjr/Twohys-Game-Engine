@@ -44,7 +44,10 @@ class Primitive: Node{
 
 extension Primitive: Renderable{
     func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
+        
         modelConstants.modelViewMatrix = modelViewMatrix
+        modelConstants.normalMatrix = modelViewMatrix.upperLeftMatrix()
+        
         renderCommandEncoder.setRenderPipelineState(_renderPipelineState)
         
         renderCommandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 2)

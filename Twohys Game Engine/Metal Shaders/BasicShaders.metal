@@ -11,16 +11,27 @@ struct VertexIn{
 struct VertexOut{
     float4 position [[ position ]];
     float4 color;
-    float3 normal;
     float2 textureCoordinate;
+    float3 surfaceNormal;
+    float3 eyePosition;
+    float shininess;
+    float specularIntensity;
 };
 
 struct ModelConstants{
     float4x4 modelViewMatrix;
+    float3x3 normalMatrix;
 };
 
 struct SceneConstants{
     float4x4 projectionMatrix;
+};
+
+struct Light{
+    float3 color;
+    float ambientIntensity;
+    float3 direction;
+    float diffuseIntensity;
 };
 
 vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
@@ -32,6 +43,8 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.position = sceneConstants.projectionMatrix *  worldPosition;
     vOut.color = vIn.color;
     vOut.textureCoordinate = vIn.textureCoordinate;
+    vOut.surfaceNormal = modelConstants.normalMatrix * vIn.normal;
+    vOut.eyePosition = worldPosition.xyz;
     
     return vOut;
 }
@@ -49,8 +62,21 @@ vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
     return vOut;
 }
 
-fragment float4 fragmentShader(VertexOut vIn [[ stage_in ]]){
-    return vIn.color;
+fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
+                               constant Light &light [[ buffer(1) ]]){
+    float3 unitNormal = normalize(vIn.surfaceNormal);
+    float4 color = vIn.color;
+    
+    //Ambient Color
+    float3 ambientColor = light.color * light.ambientIntensity;
+    
+    //Diffuse Color
+    float diffuseFactor = saturate(-dot(unitNormal, light.direction));
+    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
+    
+    color = color * float4(ambientColor + diffuseColor, 1);
+    
+    return half4(color.x, color.y, color.z, 1);
 }
 
 fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],

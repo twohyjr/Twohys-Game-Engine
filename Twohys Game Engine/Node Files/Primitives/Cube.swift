@@ -3,37 +3,38 @@ import MetalKit
 class Cube: Primitive{
     
     override func buildVertices(){
+        let cubeColor = float4(0.7, 0.7, 0.7, 1)
         
         vertices = [
-            Vertex(position: float3(-0.5, 0.5,-0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3(-0.5,-0.5,-0.5), color: float4(0, 1, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5,-0.5,-0.5), color: float4(0, 0, 1, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5, 0.5,-0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5, 0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5,-0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5,-0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5, 0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
 
-            Vertex(position: float3(-0.5, 0.5, 0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3(-0.5,-0.5, 0.5), color: float4(0, 1, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5,-0.5, 0.5), color: float4(0, 0, 1, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5, 0.5, 0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5, 0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5,-0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5,-0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5, 0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
 
-            Vertex(position: float3( 0.5, 0.5,-0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5,-0.5,-0.5), color: float4(0, 1, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5,-0.5, 0.5), color: float4(0, 0, 1, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5, 0.5, 0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5, 0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5,-0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5,-0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5, 0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
 
-            Vertex(position: float3(-0.5, 0.5,-0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3(-0.5,-0.5,-0.5), color: float4(0, 1, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3(-0.5,-0.5, 0.5), color: float4(0, 0, 1, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3(-0.5, 0.5, 0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5, 0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5,-0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5,-0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5, 0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
 
-            Vertex(position: float3(-0.5, 0.5, 0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3(-0.5, 0.5,-0.5), color: float4(0, 1, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5, 0.5,-0.5), color: float4(0, 0, 1, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5, 0.5, 0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5, 0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5, 0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5, 0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5, 0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
 
-            Vertex(position: float3(-0.5,-0.5, 0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3(-0.5,-0.5,-0.5), color: float4(0, 1, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5,-0.5,-0.5), color: float4(0, 0, 1, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1)),
-            Vertex(position: float3( 0.5,-0.5, 0.5), color: float4(1, 0, 0, 1), normal: float3(0,1,2), textureCoordinate: float2(0,1))
+            Vertex(position: float3(-0.5,-0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3(-0.5,-0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5,-0.5,-0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1)),
+            Vertex(position: float3( 0.5,-0.5, 0.5), color: cubeColor, normal: float3(0,1,2), textureCoordinate: float2(0,1))
         ]
         
         indices = [

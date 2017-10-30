@@ -8,7 +8,7 @@ class PlaygroundScene1: Scene{
         object = Cube(device: device)
         object.scale = float3(0.5)
         
-        light.color = float3(1,0,1)
+        light.color = float3(1)
         light.direction = float3(0,0,-1)
         light.ambientIntensity = 0.1
         light.diffuseIntensity = 0.5

@@ -27,6 +27,7 @@
 		BDCB363A1FA1926F00716697 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36391FA1926F00716697 /* Cube.swift */; };
 		BDCB36401FA2516200716697 /* Quad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB363F1FA2516200716697 /* Quad.swift */; };
 		BDE3FB421FA6AAB400BBFF7E /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = BDE3FB411FA6AAB300BBFF7E /* grass.png */; };
+		BDE3FB461FA6C3BB00BBFF7E /* PerlinGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */; };
 		BDE460DD1FA02C8D00F126CB /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE460DC1FA02C8D00F126CB /* Camera.swift */; };
 		BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */; };
 		BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */; };
@@ -86,6 +87,7 @@
 		BDCB36391FA1926F00716697 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		BDCB363F1FA2516200716697 /* Quad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quad.swift; sourceTree = "<group>"; };
 		BDE3FB411FA6AAB300BBFF7E /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass.png; path = ../../../../../../Desktop/grass.png; sourceTree = "<group>"; };
+		BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerlinGenerator.swift; sourceTree = "<group>"; };
 		BDE460DC1FA02C8D00F126CB /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineStateProvider.swift; sourceTree = "<group>"; };
 		BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineState.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
 				BDB6FCB91F92A30D00A15655 /* Window */,
 				BDB6FCB61F92A19200A15655 /* Other FIles */,
+				BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */,
 			);
 			path = "Twohys Game Engine";
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				BDCB363A1FA1926F00716697 /* Cube.swift in Sources */,
 				BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */,
 				BDF087C71F9EEAD700F68ACD /* Renderable.swift in Sources */,
+				BDE3FB461FA6C3BB00BBFF7E /* PerlinGenerator.swift in Sources */,
 				BDF087C51F9EEA4D00F68ACD /* Node.swift in Sources */,
 				BD12E1281FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift in Sources */,
 				BDFB85671FA035D4004820BC /* InstancesFlashPipelineState.swift in Sources */,

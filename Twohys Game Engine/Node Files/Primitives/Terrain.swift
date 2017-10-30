@@ -5,11 +5,19 @@ class Terrain: Primitive{
     let GRID_SIZE: Int = 1000
     let VERTEX_COUNT: Int = 500
     
+    var generator = PerlinGenerator()
+    
     override func buildVertices() {
+    
+        generator = PerlinGenerator()
+        generator.octaves = 3 //1-7
+        generator.zoom = 2.0 //0.3 - 6
+        generator.persistence = 0.5 //0-1
+        
         for z in 0..<VERTEX_COUNT{
             for x in 0..<VERTEX_COUNT{
                 let vX: Float = Float(x) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
-                let vY: Float = 0.0
+                let vY: Float = getHeight(x: x, z: z) * 2
                 let vZ: Float = Float(z) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
                 
                 let tX: Float = fmod(Float(x), 2.0)
@@ -21,7 +29,7 @@ class Terrain: Primitive{
                 
                 let textureCoordinate: float2  = float2(tX, tZ)
                 
-                let normals: float3 = float3(0,1,0)
+                let normals: float3 = calculateNormal(x: x, z: z)
                 
                 vertices.append(Vertex(position: position, color: color,  normal: normals, textureCoordinate: textureCoordinate))
             }
@@ -41,6 +49,20 @@ class Terrain: Primitive{
                 indices.append(bottomRight)
             }
         }
+    }
+    
+    func getHeight(x: Int, z: Int)->Float{
+        return generator.perlinNoise(Float(x), y: Float(z), z: 0, t: 0)
+    }
+    
+    func calculateNormal(x: Int, z: Int)->float3{
+        let heightL = getHeight(x: x-1, z: z)
+        let heightR = getHeight(x: x+1, z: z)
+        let heightD = getHeight(x: x, z: z-1)
+        let heightU = getHeight(x: x, z: z+1)
+        var normal = float3(heightL - heightR, 2.0, heightD - heightU)
+        normal = normalize(normal)
+        return normal
     }
     
 }

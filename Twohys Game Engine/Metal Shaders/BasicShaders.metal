@@ -21,6 +21,8 @@ struct VertexOut{
 struct ModelConstants{
     float4x4 modelViewMatrix;
     float3x3 normalMatrix;
+    float shininess;
+    float specularIntensity;
 };
 
 struct SceneConstants{
@@ -46,6 +48,9 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.textureCoordinate = vIn.textureCoordinate;
     vOut.surfaceNormal = modelConstants.normalMatrix * vIn.normal;
     vOut.eyePosition = worldPosition.xyz;
+    vOut.shininess = modelConstants.shininess;
+    vOut.specularIntensity = modelConstants.specularIntensity;
+
     
     return vOut;
 }
@@ -65,28 +70,10 @@ vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
 
 fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
                                constant Light &light [[ buffer(1) ]]){
-    float3 unitNormal = normalize(vIn.surfaceNormal);
     float4 color = vIn.color;
-    
-    //Ambient Color
-    float3 ambientColor = light.color * light.ambientIntensity;
-    
-    //Diffuse Color
-    float diffuseFactor = saturate(-dot(unitNormal, light.direction));
-    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor  * light.brightness;
-    
-    color = color * float4(ambientColor + diffuseColor, 1);
-    
-    return half4(color.x, color.y, color.z, 1);
-}
-
-fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
-                                          sampler sampler2d [[ sampler(0) ]],
-                                          texture2d<float> texture [[ texture(0) ]],
-                                          constant Light &light [[ buffer(1) ]]){
     float3 unitNormal = normalize(vIn.surfaceNormal);
-    float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
-
+    float3 unitEye = normalize(vIn.eyePosition);
+    
     //Ambient Color
     float3 ambientColor = light.color * light.ambientIntensity;
     
@@ -94,12 +81,36 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
     float diffuseFactor = saturate(-dot(unitNormal, light.direction));
     float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor * light.brightness;
     
-    if(diffuseColor.x < 0.5 && diffuseColor.y < 0.5 && diffuseColor.z < 0.5){
-        diffuseColor = float3(0.5);
-    }
+    //Specular Color
+    float3 reflection = reflect(light.direction, unitNormal);
+    float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
+    float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
     
-    color = color * float4(ambientColor + diffuseColor, 1);
+    color = color * float4(ambientColor + diffuseColor + specularColor, 1);
+    return half4(color.x, color.y, color.z, 1);
+}
+
+fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
+                                          sampler sampler2d [[ sampler(0) ]],
+                                          texture2d<float> texture [[ texture(0) ]],
+                                          constant Light &light [[ buffer(1) ]]){
+    float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
+    float3 unitNormal = normalize(vIn.surfaceNormal);
+    float3 unitEye = normalize(vIn.eyePosition);
+
+    //Ambient Color
+    float3 ambientColor = light.color * light.ambientIntensity;
     
+    //Diffuse Color
+    float diffuseFactor = saturate(-dot(unitNormal, light.direction));
+    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
+    
+    //Specular Color
+    float3 reflection = reflect(light.direction, unitNormal);
+    float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
+    float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
+    
+    color = color * float4(ambientColor + diffuseColor + specularColor, 1);
     return half4(color.x, color.y, color.z, 1);
 }
 

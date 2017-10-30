@@ -35,7 +35,6 @@ class InputHandler{
     }
     
     public static func setKeyPressed(key: UInt16, isOn: Bool){
-        print(key)
         keyList[Int(key)] = isOn
     }
     

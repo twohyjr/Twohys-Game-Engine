@@ -9,7 +9,6 @@ class Cube: Primitive{
             Vertex(position: float3(-1.0,-1.0,-1.0), color: cubeColor, normal: float3(-1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0,-1.0, 1.0), color: cubeColor, normal: float3(-1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0, 1.0, 1.0), color: cubeColor, normal: float3(-1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
-
             Vertex(position: float3(-1.0,-1.0,-1.0), color: cubeColor, normal: float3(-1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0, 1.0, 1.0), color: cubeColor, normal: float3(-1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0, 1.0,-1.0), color: cubeColor, normal: float3(-1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
@@ -18,7 +17,6 @@ class Cube: Primitive{
             Vertex(position: float3(1.0, 1.0, 1.0), color: cubeColor, normal: float3(1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0,-1.0,-1.0), color: cubeColor, normal: float3(1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0, 1.0,-1.0), color: cubeColor, normal: float3(1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
-
             Vertex(position: float3(1.0,-1.0,-1.0), color: cubeColor, normal: float3(1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0, 1.0, 1.0), color: cubeColor, normal: float3(1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0,-1.0, 1.0), color: cubeColor, normal: float3(1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),
@@ -27,7 +25,6 @@ class Cube: Primitive{
             Vertex(position: float3(1.0, 1.0, 1.0), color: cubeColor, normal: float3(0.0, 1.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0, 1.0,-1.0), color: cubeColor, normal: float3(0.0, 1.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0, 1.0,-1.0), color: cubeColor, normal: float3(0.0, 1.0, 0.0), textureCoordinate: float2(0,1)),
- 
             Vertex(position: float3(1.0, 1.0, 1.0), color: cubeColor, normal: float3(0.0, 1.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0, 1.0,-1.0), color: cubeColor, normal: float3(0.0, 1.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0, 1.0, 1.0), color: cubeColor, normal: float3(0.0, 1.0, 0.0), textureCoordinate: float2(0,1)),
@@ -36,7 +33,6 @@ class Cube: Primitive{
             Vertex(position: float3(1.0,-1.0, 1.0), color: cubeColor, normal: float3(0.0,-1.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0,-1.0,-1.0), color: cubeColor, normal: float3(0.0,-1.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0,-1.0,-1.0), color: cubeColor, normal: float3(0.0,-1.0, 0.0), textureCoordinate: float2(0,1)),
-
             Vertex(position: float3(1.0,-1.0, 1.0), color: cubeColor, normal: float3(0.0,-1.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0,-1.0, 1.0), color: cubeColor, normal: float3(0.0,-1.0, 0.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0,-1.0,-1.0), color: cubeColor, normal: float3(0.0,-1.0, 0.0), textureCoordinate: float2(0,1)),
@@ -45,7 +41,6 @@ class Cube: Primitive{
             Vertex(position: float3(1.0, 1.0,-1.0), color: cubeColor, normal: float3(0.0, 0.0, -1.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0,-1.0,-1.0), color: cubeColor, normal: float3(0.0, 0.0, -1.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0, 1.0,-1.0), color: cubeColor, normal: float3(0.0, 0.0, -1.0), textureCoordinate: float2(0,1)),
-
             Vertex(position: float3(1.0, 1.0,-1.0), color: cubeColor, normal: float3(0.0, 0.0, -1.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0,-1.0,-1.0), color: cubeColor, normal: float3(0.0, 0.0, -1.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0,-1.0,-1.0), color: cubeColor, normal: float3(0.0, 0.0, -1.0), textureCoordinate: float2(0,1)),
@@ -54,7 +49,6 @@ class Cube: Primitive{
             Vertex(position: float3(-1.0, 1.0, 1.0), color: cubeColor, normal: float3(0.0, 0.0, 1.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0,-1.0, 1.0), color: cubeColor, normal: float3(0.0, 0.0, 1.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0,-1.0, 1.0), color: cubeColor, normal: float3(0.0, 0.0, 1.0), textureCoordinate: float2(0,1)),
-
             Vertex(position: float3(1.0, 1.0, 1.0), color: cubeColor, normal: float3(0.0, 0.0, 1.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(-1.0, 1.0, 1.0), color: cubeColor, normal: float3(0.0, 0.0, 1.0), textureCoordinate: float2(0,1)),
             Vertex(position: float3(1.0,-1.0, 1.0), color: cubeColor, normal: float3(0.0, 0.0, 1.0), textureCoordinate: float2(0,1)),

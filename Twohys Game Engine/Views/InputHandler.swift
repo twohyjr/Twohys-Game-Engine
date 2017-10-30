@@ -1,6 +1,8 @@
 import MetalKit
 
 enum KEY_CODES: Int {
+    case Key_Z = 6
+    case Key_X = 7
     case Key_W = 13
     case Key_S = 1
     case Key_A = 0

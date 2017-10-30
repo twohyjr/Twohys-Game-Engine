@@ -21,5 +21,6 @@ struct Light{
     var ambientIntensity: Float = 0.0
     var direction = float3(0)
     var diffuseIntensity: Float = 0.2
+    var brightness: Float = 1.0
 }
 

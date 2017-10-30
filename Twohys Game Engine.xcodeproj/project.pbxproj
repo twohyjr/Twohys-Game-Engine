@@ -224,7 +224,6 @@
 				BDB6FCBC1F92A73E00A15655 /* Metal Shaders */,
 				BDB6FCB91F92A30D00A15655 /* Window */,
 				BDB6FCB61F92A19200A15655 /* Other FIles */,
-				BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */,
 			);
 			path = "Twohys Game Engine";
 			sourceTree = "<group>";
@@ -327,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB9BB441F9EAC90009385F8 /* Maths.swift */,
+				BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */,
 			);
 			name = Maths;
 			path = "New Group";

@@ -2,7 +2,7 @@ import MetalKit
 
 class PlaygroundScene1: Scene{
     
-    var object: Model!
+    var object: Armadillo!
     override func buildScene(device: MTLDevice) {
         light.brightness = 0.5
         light.color = float3(1)

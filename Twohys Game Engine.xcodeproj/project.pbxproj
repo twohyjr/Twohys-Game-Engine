@@ -23,7 +23,8 @@
 		BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */; };
 		BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FCC01F92AC9B00A15655 /* Types.swift */; };
 		BDB792E51FA79B9900A8367F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB792E41FA79B9900A8367F /* Model.swift */; };
-		BDB792E81FA7A08E00A8367F /* dragon.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDB792E71FA7A08D00A8367F /* dragon.obj */; };
+		BDB792EA1FA7DB8C00A8367F /* armadillo.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDB792E91FA7DB8C00A8367F /* armadillo.obj */; };
+		BDB792ED1FA7E1CA00A8367F /* Armadillo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB792EC1FA7E1CA00A8367F /* Armadillo.swift */; };
 		BDB9BB451F9EAC90009385F8 /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BB441F9EAC90009385F8 /* Maths.swift */; };
 		BDCB36381FA1914500716697 /* PlaygroundScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36371FA1914500716697 /* PlaygroundScene1.swift */; };
 		BDCB363A1FA1926F00716697 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36391FA1926F00716697 /* Cube.swift */; };
@@ -85,7 +86,8 @@
 		BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BasicShaders.metal; sourceTree = "<group>"; };
 		BDB6FCC01F92AC9B00A15655 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		BDB792E41FA79B9900A8367F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		BDB792E71FA7A08D00A8367F /* dragon.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dragon.obj; path = ../../../../../../Desktop/dragon.obj; sourceTree = "<group>"; };
+		BDB792E91FA7DB8C00A8367F /* armadillo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = armadillo.obj; path = ../../../../../../Desktop/armadillo.obj; sourceTree = "<group>"; };
+		BDB792EC1FA7E1CA00A8367F /* Armadillo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Armadillo.swift; sourceTree = "<group>"; };
 		BDB9BB441F9EAC90009385F8 /* Maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
 		BDCB36371FA1914500716697 /* PlaygroundScene1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundScene1.swift; sourceTree = "<group>"; };
 		BDCB36391FA1926F00716697 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				BDE460DC1FA02C8D00F126CB /* Camera.swift */,
 				BD8B92E21F9FA37C00F925E0 /* Scene Files */,
 				BD8B92E31F9FA39800F925E0 /* Primitives */,
+				BDB792EB1FA7E1B100A8367F /* Objects */,
 			);
 			path = "Node Files";
 			sourceTree = "<group>";
@@ -291,9 +294,17 @@
 		BDB792E61FA79FE200A8367F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BDB792E71FA7A08D00A8367F /* dragon.obj */,
+				BDB792E91FA7DB8C00A8367F /* armadillo.obj */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BDB792EB1FA7E1B100A8367F /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				BDB792EC1FA7E1CA00A8367F /* Armadillo.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		BDF087BC1F9EDD4A00F68ACD /* Maths */ = {
@@ -425,9 +436,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDE3FB421FA6AAB400BBFF7E /* grass.png in Resources */,
-				BDB792E81FA7A08E00A8367F /* dragon.obj in Resources */,
 				BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */,
 				BDB6FC921F92A15B00A15655 /* Main.storyboard in Resources */,
+				BDB792EA1FA7DB8C00A8367F /* armadillo.obj in Resources */,
 				BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +466,7 @@
 			files = (
 				BDE460DD1FA02C8D00F126CB /* Camera.swift in Sources */,
 				BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */,
+				BDB792ED1FA7E1CA00A8367F /* Armadillo.swift in Sources */,
 				BDCB36401FA2516200716697 /* Quad.swift in Sources */,
 				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,
 				BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */,

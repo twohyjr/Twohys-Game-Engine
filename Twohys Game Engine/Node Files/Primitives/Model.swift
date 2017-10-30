@@ -64,14 +64,14 @@ class Model: Node{
         color.name = MDLVertexAttributeColor
         assetVertexDescriptor.attributes[1] = color
         
-        let textureCoordiantes = assetVertexDescriptor.attributes[2] as! MDLVertexAttribute
-        textureCoordiantes.name = MDLVertexAttributeTextureCoordinate
-        assetVertexDescriptor.attributes[2] = textureCoordiantes
-        
-        let normals = assetVertexDescriptor.attributes[3] as! MDLVertexAttribute
+        let normals = assetVertexDescriptor.attributes[2] as! MDLVertexAttribute
         normals.name = MDLVertexAttributeNormal
-        assetVertexDescriptor.attributes[3] = normals
-  
+        assetVertexDescriptor.attributes[2] = normals
+        
+        let textureCoordiantes = assetVertexDescriptor.attributes[3] as! MDLVertexAttribute
+        textureCoordiantes.name = MDLVertexAttributeTextureCoordinate
+        assetVertexDescriptor.attributes[3] = textureCoordiantes
+        
         let bufferAllocator = MTKMeshBufferAllocator(device: device)
         let asset = MDLAsset(url: assetURL!, vertexDescriptor: assetVertexDescriptor, bufferAllocator: bufferAllocator)
         
@@ -91,6 +91,7 @@ extension Model: Renderable{
         modelConstants.normalMatrix = modelViewMatrix.upperLeftMatrix()
         modelConstants.shininess = self.shininess
         modelConstants.specularIntensity = self.specularIntensity
+        modelConstants.materialColor = self.materialColor
         renderCommandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 2)
         
         if(texture != nil){

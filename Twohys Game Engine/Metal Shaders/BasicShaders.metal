@@ -23,6 +23,7 @@ struct ModelConstants{
     float3x3 normalMatrix;
     float shininess;
     float specularIntensity;
+    float4 materialColor;
 };
 
 struct SceneConstants{
@@ -50,7 +51,7 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = modelConstants.shininess;
     vOut.specularIntensity = modelConstants.specularIntensity;
-
+    vOut.color = modelConstants.materialColor;
     
     return vOut;
 }
@@ -79,14 +80,14 @@ fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
     
     //Diffuse Color
     float diffuseFactor = saturate(-dot(unitNormal, light.direction));
-    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor * light.brightness;
-    
+    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
+
     //Specular Color
     float3 reflection = reflect(light.direction, unitNormal);
     float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
     float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
     
-    color = color * float4(ambientColor + diffuseColor + specularColor, 1);
+    color = color * float4(ambientColor + diffuseColor + specularColor, 1)  * light.brightness;
     return half4(color.x, color.y, color.z, 1);
 }
 

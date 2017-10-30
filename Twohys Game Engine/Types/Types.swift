@@ -10,8 +10,9 @@ struct Vertex{
 struct ModelConstants{
     var modelViewMatrix: matrix_float4x4 = matrix_identity_float4x4
     var normalMatrix = matrix_identity_float3x3
-    var shininess: Float = 0.0
-    var specularIntensity: Float = 0.0
+    var shininess: Float = 1.0
+    var specularIntensity: Float = 1.0
+    var materialColor: float4 = float4(0.56,0.56,0.56,1.0)
 }
 
 struct SceneConstants{
@@ -20,9 +21,9 @@ struct SceneConstants{
 
 struct Light{
     var color = float3(1)
-    var ambientIntensity: Float = 0.0
+    var ambientIntensity: Float = 1.0
     var direction = float3(0,0,-1)
-    var diffuseIntensity: Float = 0.2
+    var diffuseIntensity: Float = 1.0
     var brightness: Float = 1.0
 }
 

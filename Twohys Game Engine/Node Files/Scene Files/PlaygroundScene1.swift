@@ -4,14 +4,16 @@ class PlaygroundScene1: Scene{
     
     var object: Model!
     override func buildScene(device: MTLDevice) {
-        light.brightness = 1.5
-//        light.diffuseIntensity = 1.0
+        light.brightness = 0.5
+        light.color = float3(1)
+        light.ambientIntensity = 1
+        light.diffuseIntensity = 2.0
         
         
-        object = Model(device: device, modelName: "dragon", textureName: "")
+        object = Armadillo(device: device)
         object.position.z = -5
-        object.shininess = 10
-        object.specularIntensity = 1
+        object.rotation.y = 3.0
+        object.position.y = -0.5
         add(child: object)
     }
     
@@ -32,7 +34,6 @@ class PlaygroundScene1: Scene{
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Down)){object.rotation.x += 0.05}
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Left)){object.rotation.y -= 0.05}
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Right)){object.rotation.y += 0.05}
-
     }
 }
 

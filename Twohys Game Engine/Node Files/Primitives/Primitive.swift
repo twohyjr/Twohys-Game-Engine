@@ -49,6 +49,7 @@ extension Primitive: Renderable{
         modelConstants.normalMatrix = modelViewMatrix.upperLeftMatrix()
         modelConstants.shininess = self.shininess
         modelConstants.specularIntensity = self.specularIntensity
+        modelConstants.materialColor = self.materialColor
         
         renderCommandEncoder.setRenderPipelineState(_renderPipelineState)
         

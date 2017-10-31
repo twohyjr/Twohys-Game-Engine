@@ -8,8 +8,8 @@ class Node{
     var rotation = float3(0)
     var scale = float3(1)
     
-    var shininess: Float = 0.0
-    var specularIntensity: Float = 0.0
+    var shininess: Float = 1.0
+    var specularIntensity: Float = 1.0
     var materialColor: float4 = float4(0.3,0.3,0.3,1)
     
     var modelMatrix: matrix_float4x4{

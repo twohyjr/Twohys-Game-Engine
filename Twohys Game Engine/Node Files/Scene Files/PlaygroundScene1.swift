@@ -2,7 +2,7 @@ import MetalKit
 
 class PlaygroundScene1: Scene{
     
-    var object: Armadillo!
+    var object: Model!
     override func buildScene(device: MTLDevice) {
         light.brightness = 0.5
         light.color = float3(1)
@@ -10,7 +10,7 @@ class PlaygroundScene1: Scene{
         light.diffuseIntensity = 2.0
         
         
-        object = Armadillo(device: device)
+        object = Model(device: device, modelName: "f16", textureName: "F16s.bmp")
         object.position.z = -5
         object.rotation.y = 3.0
         object.position.y = -0.5

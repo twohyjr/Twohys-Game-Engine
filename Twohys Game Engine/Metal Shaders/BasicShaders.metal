@@ -98,7 +98,7 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
     float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
     float3 unitNormal = normalize(vIn.surfaceNormal);
     float3 unitEye = normalize(vIn.eyePosition);
-
+    
     //Ambient Color
     float3 ambientColor = light.color * light.ambientIntensity;
     
@@ -111,7 +111,7 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
     float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
     float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
     
-    color = color * float4(ambientColor + diffuseColor + specularColor, 1);
+    color = color * float4(ambientColor + diffuseColor + specularColor, 1)  * light.brightness;
     return half4(color.x, color.y, color.z, 1);
 }
 

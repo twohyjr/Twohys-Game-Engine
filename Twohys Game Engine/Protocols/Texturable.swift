@@ -13,10 +13,10 @@ extension Texturable{
             
             let url = Bundle.main.url(forResource: imageName, withExtension: nil)
             
-
+            let options = [MTKTextureLoader.Option.origin: MTKTextureLoader.Origin.bottomLeft]
             
             do{
-                texture = try textureLoader.newTexture(URL: url!, options: [:])
+                texture = try textureLoader.newTexture(URL: url!, options: options)
             }catch let error as NSError{
                 print(error)
             }

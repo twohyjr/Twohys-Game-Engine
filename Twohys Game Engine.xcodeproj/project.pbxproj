@@ -10,6 +10,8 @@
 		BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1211FA255AB00EC67C6 /* Texturable.swift */; };
 		BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */ = {isa = PBXBuildFile; fileRef = BD12E1251FA2CBC500EC67C6 /* bright.png */; };
 		BD12E1281FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */; };
+		BD5D34691FA7EF0100F5CC24 /* f16.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD5D34681FA7EF0100F5CC24 /* f16.obj */; };
+		BD5D346B1FA7EF3A00F5CC24 /* F16s.bmp in Resources */ = {isa = PBXBuildFile; fileRef = BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */; };
 		BDB027691FA54F6D0064A544 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB027681FA54F6D0064A544 /* Terrain.swift */; };
 		BDB0276B1FA550F70064A544 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB0276A1FA550F70064A544 /* InputHandler.swift */; };
 		BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC871F92A15B00A15655 /* AppDelegate.swift */; };
@@ -66,6 +68,8 @@
 		BD12E1211FA255AB00EC67C6 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		BD12E1251FA2CBC500EC67C6 /* bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bright.png; path = ../../../../../../Desktop/bright.png; sourceTree = "<group>"; };
 		BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturableFlashPipelineState.swift; sourceTree = "<group>"; };
+		BD5D34681FA7EF0100F5CC24 /* f16.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = f16.obj; path = "../../../../../../Desktop/f16 2/f16.obj"; sourceTree = "<group>"; };
+		BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = F16s.bmp; path = "../../../../../../Desktop/f16 2/F16s.bmp"; sourceTree = "<group>"; };
 		BDB027681FA54F6D0064A544 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		BDB0276A1FA550F70064A544 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
 		BDB6FC841F92A15B00A15655 /* Twohys Game Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twohys Game Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +149,7 @@
 		BD12E1241FA2CB5400EC67C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */,
 				BDE3FB411FA6AAB300BBFF7E /* grass.png */,
 				BD12E1251FA2CBC500EC67C6 /* bright.png */,
 			);
@@ -289,6 +294,7 @@
 		BDB792E61FA79FE200A8367F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BD5D34681FA7EF0100F5CC24 /* f16.obj */,
 				BDB792E91FA7DB8C00A8367F /* armadillo.obj */,
 			);
 			path = Models;
@@ -451,9 +457,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5D346B1FA7EF3A00F5CC24 /* F16s.bmp in Resources */,
 				BDE3FB421FA6AAB400BBFF7E /* grass.png in Resources */,
 				BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */,
 				BDB6FC921F92A15B00A15655 /* Main.storyboard in Resources */,
+				BD5D34691FA7EF0100F5CC24 /* f16.obj in Resources */,
 				BDB792EA1FA7DB8C00A8367F /* armadillo.obj in Resources */,
 				BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */,
 			);

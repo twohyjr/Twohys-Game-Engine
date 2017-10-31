@@ -2,10 +2,17 @@ import MetalKit
 
 class CircleScene: Scene{
     
-    var instance: Instance!
+    var instance: PrimitiveInstances!
     override func buildScene(device: MTLDevice) {
+        
+        light.brightness = 0.5
+        light.color = float3(0.67,1,1)
+        light.ambientIntensity = 1
+        light.diffuseIntensity = 1.0
+        
         let circle = Circle(device: device, circleVertexCount: 300)
-        instance = Instance(device: device, primitive: circle, instanceCount: 10000)
+        instance = PrimitiveInstances(device: device, primitive: circle, instanceCount: 10000)
+        
         
         camera.position.z = 20
         
@@ -16,6 +23,12 @@ class CircleScene: Scene{
             n.position.z = -30
             n.position.x = currentXPos
             n.position.y = currentYPos
+            
+            
+            n.specularIntensity = 3
+            n.shininess = 100
+            
+            
             
             if(index % 100 == 0){
                 currentYPos -= 2

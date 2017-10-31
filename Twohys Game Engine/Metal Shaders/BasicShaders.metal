@@ -45,13 +45,19 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     VertexOut vOut;
     float4 worldPosition = modelConstants.modelViewMatrix * float4(vIn.position,1);
     vOut.position = sceneConstants.projectionMatrix *  worldPosition;
-    vOut.color = vIn.color;
+    
     vOut.textureCoordinate = vIn.textureCoordinate;
-    vOut.surfaceNormal = modelConstants.normalMatrix * vIn.normal;
+//    vOut.surfaceNormal = modelConstants.normalMatrix * vIn.normal;
+    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
     vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = modelConstants.shininess;
     vOut.specularIntensity = modelConstants.specularIntensity;
-    vOut.color = modelConstants.materialColor;
+    if(vIn.color.x == 0 && vIn.color.y == 0 && vIn.color.z == 0){
+        vOut.color = modelConstants.materialColor;
+    }else{
+        vOut.color = vIn.color;
+    }
+    
     
     return vOut;
 }
@@ -63,9 +69,20 @@ vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
     
     VertexOut vOut;
     ModelConstants constants = modelConstants[instanceID];
-    vOut.position = sceneConstants.projectionMatrix *  constants.modelViewMatrix * float4(vIn.position,1);
-    vOut.color = vIn.color;
+    float4 worldPosition = constants.modelViewMatrix * float4(vIn.position,1);
+    vOut.position = sceneConstants.projectionMatrix *  worldPosition;
+    
     vOut.textureCoordinate = vIn.textureCoordinate;
+        vOut.surfaceNormal = constants.normalMatrix * vIn.normal;
+//    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
+    vOut.eyePosition = worldPosition.xyz;
+    vOut.shininess = constants.shininess;
+    vOut.specularIntensity = constants.specularIntensity;
+    if(vIn.color.x == 0 && vIn.color.y == 0 && vIn.color.z == 0){
+        vOut.color = constants.materialColor;
+    }else{
+        vOut.color = vIn.color;
+    }
     return vOut;
 }
 

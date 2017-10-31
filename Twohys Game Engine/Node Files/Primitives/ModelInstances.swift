@@ -1,8 +1,8 @@
 import MetalKit
 
-class Instance: Node{
-
-    var primitive: Primitive!
+class ModelInstances: Node{
+    
+    var model: Model!
     
     var nodes: [Node] = []
     
@@ -11,13 +11,13 @@ class Instance: Node{
     
     var _renderPipelineState: MTLRenderPipelineState!
     
-    init(device: MTLDevice, primitive: Primitive, instanceCount: Int){
+    init(device: MTLDevice, model: Model, instanceCount: Int){
         super.init()
-        self.primitive = primitive
+        self.model = model
         generate(instanceCount: instanceCount)
         createInstanceBuffer(device: device)
         _renderPipelineState = FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.RENDERABLE)
-
+        
     }
     func generate(instanceCount: Int){
         for _ in 0..<instanceCount{
@@ -31,21 +31,36 @@ class Instance: Node{
     }
 }
 
-extension Instance: Renderable{
+extension ModelInstances: Renderable{
     func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard let instanceBuffer = self.instanceBuffer, nodes.count > 0 else { return }
         renderCommandEncoder.setRenderPipelineState(FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.INSTANCES))
-
+        
         var pointer = instanceBuffer.contents().bindMemory(to: ModelConstants.self, capacity: nodes.count)
+        
         for node in nodes{
             pointer.pointee.modelViewMatrix = matrix_multiply(modelViewMatrix, node.modelMatrix)
+            pointer.pointee.materialColor = node.materialColor
             pointer = pointer.advanced(by: 1)
         }
-        renderCommandEncoder.setVertexBuffer(instanceBuffer, offset: 0, index: 2)
+        renderCommandEncoder.setVertexBuffer(instanceBuffer, offset: 0, index: 1)
         
-        renderCommandEncoder.setVertexBuffer(primitive.vertexBuffer, offset: 0, index: 0)
-        renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: primitive.vertices.count, instanceCount: nodes.count)
-
-
+        guard let meshes = model.meshes as? [MTKMesh], meshes.count > 0 else { return }
+        
+        for mesh in meshes{
+            let vertexBuffer = mesh.vertexBuffers[0]
+            renderCommandEncoder.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, index: 0)
+            
+            for submesh in mesh.submeshes{
+                renderCommandEncoder.drawIndexedPrimitives(type: submesh.primitiveType,
+                                                           indexCount: submesh.indexCount,
+                                                           indexType: submesh.indexType,
+                                                           indexBuffer: submesh.indexBuffer.buffer,
+                                                           indexBufferOffset: submesh.indexBuffer.offset,
+                                                           instanceCount: nodes.count)
+            }
+        }
+        
     }
 }
+

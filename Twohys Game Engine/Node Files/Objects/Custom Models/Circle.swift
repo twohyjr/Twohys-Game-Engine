@@ -20,9 +20,9 @@ class Circle: Primitive{
             
             let val: Float = i == 0 ? 0 :  Float((360.0 / Double(trianglesPerSection)) * Double(i))
             let pos = float2(cos(radians(fromDegrees:  val)), sin(radians(fromDegrees:  val)))
-            vertices.append(Vertex(position: float3(0, 0, 0), color: float4(red, green, blue, 1), normal: float3(1,2,3), textureCoordinate: float2(0,1)))
-            vertices.append(Vertex(position: float3(pos.x, pos.y, 0), color: float4(red, green, blue, 1), normal: float3(1,2,3), textureCoordinate: float2(0,1)))
-            vertices.append(Vertex(position: float3(lastPos.x, lastPos.y, 0), color: float4(red, green, blue, 1), normal: float3(1,2,3), textureCoordinate: float2(0,1)))
+            vertices.append(Vertex(position: float3(0, 0, 0), color: float4(red, green, blue, 1), normal: float3(0,0,1), textureCoordinate: float2(0,1)))
+            vertices.append(Vertex(position: float3(pos.x, pos.y, 0), color: float4(red, green, blue, 1), normal: float3(0,0,1), textureCoordinate: float2(0,1)))
+            vertices.append(Vertex(position: float3(lastPos.x, lastPos.y, 0), color: float4(red, green, blue, 1), normal: float3(0,0,1), textureCoordinate: float2(0,1)))
             lastPos = pos
         }
     }

@@ -3,7 +3,7 @@ import MetalKit
 class GameScene: Scene{
     
     var mainTerrain: Terrain!
-    var player: Cube!
+    var player: Armadillo!
     
     var RUN_SPEED: Float = 20
     var TURN_SPEED: Float = 5
@@ -15,7 +15,7 @@ class GameScene: Scene{
         camera.fov =  100
         
         mainTerrain = Terrain(device: device, textureName: "grass.png")
-        player = Cube(device: device)
+        player = Armadillo(device: device)
         player.materialColor = float4(0.23, 0.87, 0.67, 1)
         
         player.position.z = -10

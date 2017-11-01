@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD041C031FAA3B080045CD1B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD041C021FAA3B080045CD1B /* GameScene.swift */; };
 		BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1211FA255AB00EC67C6 /* Texturable.swift */; };
 		BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */ = {isa = PBXBuildFile; fileRef = BD12E1251FA2CBC500EC67C6 /* bright.png */; };
 		BD12E1281FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD041C021FAA3B080045CD1B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BD12E1211FA255AB00EC67C6 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		BD12E1251FA2CBC500EC67C6 /* bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bright.png; path = ../../../../../../Desktop/bright.png; sourceTree = "<group>"; };
 		BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturableFlashPipelineState.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				BDF087CC1F9EEDE700F68ACD /* Scene.swift */,
 				BDFB856A1FA16B15004820BC /* CircleScene.swift */,
+				BD041C021FAA3B080045CD1B /* GameScene.swift */,
 				BDCB36371FA1914500716697 /* PlaygroundScene1.swift */,
 			);
 			path = "Scene Files";
@@ -513,6 +516,7 @@
 				BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */,
 				BDF087CB1F9EECAB00F68ACD /* Circle.swift in Sources */,
 				BDB9BB451F9EAC90009385F8 /* Maths.swift in Sources */,
+				BD041C031FAA3B080045CD1B /* GameScene.swift in Sources */,
 				BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */,
 				BDF087C91F9EEB9300F68ACD /* Primitive.swift in Sources */,
 				BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */,

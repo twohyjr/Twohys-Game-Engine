@@ -17,7 +17,8 @@ class Terrain: Primitive{
         for z in 0..<VERTEX_COUNT{
             for x in 0..<VERTEX_COUNT{
                 let vX: Float = Float(x) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
-                let vY: Float = getHeight(x: x, z: z)
+//                let vY: Float = getHeight(x: x, z: z)
+                let vY: Float = 0.0
                 let vZ: Float = Float(z) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
                 
                 let tX: Float = fmod(Float(x), 2.0)
@@ -29,7 +30,8 @@ class Terrain: Primitive{
                 
                 let textureCoordinate: float2  = float2(tX, tZ)
                 
-                let normals: float3 = calculateNormal(x: x, z: z)
+//                let normals: float3 = calculateNormal(x: x, z: z)
+                let normals = float3(0,1,0)
                 
                 vertices.append(Vertex(position: position, color: color,  normal: normals, textureCoordinate: textureCoordinate))
             }

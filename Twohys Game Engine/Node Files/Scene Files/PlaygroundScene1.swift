@@ -2,7 +2,7 @@ import MetalKit
 
 class PlaygroundScene1: Scene{
     
-    var object: Circle!
+    var object: Terrain!
     override func buildScene(device: MTLDevice) {
         light.brightness = 0.5
         light.color = float3(0.67,1,1)
@@ -18,12 +18,10 @@ class PlaygroundScene1: Scene{
         circle.shininess = 20
         
         
-        object = Circle(device: device, circleVertexCount: 256)
+        object = Terrain(device: device, textureName: "grass.png")
         object.position.z = -5
 //        object.rotation.y = 3.0
 //        object.position.y = -0.5
-        object.specularIntensity = 3
-        object.shininess = 100
         object.scale = float3(2)
         add(child: object)
         add(child: circle)

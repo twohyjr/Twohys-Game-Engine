@@ -3,7 +3,7 @@ import MetalKit
 class Cube: Primitive{
     
     override func buildVertices(){
-        let cubeColor = float4(0.7, 0.7, 0.7, 1)
+        let cubeColor = float4(0)
         vertices = [
             //LEFT
             Vertex(position: float3(-1.0,-1.0,-1.0), color: cubeColor, normal: float3(-1.0, 0.0, 0.0), textureCoordinate: float2(0,1)),

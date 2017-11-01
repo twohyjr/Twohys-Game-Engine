@@ -12,8 +12,11 @@ class GameScene: Scene{
     var currentTurnSpeed: Float = 0
     
     override func buildScene(device: MTLDevice) {
+        camera.fov =  100
+        
         mainTerrain = Terrain(device: device, textureName: "grass.png")
         player = Cube(device: device)
+        player.materialColor = float4(0.23, 0.87, 0.67, 1)
         
         player.position.z = -10
         
@@ -24,6 +27,9 @@ class GameScene: Scene{
         add(child: player)
         add(child: mainTerrain)
     }
+    
+    var isJumping: Bool = false
+    var isFalling: Bool = false
     
     override func checkKeyInput() {
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_A)){
@@ -40,6 +46,34 @@ class GameScene: Scene{
             self.currentSpeed = RUN_SPEED
         }else{
             self.currentSpeed = 0
+        }
+        
+        if(!isJumping && !isFalling){
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Spacebar)){
+                isJumping = true
+            }
+        }
+
+        
+        if(isJumping){
+            player.position.y += 0.2
+        }else if(isFalling){
+            player.position.y -= 0.2
+        }
+        
+        if(player.position.y >= 3){
+            isJumping = false
+            isFalling = true
+        }
+        if(player.position.y <= 0){
+            player.position.y = 0
+            isFalling = false
+        }
+        
+        
+        
+        if(currentSpeed <= -20){
+            currentSpeed = -20
         }
     }
 

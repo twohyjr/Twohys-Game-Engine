@@ -15,6 +15,7 @@ enum KEY_CODES: Int {
     case Key_4 = 21
     case Angle_Bracket_Left = 43
     case Angle_Bracket_Right = 47
+    case Spacebar = 49
 
     case Key_Arrow_Up = 126
     case Key_Arrow_Down = 125

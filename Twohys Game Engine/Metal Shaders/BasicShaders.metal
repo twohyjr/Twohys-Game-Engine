@@ -47,8 +47,8 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.position = sceneConstants.projectionMatrix *  worldPosition;
     
     vOut.textureCoordinate = vIn.textureCoordinate;
-//    vOut.surfaceNormal = modelConstants.normalMatrix * vIn.normal;
-    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
+    vOut.surfaceNormal = modelConstants.normalMatrix * vIn.normal;
+//    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
     vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = modelConstants.shininess;
     vOut.specularIntensity = modelConstants.specularIntensity;
@@ -73,8 +73,8 @@ vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.position = sceneConstants.projectionMatrix *  worldPosition;
     
     vOut.textureCoordinate = vIn.textureCoordinate;
-        vOut.surfaceNormal = constants.normalMatrix * vIn.normal;
-//    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
+//        vOut.surfaceNormal = constants.normalMatrix * vIn.normal;
+    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
     vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = constants.shininess;
     vOut.specularIntensity = constants.specularIntensity;

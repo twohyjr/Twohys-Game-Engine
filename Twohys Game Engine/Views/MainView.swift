@@ -17,7 +17,7 @@ class MainView: MTKView {
         
         self.device = MTLCreateSystemDefaultDevice()
         self.colorPixelFormat = .bgra8Unorm
-        self.clearColor = MTLClearColor(red: 0.33, green: 0.78, blue: 0.49, alpha: 1.0)
+        self.clearColor = MTLClearColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
         self.depthStencilPixelFormat = .depth32Float
         self.renderer = Renderer(device: self.device!, mtkView: self)
         renderer.updateTrackingArea(view: self)

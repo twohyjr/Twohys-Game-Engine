@@ -17,6 +17,8 @@ struct ModelConstants{
 
 struct SceneConstants{
     var projectionMatrix: matrix_float4x4 = matrix_identity_float4x4
+    var viewMatrix: matrix_float4x4 = matrix_identity_float4x4
+    var skyColor: float3 = float3(1);
 }
 
 struct Light{

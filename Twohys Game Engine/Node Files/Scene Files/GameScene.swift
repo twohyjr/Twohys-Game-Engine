@@ -24,7 +24,6 @@ class GameScene: Scene{
         
         mainTerrain = Terrain(device: device, textureName: "grass.png")
         player = Armadillo(device: device)
-        player.materialColor = float4(0.23, 0.87, 0.67, 1)
         player.scale = float3(0.5)
         player.position.z = -5
         

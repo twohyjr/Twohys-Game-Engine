@@ -23,6 +23,9 @@ class Scene: Node{
     
     func doRender(renderCommandEncoder: MTLRenderCommandEncoder){
         sceneConstants.projectionMatrix = camera.projectionMatrix
+        sceneConstants.viewMatrix = camera.viewMatrix;
+        sceneConstants.skyColor = float3(0.5, 0.5, 0.5);
+        
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, index: 1)
         renderCommandEncoder.setFragmentBytes(&light, length: MemoryLayout<Light>.stride, index: 1)
         for child in children{

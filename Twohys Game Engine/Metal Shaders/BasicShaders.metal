@@ -16,6 +16,8 @@ struct VertexOut{
     float3 eyePosition;
     float shininess;
     float specularIntensity;
+    float visibility;
+    float3 skyColor;
 };
 
 struct ModelConstants{
@@ -28,7 +30,12 @@ struct ModelConstants{
 
 struct SceneConstants{
     float4x4 projectionMatrix;
+    float4x4 viewMatrix;
+    float3 skyColor;
 };
+
+constant float density = 0.035;
+constant float gradient = 2.0;
 
 struct Light{
     float3 color;
@@ -44,7 +51,14 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     
     VertexOut vOut;
     float4 worldPosition = modelConstants.modelViewMatrix * float4(vIn.position,1);
-    vOut.position = sceneConstants.projectionMatrix *  worldPosition;
+    float4 positionRelativeToCam = sceneConstants.viewMatrix *  worldPosition;
+    vOut.position = sceneConstants.projectionMatrix *  positionRelativeToCam;
+    
+    float distance = length(positionRelativeToCam.xyz);
+    float visibility = exp(-pow((distance * density),gradient));
+    visibility = clamp(visibility, 0.0, 1.0);
+    
+    vOut.visibility = visibility;
     
     vOut.textureCoordinate = vIn.textureCoordinate;
     vOut.surfaceNormal = modelConstants.normalMatrix * vIn.normal;
@@ -52,11 +66,13 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = modelConstants.shininess;
     vOut.specularIntensity = modelConstants.specularIntensity;
+    vOut.skyColor = sceneConstants.skyColor;
     if(vIn.color.x == 0 && vIn.color.y == 0 && vIn.color.z == 0){
         vOut.color = modelConstants.materialColor;
     }else{
         vOut.color = vIn.color;
     }
+    
     
     
     return vOut;
@@ -91,6 +107,7 @@ fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
     float4 color = vIn.color;
     float3 unitNormal = normalize(vIn.surfaceNormal);
     float3 unitEye = normalize(vIn.eyePosition);
+    float visibility = vIn.visibility;
     
     //Ambient Color
     float3 ambientColor = light.color * light.ambientIntensity;
@@ -105,6 +122,7 @@ fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
     float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
     
     color = color * float4(ambientColor + diffuseColor + specularColor, 1)  * light.brightness;
+    color = mix(float4(vIn.skyColor, 1), color, visibility);
     return half4(color.x, color.y, color.z, 1);
 }
 
@@ -115,6 +133,7 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
     float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
     float3 unitNormal = normalize(vIn.surfaceNormal);
     float3 unitEye = normalize(vIn.eyePosition);
+    float visibility = vIn.visibility;
     
     //Ambient Color
     float3 ambientColor = light.color * light.ambientIntensity;
@@ -129,6 +148,7 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
     float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
     
     color = color * float4(ambientColor + diffuseColor + specularColor, 1)  * light.brightness;
+    color = mix(float4(vIn.skyColor, 1), color, visibility);
     return half4(color.x, color.y, color.z, 1);
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD041C031FAA3B080045CD1B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD041C021FAA3B080045CD1B /* GameScene.swift */; };
+		BD041C091FAAB1920045CD1B /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = BD041C081FAAB1920045CD1B /* grass.png */; };
 		BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1211FA255AB00EC67C6 /* Texturable.swift */; };
 		BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */ = {isa = PBXBuildFile; fileRef = BD12E1251FA2CBC500EC67C6 /* bright.png */; };
 		BD12E1281FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */; };
@@ -34,7 +35,6 @@
 		BDCB36381FA1914500716697 /* PlaygroundScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36371FA1914500716697 /* PlaygroundScene1.swift */; };
 		BDCB363A1FA1926F00716697 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB36391FA1926F00716697 /* Cube.swift */; };
 		BDCB36401FA2516200716697 /* Quad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB363F1FA2516200716697 /* Quad.swift */; };
-		BDE3FB421FA6AAB400BBFF7E /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = BDE3FB411FA6AAB300BBFF7E /* grass.png */; };
 		BDE3FB461FA6C3BB00BBFF7E /* PerlinGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */; };
 		BDE460DD1FA02C8D00F126CB /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE460DC1FA02C8D00F126CB /* Camera.swift */; };
 		BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */; };
@@ -68,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		BD041C021FAA3B080045CD1B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		BD041C081FAAB1920045CD1B /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass.png; path = ../../../../../../Desktop/grass.png; sourceTree = "<group>"; };
 		BD12E1211FA255AB00EC67C6 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		BD12E1251FA2CBC500EC67C6 /* bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bright.png; path = ../../../../../../Desktop/bright.png; sourceTree = "<group>"; };
 		BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturableFlashPipelineState.swift; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 		BDCB36371FA1914500716697 /* PlaygroundScene1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundScene1.swift; sourceTree = "<group>"; };
 		BDCB36391FA1926F00716697 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		BDCB363F1FA2516200716697 /* Quad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quad.swift; sourceTree = "<group>"; };
-		BDE3FB411FA6AAB300BBFF7E /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass.png; path = ../../../../../../Desktop/grass.png; sourceTree = "<group>"; };
 		BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerlinGenerator.swift; sourceTree = "<group>"; };
 		BDE460DC1FA02C8D00F126CB /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineStateProvider.swift; sourceTree = "<group>"; };
@@ -153,8 +153,8 @@
 		BD12E1241FA2CB5400EC67C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BD041C081FAAB1920045CD1B /* grass.png */,
 				BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */,
-				BDE3FB411FA6AAB300BBFF7E /* grass.png */,
 				BD12E1251FA2CBC500EC67C6 /* bright.png */,
 			);
 			path = Images;
@@ -463,8 +463,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD041C091FAAB1920045CD1B /* grass.png in Resources */,
 				BD5D346B1FA7EF3A00F5CC24 /* F16s.bmp in Resources */,
-				BDE3FB421FA6AAB400BBFF7E /* grass.png in Resources */,
 				BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */,
 				BDB6FC921F92A15B00A15655 /* Main.storyboard in Resources */,
 				BD5D34691FA7EF0100F5CC24 /* f16.obj in Resources */,

@@ -15,6 +15,10 @@ class Renderer: NSObject{
     var vertices: [Vertex]!
     var vertexBuffer: MTLBuffer!
     
+    private var frameStartTime: CFAbsoluteTime!
+    private var frameNumber = 0
+    
+    
     init(device: MTLDevice, mtkView: MTKView){
         super.init()
         commandQueue = device.makeCommandQueue()
@@ -22,6 +26,7 @@ class Renderer: NSObject{
         scene = GameScene(device: device)
         buildDepthStencilState(device: device)
         buildSamplerState(device: device)
+        frameStartTime = CFAbsoluteTimeGetCurrent()
     }
     
     func buildDepthStencilState(device: MTLDevice){
@@ -44,7 +49,10 @@ class Renderer: NSObject{
 
 extension Renderer: MTKViewDelegate{
     
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {  }
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        scene.camera.aspectRatio = Float(size.width) / Float(size.height)
+        print(size)
+    }
     
     func updateTrackingArea(view: MTKView){
         let area = NSTrackingArea(rect: view.bounds, options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved, NSTrackingArea.Options.enabledDuringMouseDrag], owner: view, userInfo: nil)
@@ -61,13 +69,21 @@ extension Renderer: MTKViewDelegate{
 //        renderCommandEncoder?.setTriangleFillMode(.lines)
         //renderCommandEncoder?.setCullMode(.front)
         
-        let deltaTime: Float = 1 / Float(view.preferredFramesPerSecond)
+        let deltaTime: Float = (Float(1.0) / Float(view.preferredFramesPerSecond))
         scene.render(renderCommandEncoder: renderCommandEncoder!, deltaTime: deltaTime)
         
         renderCommandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
         commandBuffer?.commit()
-        
+    }
+    
+    private func getCurrentTime()->Float{
+        var frametime: Float
+        frametime = Float((CFAbsoluteTimeGetCurrent() - frameStartTime) / 100)
+//        print(String(format: "%.1f fps", 1 / frametime))
+        frameStartTime = CFAbsoluteTimeGetCurrent()
+        frameNumber = 0
+        return frametime
     }
     
 }

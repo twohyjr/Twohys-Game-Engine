@@ -5,20 +5,28 @@ class GameScene: Scene{
     var mainTerrain: Terrain!
     var player: Armadillo!
     
-    var RUN_SPEED: Float = 20
-    var TURN_SPEED: Float = 5
+    var RUN_SPEED: Float = 5
+    var TURN_SPEED: Float = 3
+    var GRAVITY: Float = -50
+    var JUMP_POWER: Float = 10
+    var TERRAIN_HEIGHT: Float = 0
     
     var currentSpeed: Float = 0
     var currentTurnSpeed: Float = 0
+    var upwardSpeed: Float = 0
+    
+    var isInAir: Bool = false
     
     override func buildScene(device: MTLDevice) {
         camera.fov =  100
+        camera.position.y = -1
+        camera.rotation.x = 6.5
         
         mainTerrain = Terrain(device: device, textureName: "grass.png")
         player = Armadillo(device: device)
         player.materialColor = float4(0.23, 0.87, 0.67, 1)
-        
-        player.position.z = -10
+        player.scale = float3(0.5)
+        player.position.z = -5
         
         mainTerrain.position.x = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
         mainTerrain.position.z = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
@@ -27,10 +35,7 @@ class GameScene: Scene{
         add(child: player)
         add(child: mainTerrain)
     }
-    
-    var isJumping: Bool = false
-    var isFalling: Bool = false
-    
+
     override func checkKeyInput() {
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_A)){
             self.currentTurnSpeed = TURN_SPEED
@@ -48,32 +53,8 @@ class GameScene: Scene{
             self.currentSpeed = 0
         }
         
-        if(!isJumping && !isFalling){
-            if(InputHandler.isKeyPressed(key: KEY_CODES.Spacebar)){
-                isJumping = true
-            }
-        }
-
-        
-        if(isJumping){
-            player.position.y += 0.2
-        }else if(isFalling){
-            player.position.y -= 0.2
-        }
-        
-        if(player.position.y >= 3){
-            isJumping = false
-            isFalling = true
-        }
-        if(player.position.y <= 0){
-            player.position.y = 0
-            isFalling = false
-        }
-        
-        
-        
-        if(currentSpeed <= -20){
-            currentSpeed = -20
+        if(InputHandler.isKeyPressed(key: KEY_CODES.Spacebar)){
+            jump()
         }
     }
 
@@ -81,13 +62,27 @@ class GameScene: Scene{
         
     }
     
+    private func jump(){
+        if(!isInAir){
+            self.upwardSpeed = JUMP_POWER
+            isInAir = true
+        }
+    }
+    
     override func updateModels(deltaTime: Float) {
-       player.rotation += float3(0, currentTurnSpeed * Float(1.0/60.0), 0)
-        let distance = currentSpeed * Float(1.0/60.0)
+       player.rotation += float3(0, currentTurnSpeed * deltaTime, 0)
+        let distance = currentSpeed * deltaTime
         let dx = distance * sin(player.rotation.y)
         let dy = distance * cos(player.rotation.y)
         player.position.x -= dx
         player.position.z -= dy
+        upwardSpeed += GRAVITY * deltaTime
+        player.position.y += upwardSpeed * deltaTime
+        if(player.position.y < TERRAIN_HEIGHT){
+            upwardSpeed = 0
+            isInAir = false
+            player.position.y = TERRAIN_HEIGHT
+        }
     }
 }
 

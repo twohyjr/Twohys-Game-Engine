@@ -3,7 +3,6 @@ import MetalKit
 class GameScene: Scene{
     
     var mainTerrain: Terrain!
-    var player: Player!
     
     override func buildScene(device: MTLDevice) {
         camera.fov =  100
@@ -11,8 +10,7 @@ class GameScene: Scene{
         camera.rotation.x = 6.5
         
         mainTerrain = Terrain(device: device, textureName: "grass.png")
-        player = Player(device: device)
-        player.scale = float3(0.5)
+        
         player.position.z = -5
         
         fog.density = 0.0035

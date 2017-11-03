@@ -3,12 +3,16 @@ import MetalKit
 class Scene: Node{
     
     var sceneConstants = SceneConstants()
-    var camera = Camera()
+    var player: Player!
+    var camera: Camera!
     var light = Light()
     var fog = Fog()
 
     init(device: MTLDevice){
         super.init()
+        player = Player(device: device)
+        camera = Camera(player: player)
+        
         buildScene(device: device)
     }
 

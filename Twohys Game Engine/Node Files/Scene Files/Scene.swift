@@ -11,7 +11,7 @@ class Scene: Node{
     init(device: MTLDevice){
         super.init()
         player = Player(device: device)
-        camera = Camera(player: player)
+        camera = Camera()
         
         buildScene(device: device)
     }

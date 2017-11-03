@@ -13,10 +13,4 @@ class Camera: Node{
     var projectionMatrix:matrix_float4x4{
         return matrix_float4x4(perspectiveDegreesFov: fov, aspectRatio: aspectRatio, nearZ: nearZ, farZ: farZ)
     }
-    
-    init(player: Player){
-        super.init()
-        
-    }
-
 }

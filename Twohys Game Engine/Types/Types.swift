@@ -18,7 +18,9 @@ struct ModelConstants{
 struct SceneConstants{
     var projectionMatrix: matrix_float4x4 = matrix_identity_float4x4
     var viewMatrix: matrix_float4x4 = matrix_identity_float4x4
-    var skyColor: float3 = float3(1);
+    var skyColor: float3 = MainView.SKY_COLOR
+    var fogDensity: Float = 0.0
+    var fogGradient: Float = 0.0
 }
 
 struct Light{
@@ -29,3 +31,7 @@ struct Light{
     var brightness: Float = 1.0
 }
 
+struct Fog{
+    var density: Float = 0.0
+    var gradient: Float = 0.0
+}

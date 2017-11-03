@@ -5,6 +5,7 @@ class Scene: Node{
     var sceneConstants = SceneConstants()
     var camera = Camera()
     var light = Light()
+    var fog = Fog()
 
     init(device: MTLDevice){
         super.init()
@@ -24,7 +25,8 @@ class Scene: Node{
     func doRender(renderCommandEncoder: MTLRenderCommandEncoder){
         sceneConstants.projectionMatrix = camera.projectionMatrix
         sceneConstants.viewMatrix = camera.viewMatrix;
-        sceneConstants.skyColor = float3(0.5, 0.5, 0.5);
+        sceneConstants.fogGradient = fog.gradient
+        sceneConstants.fogDensity = fog.density
         
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, index: 1)
         renderCommandEncoder.setFragmentBytes(&light, length: MemoryLayout<Light>.stride, index: 1)

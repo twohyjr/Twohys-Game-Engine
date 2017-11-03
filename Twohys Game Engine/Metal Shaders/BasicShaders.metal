@@ -32,10 +32,10 @@ struct SceneConstants{
     float4x4 projectionMatrix;
     float4x4 viewMatrix;
     float3 skyColor;
+    float fogDensity;
+    float fogGradient;
 };
 
-constant float density = 0.035;
-constant float gradient = 2.0;
 
 struct Light{
     float3 color;
@@ -55,7 +55,7 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.position = sceneConstants.projectionMatrix *  positionRelativeToCam;
     
     float distance = length(positionRelativeToCam.xyz);
-    float visibility = exp(-pow((distance * density),gradient));
+    float visibility = exp(-pow((distance * sceneConstants.fogDensity),sceneConstants.fogGradient));
     visibility = clamp(visibility, 0.0, 1.0);
     
     vOut.visibility = visibility;

@@ -50,7 +50,7 @@ class Renderer: NSObject{
 extension Renderer: MTKViewDelegate{
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        scene.camera.aspectRatio = Float(size.height) / Float(size.width)
+        scene.camera.aspectRatio = Float(size.width) / Float(size.height)
         print(size)
     }
     

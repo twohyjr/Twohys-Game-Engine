@@ -11,13 +11,15 @@ import MetalKit
 class MainView: MTKView {
     
     var renderer: Renderer!
+    
+    static let SKY_COLOR: float3 = float3(0.5, 0.5, 0.85)
 
     required init(coder: NSCoder) {
         super.init(coder: coder)
         
         self.device = MTLCreateSystemDefaultDevice()
         self.colorPixelFormat = .bgra8Unorm
-        self.clearColor = MTLClearColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        self.clearColor = MTLClearColor(red: Double(MainView.SKY_COLOR.x), green: Double(MainView.SKY_COLOR.y), blue: Double(MainView.SKY_COLOR.z), alpha: 1)
         self.depthStencilPixelFormat = .depth32Float
         self.renderer = Renderer(device: self.device!, mtkView: self)
         renderer.updateTrackingArea(view: self)

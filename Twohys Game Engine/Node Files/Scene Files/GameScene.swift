@@ -27,6 +27,9 @@ class GameScene: Scene{
         player.scale = float3(0.5)
         player.position.z = -5
         
+        fog.density = 0.035;
+        fog.gradient = 2.0
+        
         mainTerrain.position.x = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
         mainTerrain.position.z = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
         mainTerrain.position.y = -2

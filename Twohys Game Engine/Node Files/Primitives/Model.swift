@@ -81,6 +81,8 @@ class Model: Node{
             print(error)
         }
     }
+    
+    func move(deltaTime: Float){}
 }
 
 extension Model: Renderable{

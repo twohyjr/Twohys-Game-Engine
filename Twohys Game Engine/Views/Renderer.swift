@@ -24,6 +24,7 @@ class Renderer: NSObject{
         commandQueue = device.makeCommandQueue()
         FlashPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
         scene = GameScene(device: device)
+        scene.camera.aspectRatio = Float(mtkView.drawableSize.width) / Float(mtkView.drawableSize.height)
         buildDepthStencilState(device: device)
         buildSamplerState(device: device)
         frameStartTime = CFAbsoluteTimeGetCurrent()
@@ -51,7 +52,6 @@ extension Renderer: MTKViewDelegate{
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         scene.camera.aspectRatio = Float(size.width) / Float(size.height)
-        print(size)
     }
     
     func updateTrackingArea(view: MTKView){

@@ -14,6 +14,8 @@ class Scene: Node{
         camera = Camera()
         
         buildScene(device: device)
+        
+        add(child: player)
     }
 
     func buildScene(device: MTLDevice){ }

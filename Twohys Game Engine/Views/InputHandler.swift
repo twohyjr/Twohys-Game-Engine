@@ -29,35 +29,12 @@ class InputHandler{
     
     private static var keyList = [Bool].init(repeating: false, count: KEY_COUNT)
     
-    private static var mousePosition = float2(0)
-    
-    private static var scrollPosition = float2(0)
-    
-    public static func setMousePosition(position: float2){
-        self.mousePosition = position
-    }
-    
     public static func setKeyPressed(key: UInt16, isOn: Bool){
         keyList[Int(key)] = isOn
     }
-    
-    public static func getMousePosition()->float2{
-        return mousePosition
-    }
-    
-    public static func getScrollPosition()->float2{
-        return scrollPosition
-    }
-    
+
     public static func isKeyPressed(key: KEY_CODES)->Bool{
         return keyList[Int(key.rawValue)] == true
     }
-    
-    public static func scrollMouse(deltaX: Float, deltaY: Float){
-        scrollPosition = float2(deltaX, deltaY)
-        print(scrollPosition)
-    }
-    
-    
-    
+
 }

@@ -29,13 +29,8 @@ class MainView: MTKView {
     
     override var acceptsFirstResponder: Bool { return true }
     
-    override func mouseMoved(with event: NSEvent) {
-        let x: Float = Float(event.locationInWindow.x)
-        let y: Float = Float(event.locationInWindow.y)
-        InputHandler.setMousePosition(position: float2(x,y))
-        
-        //Swift.print("Mouse Position: \(x), \(y)")
-    }
+    
+    //-------KEY EVENTS SECTION-------
     
     override func keyDown(with event: NSEvent) {
         InputHandler.setKeyPressed(key: event.keyCode, isOn: true)
@@ -44,14 +39,59 @@ class MainView: MTKView {
     override func keyUp(with event: NSEvent) {
         InputHandler.setKeyPressed(key: event.keyCode, isOn: false)
     }
+    
+    //-------END MOUSE EVENTS SECTION-------
+    
+    
+    
+    
+    //-------MOUSE EVENTS SECTION-------
+    
+    override func mouseMoved(with event: NSEvent) {
+        let x: Float = Float(event.locationInWindow.x)
+        let y: Float = Float(event.locationInWindow.y)
+        MouseHandler.setMousePosition(position: float2(x,y))
+    }
+    
     override func scrollWheel(with event: NSEvent) {
-        InputHandler.scrollMouse(deltaX: Float(event.deltaX), deltaY: Float(event.deltaY))
+        MouseHandler.scrollMouse(deltaX: Float(event.deltaX), deltaY: Float(event.deltaY))
     }
     
-    
-    
-    func scrollWheel(theEvent: NSEvent) {
-        print("deltaX: \(theEvent.deltaX)")
-        
+    //Left Mouse Button Clicked
+    override func mouseDown(with event: NSEvent) {
+        MouseHandler.setMouseButtonPressed(button: event.buttonNumber, isOn: true)
     }
+    
+    override func mouseUp(with event: NSEvent) {
+        MouseHandler.setMouseButtonPressed(button: event.buttonNumber, isOn: false)
+    }
+    
+    //Right Mouse Button Clicked
+    override func rightMouseDown(with event: NSEvent) {
+        MouseHandler.setMouseButtonPressed(button: event.buttonNumber, isOn: true)
+    }
+    
+    override func rightMouseUp(with event: NSEvent) {
+        MouseHandler.setMouseButtonPressed(button: event.buttonNumber, isOn: false)
+    }
+    
+    //Other Mouse Buttons Clicked
+    override func otherMouseDown(with event: NSEvent) {
+        MouseHandler.setMouseButtonPressed(button: event.buttonNumber, isOn: true)
+    }
+    
+    override func otherMouseUp(with event: NSEvent) {
+        MouseHandler.setMouseButtonPressed(button: event.buttonNumber, isOn: false)
+    }
+    
+    //-------END MOUSE EVENTS SECTION-------
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

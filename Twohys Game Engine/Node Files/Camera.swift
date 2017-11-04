@@ -36,5 +36,4 @@ class Camera: Node{
             position.x -= 0.02
         }
     }
-    
 }

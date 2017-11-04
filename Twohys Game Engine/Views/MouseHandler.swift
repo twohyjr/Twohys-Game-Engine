@@ -10,10 +10,15 @@ class MouseHandler{
     private static var MOUSE_BUTTON_COUNT = 12
     private static var mouseButtonList = [Bool].init(repeating: false, count: MOUSE_BUTTON_COUNT)
     
-    private static var mousePosition = float2(0)
+    
+    private static var overallMousePosition = float2(0)
+    
     
     private static var scrollWheelPosition: Float = 0
     private static var lastWheelPosition: Float = 0.0
+    
+    private static var scrollWheelChange: Float = 0.0
+    private static var mousePositionChange: float2 = float2(0)
 
 
     public static func setMouseButtonPressed(button: Int, isOn: Bool){
@@ -24,22 +29,45 @@ class MouseHandler{
         return mouseButtonList[Int(button.rawValue)] == true
     }
     
-    public static func setMousePosition(position: float2){
-        self.mousePosition = position
-    }
-    public static func getMouseXYPosition()->float2{
-        return mousePosition
+    public static func setOverallMousePosition(position: float2){
+        self.overallMousePosition = position
     }
     
-    public static func getMouseScrollPosition()->Float{
-        let position = scrollWheelPosition
-        scrollWheelPosition = 0
+    ///Sets the delta distance the mouse had moved
+    public static func setMousePositionChange(position: float2){
+        mousePositionChange -= position
+    }
+    
+    public static func scrollMouse(deltaY: Float){
+        scrollWheelPosition += deltaY
+        scrollWheelChange += deltaY
+    }
+    
+    public static func getMouseXYPosition()->float2{
+        return overallMousePosition
+    }
+    
+    ///Returns the movement of the wheel since last time getDWheel() was called
+    public static func getDWheel()->Float{
+        let position = scrollWheelChange
+        scrollWheelChange = 0
         return position
     }
     
-    public static func scrollMouse(deltaX: Float, deltaY: Float){
-        scrollWheelPosition += deltaY
+    ///Movement on the y axis since last time getDY() was called.
+    public static func getDY()->Float{
+        let positionY = mousePositionChange.y
+        mousePositionChange.y = 0
+        return positionY
     }
+    
+    ///Movement on the x axis since last time getDX() was called.
+    public static func getDX()->Float{
+        let positionY = mousePositionChange.x
+        mousePositionChange.x = 0
+        return positionY
+    }
+    
     
     
 }

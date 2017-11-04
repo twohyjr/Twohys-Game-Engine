@@ -50,11 +50,12 @@ class MainView: MTKView {
     override func mouseMoved(with event: NSEvent) {
         let x: Float = Float(event.locationInWindow.x)
         let y: Float = Float(event.locationInWindow.y)
-        MouseHandler.setMousePosition(position: float2(x,y))
+        MouseHandler.setOverallMousePosition(position: float2(x,y))
+        MouseHandler.setMousePositionChange(position: float2(Float(event.deltaX), Float(event.deltaY)))
     }
     
     override func scrollWheel(with event: NSEvent) {
-        MouseHandler.scrollMouse(deltaX: Float(event.deltaX), deltaY: Float(event.deltaY))
+        MouseHandler.scrollMouse(deltaY: Float(event.deltaY))
     }
     
     //Left Mouse Button Clicked

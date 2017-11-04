@@ -280,8 +280,8 @@
 				BDB6FC901F92A15B00A15655 /* Main.storyboard */,
 				BDB6FCB71F92A2CE00A15655 /* MainView.swift */,
 				BDB6FCBA1F92A36500A15655 /* Renderer.swift */,
-				BDB0276A1FA550F70064A544 /* InputHandler.swift */,
 				BDD7BE9F1FAE25BE00A12D19 /* MouseHandler.swift */,
+				BDB0276A1FA550F70064A544 /* InputHandler.swift */,
 			);
 			name = Window;
 			path = Views;

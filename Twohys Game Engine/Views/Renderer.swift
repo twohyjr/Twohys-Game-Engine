@@ -45,7 +45,6 @@ class Renderer: NSObject{
         samplerDescriptor.label = "Twohy's Sampler"
         samplerState = device.makeSamplerState(descriptor: samplerDescriptor)
     }
-
 }
 
 extension Renderer: MTKViewDelegate{
@@ -58,7 +57,7 @@ extension Renderer: MTKViewDelegate{
         let area = NSTrackingArea(rect: view.bounds, options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved, NSTrackingArea.Options.enabledDuringMouseDrag], owner: view, userInfo: nil)
         view.addTrackingArea(area)
     }
-    
+
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable, let passDescriptor = view.currentRenderPassDescriptor else { return }
 
@@ -71,7 +70,7 @@ extension Renderer: MTKViewDelegate{
         
         let deltaTime: Float = (Float(1.0) / Float(view.preferredFramesPerSecond))
         scene.render(renderCommandEncoder: renderCommandEncoder!, deltaTime: deltaTime)
-        
+
         renderCommandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
         commandBuffer?.commit()

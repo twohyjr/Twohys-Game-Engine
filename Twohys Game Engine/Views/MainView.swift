@@ -44,4 +44,14 @@ class MainView: MTKView {
     override func keyUp(with event: NSEvent) {
         InputHandler.setKeyPressed(key: event.keyCode, isOn: false)
     }
+    override func scrollWheel(with event: NSEvent) {
+        InputHandler.scrollMouse(deltaX: Float(event.deltaX), deltaY: Float(event.deltaY))
+    }
+    
+    
+    
+    func scrollWheel(theEvent: NSEvent) {
+        print("deltaX: \(theEvent.deltaX)")
+        
+    }
 }

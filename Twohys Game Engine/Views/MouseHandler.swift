@@ -9,17 +9,14 @@ enum MOUSE_BUTTON_CODES: Int {
 class MouseHandler{
     private static var MOUSE_BUTTON_COUNT = 12
     private static var mouseButtonList = [Bool].init(repeating: false, count: MOUSE_BUTTON_COUNT)
-    
-    
+
     private static var overallMousePosition = float2(0)
-    
-    
+
     private static var scrollWheelPosition: Float = 0
     private static var lastWheelPosition: Float = 0.0
     
     private static var scrollWheelChange: Float = 0.0
     private static var mousePositionChange: float2 = float2(0)
-
 
     public static func setMouseButtonPressed(button: Int, isOn: Bool){
         mouseButtonList[button] = isOn
@@ -43,6 +40,7 @@ class MouseHandler{
         scrollWheelChange += deltaY
     }
     
+    //Returns the overall position of the mouse on the current window
     public static func getMouseXYPosition()->float2{
         return overallMousePosition
     }
@@ -67,8 +65,5 @@ class MouseHandler{
         mousePositionChange.x = 0
         return positionY
     }
-    
-    
-    
 }
 

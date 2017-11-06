@@ -13,7 +13,6 @@ class CircleScene: Scene{
         let circle = Circle(device: device, circleVertexCount: 300)
         instance = PrimitiveInstances(device: device, primitive: circle, instanceCount: 10000)
         
-        
         camera.position.z = 20
         
         var index: Int = 1
@@ -23,12 +22,9 @@ class CircleScene: Scene{
             n.position.z = -30
             n.position.x = currentXPos
             n.position.y = currentYPos
-            
-            
+       
             n.specularIntensity = 3
             n.shininess = 100
-            
-            
             
             if(index % 100 == 0){
                 currentYPos -= 2

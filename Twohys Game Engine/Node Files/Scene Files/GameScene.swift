@@ -42,14 +42,12 @@ class GameScene: Scene{
         if(InputHandler.isKeyPressed(key: KEY_CODES.Spacebar)){
             player.jump()
         }
-        camera.move()
+
     }
 
     override func updateCamera(deltaTime: Float) {
-        
+        camera.move()
     }
-    
-
     
     override func updateModels(deltaTime: Float) {
         player.update(deltaTime: deltaTime)

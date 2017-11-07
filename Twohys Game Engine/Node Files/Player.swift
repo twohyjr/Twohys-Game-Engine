@@ -35,7 +35,7 @@ class Player: Armadillo{
         position.z -= dy
         upwardSpeed += GRAVITY * deltaTime
         position.y += upwardSpeed * deltaTime
-        if(position.y < TERRAIN_HEIGHT){
+        if(position.y <= TERRAIN_HEIGHT){
             upwardSpeed = 0
             isInAir = false
             position.y = TERRAIN_HEIGHT

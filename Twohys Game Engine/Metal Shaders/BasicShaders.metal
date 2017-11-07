@@ -51,9 +51,9 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     
     VertexOut vOut;
     float4 worldPosition = modelConstants.modelViewMatrix * float4(vIn.position,1);
-    float4 positionRelativeToCam = sceneConstants.viewMatrix *  worldPosition;
-    vOut.position = sceneConstants.projectionMatrix *  positionRelativeToCam;
+    vOut.position = sceneConstants.projectionMatrix *  worldPosition;
     
+    float4 positionRelativeToCam = sceneConstants.viewMatrix *  worldPosition;
     float distance = length(positionRelativeToCam.xyz);
     float visibility = exp(-pow((distance * sceneConstants.fogDensity),sceneConstants.fogGradient));
     visibility = clamp(visibility, 0.0, 1.0);

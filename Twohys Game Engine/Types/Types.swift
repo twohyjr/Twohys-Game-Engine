@@ -32,6 +32,6 @@ struct Light{
 }
 
 struct Fog{
-    var density: Float = 0.0
-    var gradient: Float = 0.0
+    var density: Float = 0.0035
+    var gradient: Float = 2.0
 }

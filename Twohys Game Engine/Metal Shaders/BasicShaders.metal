@@ -30,7 +30,6 @@ struct ModelConstants{
 
 struct SceneConstants{
     float4x4 projectionMatrix;
-    float4x4 viewMatrix;
     float3 skyColor;
     float fogDensity;
     float fogGradient;
@@ -53,8 +52,7 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     float4 worldPosition = modelConstants.modelViewMatrix * float4(vIn.position,1);
     vOut.position = sceneConstants.projectionMatrix *  worldPosition;
     
-    float4 positionRelativeToCam = sceneConstants.viewMatrix *  worldPosition;
-    float distance = length(positionRelativeToCam.xyz);
+    float distance = length(vOut.position.xyz);
     float visibility = exp(-pow((distance * sceneConstants.fogDensity),sceneConstants.fogGradient));
     visibility = clamp(visibility, 0.0, 1.0);
     
@@ -88,17 +86,27 @@ vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
     float4 worldPosition = constants.modelViewMatrix * float4(vIn.position,1);
     vOut.position = sceneConstants.projectionMatrix *  worldPosition;
     
+    float distance = length(vOut.position.xyz);
+    float visibility = exp(-pow((distance * sceneConstants.fogDensity),sceneConstants.fogGradient));
+    visibility = clamp(visibility, 0.0, 1.0);
+    
+    vOut.visibility = visibility;
+    
     vOut.textureCoordinate = vIn.textureCoordinate;
-//        vOut.surfaceNormal = constants.normalMatrix * vIn.normal;
-    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
+    vOut.surfaceNormal = constants.normalMatrix * vIn.normal;
+    //    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
     vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = constants.shininess;
     vOut.specularIntensity = constants.specularIntensity;
+    vOut.skyColor = sceneConstants.skyColor;
     if(vIn.color.x == 0 && vIn.color.y == 0 && vIn.color.z == 0){
         vOut.color = constants.materialColor;
     }else{
         vOut.color = vIn.color;
     }
+    
+    
+    
     return vOut;
 }
 

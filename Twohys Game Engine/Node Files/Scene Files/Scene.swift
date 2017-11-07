@@ -6,26 +6,56 @@ class Scene: Node{
     var camera: Camera!
     var light = Light()
     var fog = Fog()
+    var player: Player!
 
     init(device: MTLDevice){
         super.init()
         
-        camera = Camera()
+        player = Player(device: device)
+        camera = Camera(player: player)
         
         buildScene(device: device)
+        
+        add(child: player)
     }
 
     func buildScene(device: MTLDevice){ }
     
     func checkKeyInput(){ }
     
-    func updateModels(deltaTime: Float){ }
+    func updatePlayer(deltaTime: Float){
+         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Left)){
+             player.currentTurnSpeed = player.TURN_SPEED
+         }else if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Right)){
+             player.currentTurnSpeed = -player.TURN_SPEED
+         }else{
+             player.currentTurnSpeed = 0
+         }
+        
+         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Down)){
+             player.currentSpeed = -player.RUN_SPEED
+         }else if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Up)){
+             player.currentSpeed = player.RUN_SPEED
+         }else{
+             player.currentSpeed = 0
+         }
+        
+         if(InputHandler.isKeyPressed(key: KEY_CODES.Spacebar)){
+             player.jump()
+         }
+        player.update(deltaTime: deltaTime)
+    }
     
-    func updateCamera(deltaTime: Float){ }
+    func updateModels(deltaTime: Float){
+        updatePlayer(deltaTime: deltaTime)
+    }
+    
+    func updateCamera(deltaTime: Float){
+        camera.update()
+    }
     
     func doRender(renderCommandEncoder: MTLRenderCommandEncoder){
         sceneConstants.projectionMatrix = camera.projectionMatrix
-        sceneConstants.viewMatrix = camera.viewMatrix
         sceneConstants.fogGradient = fog.gradient
         sceneConstants.fogDensity = fog.density
         

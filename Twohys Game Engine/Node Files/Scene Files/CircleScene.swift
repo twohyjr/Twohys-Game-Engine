@@ -4,6 +4,12 @@ class CircleScene: Scene{
     
     var instance: PrimitiveInstances!
     override func buildScene(device: MTLDevice) {
+        
+        light.brightness = 0.5
+        light.color = float3(0.67,1,1)
+        light.ambientIntensity = 1
+        light.diffuseIntensity = 1.0
+        
         let circle = Circle(device: device, circleVertexCount: 300)
         instance = PrimitiveInstances(device: device, primitive: circle, instanceCount: 10000)
         

@@ -6,10 +6,10 @@ class Camera: Node{
     var nearZ: Float = 0.1
     var farZ: Float = 1000
     
-    var distanceFromPlayer: Float = -9.0
+    var distanceFromPlayer: Float = 0.0
     var angleAroundPlayer: Float = 0
     
-    var pitch: Float = 0.5
+    var pitch: Float = 0
     var yaw: Float = 0
     
     var player: Player!
@@ -57,7 +57,6 @@ class Camera: Node{
     }
     
     private func calculateVerticalDistance()->Float{
-        print(distanceFromPlayer)
         return distanceFromPlayer * sin(pitch)
     }
     

@@ -4,6 +4,11 @@ class PlaygroundScene1: Scene{
     
     var object: Terrain!
     override func buildScene(device: MTLDevice) {
+        light.brightness = 0.5
+        light.color = float3(0.67,1,1)
+        light.ambientIntensity = 1
+        light.diffuseIntensity = 1.0
+        
         camera.position = float3(0,1,0)
         
         let circle = Circle(device: device, circleVertexCount: 4)
@@ -15,6 +20,8 @@ class PlaygroundScene1: Scene{
         
         object = Terrain(device: device, textureName: "grass.png")
         object.position.z = -5
+//        object.rotation.y = 3.0
+//        object.position.y = -0.5
         object.scale = float3(2)
         add(child: object)
         add(child: circle)

@@ -10,9 +10,13 @@ class GameScene: Scene{
         mainTerrain.position.z = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
         mainTerrain.position.y = -1
         
+        var grass = Quad(device: device, textureName: "tall-grass.png")
+        grass.position.z = -1
+        
         fog.density = 0.05
         fog.gradient = 2
-
+        
+        add(child: grass)
         add(child: mainTerrain)
     }
 }

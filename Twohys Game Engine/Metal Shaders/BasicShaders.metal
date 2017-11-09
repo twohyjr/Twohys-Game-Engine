@@ -130,8 +130,13 @@ fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
     float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
     float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
     
+    if (color.a == 0.0){
+        discard_fragment();
+    }
+
     color = color * float4(ambientColor + diffuseColor + specularColor, 1)  * 1.5;
     color = mix(float4(vIn.skyColor, 1), color, visibility);
+    
     
     return half4(color.x, color.y, color.z, 1);
 }
@@ -157,8 +162,15 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
     float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
     float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
     
+    if (color.a == 0.0){
+        discard_fragment();
+    }
+    
     color = color * float4(ambientColor + diffuseColor + specularColor, 1)  * light.brightness;
     color = mix(float4(vIn.skyColor, 1), color, visibility);
+    
+
+    
     return half4(color.x, color.y, color.z, 1);
 }
 

@@ -78,6 +78,7 @@
 		BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = F16s.bmp; path = "../../../../../../Desktop/f16 2/F16s.bmp"; sourceTree = "<group>"; };
 		BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInstances.swift; sourceTree = "<group>"; };
 		BD5D34721FA8E13C00F5CC24 /* PrimitiveInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveInstances.swift; sourceTree = "<group>"; };
+		BD9730331FB3C4FA0055658E /* libswiftsimd.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftsimd.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftsimd.tbd; sourceTree = SDKROOT; };
 		BDB027681FA54F6D0064A544 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		BDB0276A1FA550F70064A544 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
 		BDB6FC841F92A15B00A15655 /* Twohys Game Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twohys Game Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +209,14 @@
 			path = Primitives;
 			sourceTree = "<group>";
 		};
+		BD9730321FB3C4FA0055658E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD9730331FB3C4FA0055658E /* libswiftsimd.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BDB6FC7B1F92A15B00A15655 = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +224,7 @@
 				BDB6FC9C1F92A15B00A15655 /* Twohys Game EngineTests */,
 				BDB6FCA71F92A15B00A15655 /* Twohys Game EngineUITests */,
 				BDB6FC851F92A15B00A15655 /* Products */,
+				BD9730321FB3C4FA0055658E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

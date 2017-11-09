@@ -12,9 +12,7 @@ class GameScene: Scene{
         
         fog.density = 0.05
         fog.gradient = 2
-        
 
-        
         add(child: mainTerrain)
     }
 }

@@ -1,4 +1,5 @@
 #include <metal_stdlib>
+
 using namespace metal;
 
 struct VertexIn{
@@ -33,11 +34,16 @@ struct SceneConstants{
     float3 skyColor;
     float fogDensity;
     float fogGradient;
+    float4x4 viewMatrix;
 };
 
 
 struct Light{
     float3 position;
+    float3 color;
+    float brightness;
+    float ambientIntensity;
+    float diffuseIntensity;
 };
 
 vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
@@ -55,20 +61,20 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.visibility = visibility;
     
     vOut.textureCoordinate = vIn.textureCoordinate;
-    vOut.surfaceNormal = modelConstants.normalMatrix * vIn.normal;
+    
+    vOut.surfaceNormal = (sceneConstants.viewMatrix * float4(vIn.normal,0)).xyz;
 //    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
     vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = modelConstants.shininess;
     vOut.specularIntensity = modelConstants.specularIntensity;
     vOut.skyColor = sceneConstants.skyColor;
+    
     if(vIn.color.x == 0 && vIn.color.y == 0 && vIn.color.z == 0){
         vOut.color = modelConstants.materialColor;
     }else{
         vOut.color = vIn.color;
     }
-    
-    
-    
+
     return vOut;
 }
 
@@ -101,17 +107,32 @@ vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
         vOut.color = vIn.color;
     }
     
-    
-    
     return vOut;
 }
 
 fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
                                constant Light &light [[ buffer(1) ]]){
     float4 color = vIn.color;
-    
     float visibility = vIn.visibility;
+    float3 unitNormal = normalize(vIn.surfaceNormal);
+    float3 unitEye = normalize(vIn.eyePosition);
+    float3 lightPosition = light.position;
+    
+    //Ambient Color
+    float3 ambientColor = light.color * light.ambientIntensity;
+    
+    //Diffuse Color
+    float diffuseFactor = saturate(-dot(unitNormal, lightPosition));
+    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
+    
+    //Specular Color
+    float3 reflection = reflect(lightPosition, unitNormal);
+    float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
+    float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
+    
+    color = color * float4(ambientColor + diffuseColor + specularColor, 1)  * 1.5;
     color = mix(float4(vIn.skyColor, 1), color, visibility);
+    
     return half4(color.x, color.y, color.z, 1);
 }
 
@@ -120,9 +141,27 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
                                           texture2d<float> texture [[ texture(0) ]],
                                           constant Light &light [[ buffer(1) ]]){
     float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
-
     float visibility = vIn.visibility;
+    float3 unitNormal = normalize(vIn.surfaceNormal);
+    float3 unitEye = normalize(vIn.eyePosition);
+    
+    //Ambient Color
+    float3 ambientColor = light.color * light.ambientIntensity;
+    
+    //Diffuse Color
+    float diffuseFactor = saturate(-dot(unitNormal, light.position));
+    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
+    
+    //Specular Color
+    float3 reflection = reflect(light.position, unitNormal);
+    float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
+    float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
+    
+    color = color * float4(ambientColor + diffuseColor + specularColor, 1)  * light.brightness;
     color = mix(float4(vIn.skyColor, 1), color, visibility);
     return half4(color.x, color.y, color.z, 1);
 }
+
+
+
 

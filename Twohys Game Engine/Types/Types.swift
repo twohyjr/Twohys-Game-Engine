@@ -20,10 +20,15 @@ struct SceneConstants{
     var skyColor: float3 = MainView.SKY_COLOR
     var fogDensity: Float = 0.0
     var fogGradient: Float = 0.0
+    var viewMatrix: matrix_float4x4 = matrix_identity_float4x4
 }
 
 struct Light{
-    var position: float3 = float3(0)
+    var position: float3 = float3(0.0, 0.0, -1.0)
+    var color: float3 = float3(1)
+    var brightness: Float = 1.0
+    var ambientIntensity: Float = 1.0
+    var diffuseIntensity: Float = 1.0
 }
 
 struct Fog{

@@ -77,6 +77,7 @@ class MainView: MTKView {
     //Right Mouse Button Clicked
     override func rightMouseDown(with event: NSEvent) {
         MouseHandler.setMouseButtonPressed(button: event.buttonNumber, isOn: true)
+
     }
     
     override func rightMouseDragged(with event: NSEvent) {

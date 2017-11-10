@@ -27,7 +27,8 @@ class GameScene: Scene{
         tree.position = float3(4, 0.5, -1)
         
         sun = Model(device: device, modelName: "sun", textureName: "")
-        sun.materialColor = float4(0.8, 0.7,0.25,1)
+        sun.materialColor = float4(0.9, 0.85,0.2,1)
+        sun.scale = float3(0.5)
         sun.position = float3(0,3,0)
         light.position = sun.position
         add(child: sun)

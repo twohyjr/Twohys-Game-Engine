@@ -32,15 +32,15 @@ class PrimitiveInstances: Node{
 }
 
 extension PrimitiveInstances: Renderable{
-    func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
+    func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelMatrix: matrix_float4x4) {
         guard let instanceBuffer = self.instanceBuffer, nodes.count > 0 else { return }
         renderCommandEncoder.setRenderPipelineState(FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.INSTANCES))
         
         var pointer = instanceBuffer.contents().bindMemory(to: ModelConstants.self, capacity: nodes.count)
         for node in nodes{
-            pointer.pointee.modelViewMatrix = matrix_multiply(modelViewMatrix, node.modelMatrix)
-//            pointer.pointee.modelViewMatrix = modelViewMatrix
-            pointer.pointee.normalMatrix = modelViewMatrix.upperLeftMatrix()
+            pointer.pointee.modelMatrix = matrix_multiply(modelMatrix, node.modelMatrix)
+//            pointer.pointee.modelMatrix = modelMatrix
+            pointer.pointee.normalMatrix = modelMatrix.upperLeftMatrix()
             pointer.pointee.shininess = node.shininess
             pointer.pointee.specularIntensity = node.specularIntensity
             pointer.pointee.materialColor = node.materialColor

@@ -86,11 +86,11 @@ class Model: Node{
 }
 
 extension Model: Renderable{
-    func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
+    func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelMatrix: matrix_float4x4) {
         renderCommandEncoder.setRenderPipelineState(_renderPipelineState)
         
-        modelConstants.modelViewMatrix = modelViewMatrix
-        modelConstants.normalMatrix = modelViewMatrix.upperLeftMatrix()
+        modelConstants.modelMatrix = modelMatrix
+        modelConstants.normalMatrix = modelMatrix.upperLeftMatrix()
         modelConstants.shininess = self.shininess
         modelConstants.specularIntensity = self.specularIntensity
         modelConstants.materialColor = self.materialColor

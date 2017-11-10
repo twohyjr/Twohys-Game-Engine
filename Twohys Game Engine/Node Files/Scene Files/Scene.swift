@@ -10,8 +10,8 @@ class Scene: Node{
 
     init(device: MTLDevice){
         super.init()
-        
         player = Player(device: device)
+        
         camera = Camera(player: player)
         
         buildScene(device: device)
@@ -59,6 +59,7 @@ class Scene: Node{
         sceneConstants.fogGradient = fog.gradient
         sceneConstants.fogDensity = fog.density
         sceneConstants.viewMatrix = camera.viewMatrix
+        
         
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, index: 1)
         renderCommandEncoder.setFragmentBytes(&light, length: MemoryLayout<Light>.stride, index: 1)

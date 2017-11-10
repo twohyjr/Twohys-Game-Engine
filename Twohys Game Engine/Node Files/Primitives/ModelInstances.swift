@@ -32,14 +32,14 @@ class ModelInstances: Node{
 }
 
 extension ModelInstances: Renderable{
-    func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
+    func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelMatrix: matrix_float4x4) {
         guard let instanceBuffer = self.instanceBuffer, nodes.count > 0 else { return }
         renderCommandEncoder.setRenderPipelineState(FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.INSTANCES))
         
         var pointer = instanceBuffer.contents().bindMemory(to: ModelConstants.self, capacity: nodes.count)
         
         for node in nodes{
-            pointer.pointee.modelViewMatrix = matrix_multiply(modelViewMatrix, node.modelMatrix)
+            pointer.pointee.modelMatrix = matrix_multiply(modelMatrix, node.modelMatrix)
             pointer.pointee.materialColor = node.materialColor
             pointer = pointer.advanced(by: 1)
         }

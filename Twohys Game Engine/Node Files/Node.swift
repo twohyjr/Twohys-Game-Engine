@@ -31,9 +31,9 @@ class Node{
         for child in children{
             child.render(renderCommandEncoder: renderCommandEncoder, parentModelMatrix: parentModelMatrix )
         }
-        let modelViewMatrix: matrix_float4x4 = matrix_multiply(parentModelMatrix, modelMatrix)
+        let modelMatrix: matrix_float4x4 = self.modelMatrix
         if let renderable = self as? Renderable{
-            renderable.draw(renderCommandEncoder: renderCommandEncoder, modelViewMatrix: modelViewMatrix)
+            renderable.draw(renderCommandEncoder: renderCommandEncoder, modelMatrix: modelMatrix)
         }
     }
     

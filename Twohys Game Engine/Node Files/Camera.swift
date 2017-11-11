@@ -57,7 +57,6 @@ class Camera: Node{
     }
     
     private func calculateVerticalDistance()->Float{
-        print(distanceFromPlayer)
         return distanceFromPlayer * sin(pitch)
     }
     

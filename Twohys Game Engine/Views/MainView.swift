@@ -12,7 +12,7 @@ class MainView: MTKView {
     
     var renderer: Renderer!
     
-    static let SKY_COLOR: float3 = float3(0.5, 0.5, 0.85)
+    static let SKY_COLOR: float3 = float3(0.196078, 0.0705882, 0.152941)
 
     required init(coder: NSCoder) {
         super.init(coder: coder)

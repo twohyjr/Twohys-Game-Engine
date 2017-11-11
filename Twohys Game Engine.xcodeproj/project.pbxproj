@@ -19,6 +19,7 @@
 		BD9730351FB3DBD60055658E /* tall-grass.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9730341FB3DBD60055658E /* tall-grass.png */; };
 		BD9730391FB3E7850055658E /* lowpolytree.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD9730381FB3E7850055658E /* lowpolytree.obj */; };
 		BD97303C1FB527970055658E /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD97303B1FB527970055658E /* sun.obj */; };
+		BD97303E1FB626E70055658E /* MapTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD97303D1FB626E70055658E /* MapTexture.swift */; };
 		BDB027691FA54F6D0064A544 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB027681FA54F6D0064A544 /* Terrain.swift */; };
 		BDB0276B1FA550F70064A544 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB0276A1FA550F70064A544 /* InputHandler.swift */; };
 		BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB6FC871F92A15B00A15655 /* AppDelegate.swift */; };
@@ -85,6 +86,7 @@
 		BD9730341FB3DBD60055658E /* tall-grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tall-grass.png"; path = "../../../../../../Desktop/tall-grass.png"; sourceTree = "<group>"; };
 		BD9730381FB3E7850055658E /* lowpolytree.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lowpolytree.obj; path = ../../../../../../Desktop/lowpolytree.obj; sourceTree = "<group>"; };
 		BD97303B1FB527970055658E /* sun.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sun.obj; path = "../../../../2etime-Graphics/2etimeGraphics/sun.obj"; sourceTree = "<group>"; };
+		BD97303D1FB626E70055658E /* MapTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTexture.swift; sourceTree = "<group>"; };
 		BDB027681FA54F6D0064A544 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		BDB0276A1FA550F70064A544 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
 		BDB6FC841F92A15B00A15655 /* Twohys Game Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twohys Game Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +214,7 @@
 				BDB792E41FA79B9900A8367F /* Model.swift */,
 				BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */,
 				BD5D34721FA8E13C00F5CC24 /* PrimitiveInstances.swift */,
+				BD97303D1FB626E70055658E /* MapTexture.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				BDCB36401FA2516200716697 /* Quad.swift in Sources */,
 				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,
 				BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */,
+				BD97303E1FB626E70055658E /* MapTexture.swift in Sources */,
 				BDFB856B1FA16B15004820BC /* CircleScene.swift in Sources */,
 				BDCB363A1FA1926F00716697 /* Cube.swift in Sources */,
 				BDB792E51FA79B9900A8367F /* Model.swift in Sources */,

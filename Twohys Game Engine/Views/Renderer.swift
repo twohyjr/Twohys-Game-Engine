@@ -3,6 +3,9 @@ import MetalKit
 class Renderer: NSObject{
     
     var renderPipelineState: MTLRenderPipelineState!
+    var computePipelineState: MTLComputePipelineState!
+    
+    
     var commandQueue: MTLCommandQueue!
     var renderPipelineStateProvider: FlashPipelineStateProvider!
     
@@ -15,10 +18,13 @@ class Renderer: NSObject{
     var vertices: [Vertex]!
     var vertexBuffer: MTLBuffer!
     
+    var outComputeBuffer: MTLBuffer!
+    
     private var frameStartTime: CFAbsoluteTime!
     private var frameNumber = 0
     
-    
+    var mapTexture: MapTexture!
+
     init(device: MTLDevice, mtkView: MTKView){
         super.init()
         commandQueue = device.makeCommandQueue()
@@ -28,6 +34,8 @@ class Renderer: NSObject{
         buildDepthStencilState(device: device)
         buildSamplerState(device: device)
         frameStartTime = CFAbsoluteTimeGetCurrent()
+        mapTexture = MapTexture(device: device, imageName: "bright.png")
+        createComputeStuff(device: device)
     }
     
     func buildDepthStencilState(device: MTLDevice){
@@ -45,6 +53,20 @@ class Renderer: NSObject{
         samplerDescriptor.label = "Twohy's Sampler"
         samplerState = device.makeSamplerState(descriptor: samplerDescriptor)
     }
+    
+    func createComputeStuff(device: MTLDevice){
+        let library = device.makeDefaultLibrary()
+        let program = library?.makeFunction(name: "shader")
+    
+        do{
+            computePipelineState = try device.makeComputePipelineState(function: program!)
+        }catch{
+            print(error)
+        }
+        
+        var resultData = float4(0)
+        outComputeBuffer = device.makeBuffer(bytes: &resultData, length: MemoryLayout<float4>.size, options: MTLResourceOptions.optionCPUCacheModeWriteCombined)
+    }
 }
 
 extension Renderer: MTKViewDelegate{
@@ -57,19 +79,40 @@ extension Renderer: MTKViewDelegate{
         let area = NSTrackingArea(rect: view.bounds, options: [NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseMoved, NSTrackingArea.Options.enabledDuringMouseDrag], owner: view, userInfo: nil)
         view.addTrackingArea(area)
     }
-
+    
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable, let passDescriptor = view.currentRenderPassDescriptor else { return }
 
         let commandBuffer = commandQueue.makeCommandBuffer()
+        
+        let computeCommandEncoder = commandBuffer?.makeComputeCommandEncoder()
+        computeCommandEncoder?.setComputePipelineState(computePipelineState)
+        computeCommandEncoder?.setBuffer(outComputeBuffer, offset: 0, index: 0)
+        
+            let threadsPerGroup = MTLSize(width: 1, height: 1, depth: 1)
+            let numThreadGroups = MTLSize(width: 1, height: 1, depth: 1)
+            computeCommandEncoder?.setTexture(mapTexture.texture, index: 0)
+            computeCommandEncoder?.setSamplerState(samplerState, index: 0)
+            computeCommandEncoder?.dispatchThreadgroups(numThreadGroups, threadsPerThreadgroup: threadsPerGroup)
+            computeCommandEncoder?.endEncoding()
+            commandBuffer?.addCompletedHandler{ commandBuffer in
+                let data = NSData(bytes: self.outComputeBuffer.contents(), length: MemoryLayout<float4>.size)
+                var out: float4 = float4(0)
+                data.getBytes(&out, length: MemoryLayout<float4>.size)
+                self.scene.player.materialColor = out
+//                print("data: \(out)")
+        }
+        
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
         renderCommandEncoder?.setDepthStencilState(depthStencilState)
         renderCommandEncoder?.setFragmentSamplerState(samplerState, index: 0)
-//        renderCommandEncoder?.setTriangleFillMode(.lines)
-        //renderCommandEncoder?.setCullMode(.front)
         
         let deltaTime: Float = (Float(1.0) / Float(view.preferredFramesPerSecond))
         scene.render(renderCommandEncoder: renderCommandEncoder!, deltaTime: deltaTime)
+        
+        let region = MTLRegion(origin: MTLOrigin.init(x: 0, y: 0, z: 0), size: MTLSize(width: mapTexture.width, height: mapTexture.height, depth: 1))
+        var x: float4 = float4(0)
+//        mapTexture.texture?.getBytes(&x, bytesPerRow: mapTexture.width, from: region, mipmapLevel: )
 
         renderCommandEncoder?.endEncoding()
         commandBuffer?.present(drawable)

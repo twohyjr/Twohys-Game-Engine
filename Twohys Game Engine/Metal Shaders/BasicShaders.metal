@@ -204,7 +204,7 @@ kernel void shader(device float4 &color [[buffer(0)]],
                    texture2d<float> texture [[ texture(0) ]],
                    uint id [[thread_position_in_grid]]){
     
-    color = texture.sample(sampler2d, id);
+    color = float4(1,2,3,4);
 }
 
 

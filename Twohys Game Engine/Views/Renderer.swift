@@ -67,6 +67,28 @@ class Renderer: NSObject{
         var resultData = float4(0)
         outComputeBuffer = device.makeBuffer(bytes: &resultData, length: MemoryLayout<float4>.size, options: MTLResourceOptions.optionCPUCacheModeWriteCombined)
     }
+    
+    func doStuff(commandBuffer: MTLCommandBuffer){
+        let computeCommandEncoder = commandBuffer.makeComputeCommandEncoder()
+        computeCommandEncoder?.setComputePipelineState(computePipelineState)
+        computeCommandEncoder?.setBuffer(outComputeBuffer, offset: 0, index: 0)
+        
+        let threadsPerGroup = MTLSize(width: 1, height: 1, depth: 1)
+        let numThreadGroups = MTLSize(width: 1, height: 1, depth: 1)
+        computeCommandEncoder?.setTexture(mapTexture.texture, index: 0)
+        computeCommandEncoder?.setSamplerState(samplerState, index: 0)
+        computeCommandEncoder?.dispatchThreadgroups(numThreadGroups, threadsPerThreadgroup: threadsPerGroup)
+        computeCommandEncoder?.endEncoding()
+        commandBuffer.addCompletedHandler{ commandBuffer in
+            let data = NSData(bytes: self.outComputeBuffer.contents(), length: MemoryLayout<float4>.size)
+            var out: float4 = float4(0)
+            data.getBytes(&out, length: MemoryLayout<float4>.size)
+            self.scene.player.materialColor = out
+            print("data: \(out)")
+        }
+    }
+    
+    var initialized: Bool = false
 }
 
 extension Renderer: MTKViewDelegate{
@@ -85,22 +107,9 @@ extension Renderer: MTKViewDelegate{
 
         let commandBuffer = commandQueue.makeCommandBuffer()
         
-        let computeCommandEncoder = commandBuffer?.makeComputeCommandEncoder()
-        computeCommandEncoder?.setComputePipelineState(computePipelineState)
-        computeCommandEncoder?.setBuffer(outComputeBuffer, offset: 0, index: 0)
-        
-            let threadsPerGroup = MTLSize(width: 1, height: 1, depth: 1)
-            let numThreadGroups = MTLSize(width: 1, height: 1, depth: 1)
-            computeCommandEncoder?.setTexture(mapTexture.texture, index: 0)
-            computeCommandEncoder?.setSamplerState(samplerState, index: 0)
-            computeCommandEncoder?.dispatchThreadgroups(numThreadGroups, threadsPerThreadgroup: threadsPerGroup)
-            computeCommandEncoder?.endEncoding()
-            commandBuffer?.addCompletedHandler{ commandBuffer in
-                let data = NSData(bytes: self.outComputeBuffer.contents(), length: MemoryLayout<float4>.size)
-                var out: float4 = float4(0)
-                data.getBytes(&out, length: MemoryLayout<float4>.size)
-                self.scene.player.materialColor = out
-//                print("data: \(out)")
+        if(!initialized){
+            doStuff(commandBuffer: commandBuffer!)
+            initialized = true
         }
         
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)

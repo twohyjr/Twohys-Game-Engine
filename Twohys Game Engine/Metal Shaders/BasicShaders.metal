@@ -202,9 +202,9 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
 kernel void shader(device float4 &color [[buffer(0)]],
                    sampler sampler2d [[ sampler(0) ]],
                    texture2d<float> texture [[ texture(0) ]],
-                   uint id [[thread_position_in_grid]]){
+                   uint2 id [[thread_position_in_grid]]){
     
-    color = float4(1,2,3,4);
+    color = float4(id.x, id.y, 99,99);
 }
 
 

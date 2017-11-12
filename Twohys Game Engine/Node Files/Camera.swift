@@ -6,10 +6,10 @@ class Camera: Node{
     var nearZ: Float = 0.1
     var farZ: Float = 1000
     
-    var distanceFromPlayer: Float = -9.0
+    var distanceFromPlayer: Float = -11.0
     var angleAroundPlayer: Float = 0
     
-    var pitch: Float = 0.5
+    var pitch: Float = 0.3
     var yaw: Float = 0
     
     var player: Player!

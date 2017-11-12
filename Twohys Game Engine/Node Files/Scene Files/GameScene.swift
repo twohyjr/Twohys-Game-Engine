@@ -29,12 +29,12 @@ class GameScene: Scene{
         sun = Model(device: device, modelName: "sun", textureName: "")
         sun.materialColor = float4(0.9, 0.85,0.2,1)
         sun.scale = float3(0.5)
-        sun.position = float3(0,3,0)
+        sun.position = float3(0,50,0)
         light.position = sun.position
         add(child: sun)
         
-        fog.density = 0.05
-        fog.gradient = 2
+        fog.density = 0.00001
+        fog.gradient = 0.2
         
         add(child: tree)
         add(child: grass)

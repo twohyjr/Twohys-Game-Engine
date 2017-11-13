@@ -2,23 +2,27 @@ import MetalKit
 
 class Terrain: Primitive{
     
-    let GRID_SIZE: Int = 1000
-    let VERTEX_COUNT: Int = 500
+    let GRID_SIZE: Int = 255
+    let VERTEX_COUNT: Int = 255
+    let MAX_HEIGHT: Float = 8.0
+    let bmp: NSBitmapImageRep!
     
-    var generator = PerlinGenerator()
+    init(device: MTLDevice, textureName: String, heightMapImage: String){
+        
+        let url: URL = Bundle.main.url(forResource: heightMapImage, withExtension: nil)!
+        let image = NSImage(contentsOf: url)
+        bmp = image?.representations[0] as! NSBitmapImageRep
+        
+        
+        
+        super.init(device: device, textureName: textureName)
+    }
     
     override func buildVertices() {
-    
-        generator = PerlinGenerator()
-//        generator.octaves = 2 //1-7
-        generator.zoom = 6.0 //0.3 - 6
-        generator.persistence = 1 //0-1
-        
         for z in 0..<VERTEX_COUNT{
             for x in 0..<VERTEX_COUNT{
                 let vX: Float = Float(x) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
-//                let vY: Float = getHeight(x: x, z: z)
-                let vY: Float = 0.0
+                let vY: Float = getHeight(x: x, z: z)
                 let vZ: Float = Float(z) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
                 
                 let tX: Float = fmod(Float(x), 2.0)
@@ -30,8 +34,7 @@ class Terrain: Primitive{
                 
                 let textureCoordinate: float2  = float2(tX, tZ)
                 
-//                let normals: float3 = calculateNormal(x: x, z: z)
-                let normals = float3(0,1,0)
+                let normals: float3 = calculateNormal(x: x, z: z)
                 
                 vertices.append(Vertex(position: position, color: color,  normal: normals, textureCoordinate: textureCoordinate))
             }
@@ -54,7 +57,21 @@ class Terrain: Primitive{
     }
     
     func getHeight(x: Int, z: Int)->Float{
-        return generator.perlinNoise(Float(x), y: Float(z), z: 0, t: 0)  * 5
+//        let color = bmp.colorAt(x: x, y: z)
+        let imageHeight = bmp.pixelsHigh
+        if(x < 0 || x >= imageHeight || z < 0 || z >= imageHeight){
+            return 0.0
+        }
+//        var height = (color?.redComponent)! * (color?.greenComponent)! * (color?.blueComponent)!
+        var pixel: Int = 0
+        bmp.getPixel(&pixel, atX: x, y: z)
+        var height: Float = Float(pixel)
+        
+        height /= 255
+        height *= Float(MAX_HEIGHT)
+        print(height)
+        
+        return height
     }
     
     func calculateNormal(x: Int, z: Int)->float3{
@@ -66,5 +83,9 @@ class Terrain: Primitive{
         normal = normalize(normal)
         return normal
     }
+    
+    
+    
+    
     
 }

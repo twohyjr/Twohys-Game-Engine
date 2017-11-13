@@ -10,15 +10,16 @@ class GameScene: Scene{
     override func buildScene(device: MTLDevice) {
         super.buildScene(device: device)
         
-        mainTerrain = Terrain(device: device, textureName: "grass.png")
+        mainTerrain = Terrain(device: device, textureName: "", heightMapImage: "heightmap.png")
         mainTerrain.position.x = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
         mainTerrain.position.z = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
         mainTerrain.position.y = -1
+        mainTerrain.materialColor = float4(0.40)
         
         grass = Quad(device: device, textureName: "tall-grass.png")
         grass.position.z = -1
         grass.position.x = -4
-        grass.position.y = -0.3 //get terrain position
+        grass.position.y = mainTerrain.getHeight(x: Int(grass.position.x), z: Int(grass.position.z)) //get terrain position
         grass.scale = float3(0.7)
         
         
@@ -29,7 +30,7 @@ class GameScene: Scene{
         sun = Model(device: device, modelName: "sun", textureName: "")
         sun.materialColor = float4(0.9, 0.85,0.2,1)
         sun.scale = float3(0.5)
-        sun.position = float3(0,50,0)
+        sun.position = float3(0,3,0)
         light.position = sun.position
         add(child: sun)
         
@@ -44,6 +45,8 @@ class GameScene: Scene{
     override func updateModels(deltaTime: Float) {
         super.updateModels(deltaTime: deltaTime)
         tree.rotation.y += deltaTime
+        
+        player.position.y = mainTerrain.getHeight(x: Int(player.position.x), z: Int(player.position.z))
     }
 }
 

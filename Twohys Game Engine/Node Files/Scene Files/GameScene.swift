@@ -2,7 +2,6 @@ import MetalKit
 
 class GameScene: Scene{
     
-    var mainTerrain: Terrain!
     var sun: Model!
     var grass: Quad!
     var tree: Model!
@@ -19,9 +18,7 @@ class GameScene: Scene{
         grass = Quad(device: device, textureName: "tall-grass.png")
         grass.position.z = -1
         grass.position.x = -4
-        grass.position.y = mainTerrain.getHeight(x: Int(grass.position.x), z: Int(grass.position.z)) //get terrain position
         grass.scale = float3(0.7)
-        
         
         tree = Model(device: device, modelName: "lowpolytree", textureName: "")
         tree.materialColor = float4(0.2,0.63,0.13, 1)
@@ -45,8 +42,6 @@ class GameScene: Scene{
     override func updateModels(deltaTime: Float) {
         super.updateModels(deltaTime: deltaTime)
         tree.rotation.y += deltaTime
-        
-        player.position.y = mainTerrain.getHeight(x: Int(player.position.x), z: Int(player.position.z))
     }
 }
 

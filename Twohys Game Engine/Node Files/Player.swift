@@ -26,7 +26,7 @@ class Player: Armadillo{
         }
     }
     
-    public func update(deltaTime: Float){
+    public func update(deltaTime: Float, terrain: Terrain){
         rotation += float3(0, currentTurnSpeed * deltaTime, 0)
         let distance = currentSpeed * deltaTime
         let dx = distance * sin(rotation.y)
@@ -35,10 +35,11 @@ class Player: Armadillo{
         position.z -= dy
         upwardSpeed += GRAVITY * deltaTime
         position.y += upwardSpeed * deltaTime
-        if(position.y <= TERRAIN_HEIGHT){
+        let terrainHeight = terrain.GetHeightOfTerrain(worldX: self.position.x, worldZ: self.position.z)
+        if(position.y <= terrainHeight){
             upwardSpeed = 0
             isInAir = false
-            position.y = TERRAIN_HEIGHT
+            position.y = terrainHeight
         }
     }
     

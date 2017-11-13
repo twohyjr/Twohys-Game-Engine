@@ -4,10 +4,14 @@ class Terrain: Primitive{
     
     let GRID_SIZE: Int = 255
     let VERTEX_COUNT: Int = 255
-    let MAX_HEIGHT: Float = 8.0
+    let MAX_HEIGHT: Float = 5.0
     let bmp: NSBitmapImageRep!
     
+    var heights = [[Float]]()
+    
     init(device: MTLDevice, textureName: String, heightMapImage: String){
+        
+        heights = Array(repeating: Array(repeating: 0, count: VERTEX_COUNT), count: VERTEX_COUNT)
         
         let url: URL = Bundle.main.url(forResource: heightMapImage, withExtension: nil)!
         let image = NSImage(contentsOf: url)
@@ -22,8 +26,10 @@ class Terrain: Primitive{
         for z in 0..<VERTEX_COUNT{
             for x in 0..<VERTEX_COUNT{
                 let vX: Float = Float(x) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
-                let vY: Float = getHeight(x: x, z: z)
                 let vZ: Float = Float(z) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
+                let height = getHeight(x: x, z: z)
+                heights[x][z] = height
+                let vY: Float = height
                 
                 let tX: Float = fmod(Float(x), 2.0)
                 let tZ: Float = fmod(Float(z), 2.0)
@@ -56,21 +62,45 @@ class Terrain: Primitive{
         }
     }
     
-    func getHeight(x: Int, z: Int)->Float{
-//        let color = bmp.colorAt(x: x, y: z)
+    public func GetHeightOfTerrain(worldX: Float, worldZ: Float)->Float{
+        let terrainX: Float = worldX - self.position.x
+        let terrainZ: Float = worldZ - self.position.z
+        let gridSquareSize: Float = Float(GRID_SIZE) / Float(heights.count - 1)
+        let gridX: Int = Int(floor(terrainX / gridSquareSize))
+        let gridZ: Int = Int(floor(terrainZ / gridSquareSize))
+        if(gridX >= heights.count - 1 || gridZ >= heights.count - 1 || gridX < 0 || gridZ < 0){
+            return 0
+        }
+        
+        let xCoord = (terrainX.truncatingRemainder(dividingBy: gridSquareSize)) / gridSquareSize
+        let zCoord = (terrainZ.truncatingRemainder(dividingBy: gridSquareSize)) / gridSquareSize
+        
+        var result: Float = 0.0
+        if(xCoord <= (1 - zCoord)){
+            result = Maths.barryCentric(float3(0, heights[gridX][gridZ], 0), float3(1,
+                    heights[gridX + 1][gridZ], 0), float3(0,
+                    heights[gridX][gridZ + 1], 1), float2(xCoord, zCoord))
+        }else{
+            result = Maths.barryCentric(float3(1, heights[gridX + 1][gridZ], 0), float3(1,
+                    heights[gridX + 1][gridZ + 1], 1), float3(0,
+                    heights[gridX][gridZ + 1], 1), float2(xCoord, zCoord))
+        }
+        
+        return result
+    }
+    
+    private func getHeight(x: Int, z: Int)->Float{
         let imageHeight = bmp.pixelsHigh
         if(x < 0 || x >= imageHeight || z < 0 || z >= imageHeight){
             return 0.0
         }
-//        var height = (color?.redComponent)! * (color?.greenComponent)! * (color?.blueComponent)!
         var pixel: Int = 0
         bmp.getPixel(&pixel, atX: x, y: z)
         var height: Float = Float(pixel)
         
         height /= 255
         height *= Float(MAX_HEIGHT)
-        print(height)
-        
+
         return height
     }
     

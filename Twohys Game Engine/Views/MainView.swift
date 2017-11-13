@@ -48,8 +48,8 @@ class MainView: MTKView {
     //-------MOUSE EVENTS SECTION-------
     
     override func mouseMoved(with event: NSEvent) {
-        let x: Float = Float(event.locationInWindow.x)
-        let y: Float = Float(event.locationInWindow.y)
+//        let x: Float = Float(event.locationInWindow.x)
+//        let y: Float = Float(event.locationInWindow.y)
 //        MouseHandler.setOverallMousePosition(position: float2(x,y))
 //        MouseHandler.setMousePositionChange(position: float2(Float(event.deltaX), Float(event.deltaY)))
     }

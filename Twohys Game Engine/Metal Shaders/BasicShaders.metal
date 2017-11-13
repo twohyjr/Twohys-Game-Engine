@@ -121,8 +121,8 @@ fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
                                constant Light &light [[ buffer(1) ]]){
     float4 color = vIn.color;
     float visibility = vIn.visibility;
-    float3 unitEye = normalize(vIn.eyePosition);
-    float3 lightPosition = light.position;
+//    float3 unitEye = normalize(vIn.eyePosition);
+//    float3 lightPosition = light.position;
     float3 toLightVector = light.position - vIn.worldPosition;
     
     
@@ -163,8 +163,8 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
                                           constant Light &light [[ buffer(1) ]]){
     float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
     float visibility = vIn.visibility;
-    float3 unitEye = normalize(vIn.eyePosition);
-    float3 lightPosition = light.position;
+//    float3 unitEye = normalize(vIn.eyePosition);
+//    float3 lightPosition = light.position;
     float3 toLightVector = light.position - vIn.worldPosition;
     
     

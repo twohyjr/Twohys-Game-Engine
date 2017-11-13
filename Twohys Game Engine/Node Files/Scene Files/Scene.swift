@@ -7,6 +7,7 @@ class Scene: Node{
     var light = Light()
     var fog = Fog()
     var player: Player!
+    var mainTerrain: Terrain!
 
     init(device: MTLDevice){
         super.init()
@@ -43,7 +44,7 @@ class Scene: Node{
          if(InputHandler.isKeyPressed(key: KEY_CODES.Spacebar)){
              player.jump()
          }
-        player.update(deltaTime: deltaTime)
+        player.update(deltaTime: deltaTime, terrain: mainTerrain)
     }
     
     func updateModels(deltaTime: Float){

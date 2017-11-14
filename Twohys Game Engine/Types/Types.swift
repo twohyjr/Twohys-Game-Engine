@@ -10,8 +10,8 @@ struct Vertex{
 struct ModelConstants{
     var modelMatrix: matrix_float4x4 = matrix_identity_float4x4
     var normalMatrix = matrix_identity_float3x3
-    var shininess: Float = 10
-    var specularIntensity: Float = 4.0
+    var shininess: Float = 1
+    var specularIntensity: Float = 1.0
     var materialColor: float4 = float4(0.56,0.56,0.56,1.0)
 }
 

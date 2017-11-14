@@ -37,6 +37,8 @@ class GameScene: Scene{
         
         add(child: tree)
         add(child: grass)
+        add(child: player)
+        add(child: mainTerrain)
     }
 
     var time: Float = 0

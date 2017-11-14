@@ -121,8 +121,8 @@ fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
                                constant Light &light [[ buffer(1) ]]){
     float4 color = vIn.color;
     float visibility = vIn.visibility;
-//    float3 unitEye = normalize(vIn.eyePosition);
-//    float3 lightPosition = light.position;
+    float3 unitEye = normalize(vIn.eyePosition);
+    float3 lightPosition = light.position;
     float3 toLightVector = light.position - vIn.worldPosition;
     
     
@@ -137,17 +137,17 @@ fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
     float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
     
     
-//    //Specular Color
-//    float3 reflection = reflect(lightPosition, unitNormal);
-//    float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
-//    float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
+    //Specular Color
+    float3 reflection = reflect(lightPosition, unitNormal);
+    float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
+    float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
     
     if (color.a == 0.0){
         discard_fragment();
     }
 
     
-    color = color * float4(ambientColor + diffuseColor, 1);
+    color = color * float4(ambientColor + diffuseColor + specularColor, 1);
     
     
     

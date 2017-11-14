@@ -11,22 +11,11 @@ class Scene: Node{
 
     init(device: MTLDevice){
         super.init()
-        
-        if(player !== nil){
-            
-            camera = Camera(player: player)
-        }else{
-            camera = Camera()
-        }
+        player = Player(device: device)
+        camera = Camera(player: player)
         
         buildScene(device: device)
         
-        if(player !== nil){
-            add(child: player)
-        }
-        if(mainTerrain !== nil){
-            add(child: mainTerrain)
-        }
     }
 
     func buildScene(device: MTLDevice){ }
@@ -34,26 +23,30 @@ class Scene: Node{
     func checkKeyInput(){ }
     
     func updatePlayer(deltaTime: Float){
-         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Left)){
-             player.currentTurnSpeed = player.TURN_SPEED
-         }else if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Right)){
-             player.currentTurnSpeed = -player.TURN_SPEED
-         }else{
-             player.currentTurnSpeed = 0
-         }
-        
-         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Down)){
-             player.currentSpeed = -player.RUN_SPEED
-         }else if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Up)){
-             player.currentSpeed = player.RUN_SPEED
-         }else{
-             player.currentSpeed = 0
-         }
-        
-         if(InputHandler.isKeyPressed(key: KEY_CODES.Spacebar)){
-             player.jump()
-         }
-        player.update(deltaTime: deltaTime, terrain: mainTerrain)
+        if(player !== nil){
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Left)){
+                player.currentTurnSpeed = player.TURN_SPEED
+            }else if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Right)){
+                player.currentTurnSpeed = -player.TURN_SPEED
+            }else{
+                player.currentTurnSpeed = 0
+            }
+            
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Down)){
+                player.currentSpeed = -player.RUN_SPEED
+            }else if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Up)){
+                player.currentSpeed = player.RUN_SPEED
+            }else{
+                player.currentSpeed = 0
+            }
+            
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Spacebar)){
+                player.jump()
+            }
+            if(mainTerrain !== nil){
+                player.update(deltaTime: deltaTime, terrain: mainTerrain)
+            }
+        }
     }
     
     func updateModels(deltaTime: Float){
@@ -62,7 +55,9 @@ class Scene: Node{
     
     func updateCamera(deltaTime: Float){
         if(mainTerrain !== nil){
-            camera.update(terrain: mainTerrain)            
+            camera.update(height: mainTerrain.GetHeightOfTerrain(worldX: self.position.x, worldZ: self.position.z))
+        }else{
+            camera.update(height: 0)
         }
     }
     
@@ -84,9 +79,7 @@ class Scene: Node{
     func render(renderCommandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
         checkKeyInput()
         
-        if(player !== nil){
-            updateModels(deltaTime: deltaTime)
-        }
+        updateModels(deltaTime: deltaTime)
         
         updateCamera(deltaTime: deltaTime)
         

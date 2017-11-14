@@ -162,18 +162,19 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
                                           texture2d<float> texture [[ texture(0) ]],
                                           constant Light &light [[ buffer(1) ]]){
     float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
+    color *= 2.0;
     float visibility = vIn.visibility;
-//    float3 unitEye = normalize(vIn.eyePosition);
-//    float3 lightPosition = light.position;
+    //    float3 unitEye = normalize(vIn.eyePosition);
+    //    float3 lightPosition = light.position;
     float3 toLightVector = light.position - vIn.worldPosition;
-    
-    
+//
+
     float3 unitNormal = normalize(vIn.surfaceNormal);
     float3 unitLightVector = normalize(toLightVector);
-    
+//
     //Ambient Color
     float3 ambientColor = light.color * light.ambientIntensity;
-    
+
     //Diffuse Color
     float diffuseFactor = saturate(-dot(unitNormal, unitLightVector));
     float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
@@ -187,14 +188,13 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
     if (color.a == 0.0){
         discard_fragment();
     }
-    
-    
-    color = color * float4(ambientColor + diffuseColor, 1) * light.brightness;
-    
-    
-    
-    color = mix(float4(vIn.skyColor, 1), color, visibility);
-    
+//
+//
+    color = color * float4(ambientColor + diffuseColor, 1);
+//
+//
+//    color = mix(float4(vIn.skyColor, 1), color, visibility);
+//
     
     return half4(color.x, color.y, color.z, 1);
 }

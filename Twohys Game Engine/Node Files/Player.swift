@@ -2,7 +2,7 @@ import MetalKit
 
 class Player: Armadillo{
     
-    var RUN_SPEED: Float = 5
+    var RUN_SPEED: Float = 20
     var TURN_SPEED: Float = 3
     var GRAVITY: Float = -50
     var JUMP_POWER: Float = 10
@@ -35,7 +35,7 @@ class Player: Armadillo{
         position.z -= dy
         upwardSpeed += GRAVITY * deltaTime
         position.y += upwardSpeed * deltaTime
-        let terrainHeight = terrain.GetHeightOfTerrain(worldX: self.position.x, worldZ: self.position.z)
+        let terrainHeight = terrain.GetHeightOfTerrain(worldX: self.position.x, worldZ: self.position.z) + 0.2
         if(position.y <= terrainHeight){
             upwardSpeed = 0
             isInAir = false

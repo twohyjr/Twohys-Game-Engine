@@ -13,7 +13,7 @@
 		BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */ = {isa = PBXBuildFile; fileRef = BD12E1251FA2CBC500EC67C6 /* bright.png */; };
 		BD12E1281FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */; };
 		BD418EEC1FB8A5FF00AE9D33 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD418EEB1FB8A5FF00AE9D33 /* ImageHandler.swift */; };
-		BD418EEE1FB8AE2300AE9D33 /* heightmap.png in Resources */ = {isa = PBXBuildFile; fileRef = BD418EED1FB8AE2300AE9D33 /* heightmap.png */; };
+		BD418EF01FBA80A200AE9D33 /* heightmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD418EEF1FBA80A200AE9D33 /* heightmap.jpg */; };
 		BD5D34691FA7EF0100F5CC24 /* f16.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD5D34681FA7EF0100F5CC24 /* f16.obj */; };
 		BD5D346B1FA7EF3A00F5CC24 /* F16s.bmp in Resources */ = {isa = PBXBuildFile; fileRef = BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */; };
 		BD5D34711FA8E13000F5CC24 /* ModelInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */; };
@@ -81,7 +81,7 @@
 		BD12E1251FA2CBC500EC67C6 /* bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bright.png; path = ../../../../../../Desktop/bright.png; sourceTree = "<group>"; };
 		BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturableFlashPipelineState.swift; sourceTree = "<group>"; };
 		BD418EEB1FB8A5FF00AE9D33 /* ImageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
-		BD418EED1FB8AE2300AE9D33 /* heightmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heightmap.png; sourceTree = "<group>"; };
+		BD418EEF1FBA80A200AE9D33 /* heightmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = heightmap.jpg; sourceTree = "<group>"; };
 		BD5D34681FA7EF0100F5CC24 /* f16.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = f16.obj; path = "../../../../../../Desktop/f16 2/f16.obj"; sourceTree = "<group>"; };
 		BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = F16s.bmp; path = "../../../../../../Desktop/f16 2/F16s.bmp"; sourceTree = "<group>"; };
 		BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInstances.swift; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		BD12E1241FA2CB5400EC67C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				BD418EED1FB8AE2300AE9D33 /* heightmap.png */,
+				BD418EEF1FBA80A200AE9D33 /* heightmap.jpg */,
 				BD9730341FB3DBD60055658E /* tall-grass.png */,
 				BD041C081FAAB1920045CD1B /* grass.png */,
 				BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */,
@@ -507,7 +507,7 @@
 				BDB792EA1FA7DB8C00A8367F /* armadillo.obj in Resources */,
 				BD9730391FB3E7850055658E /* lowpolytree.obj in Resources */,
 				BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */,
-				BD418EEE1FB8AE2300AE9D33 /* heightmap.png in Resources */,
+				BD418EF01FBA80A200AE9D33 /* heightmap.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

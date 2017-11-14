@@ -2,20 +2,23 @@ import MetalKit
 
 class Terrain: Primitive{
     
-    let GRID_SIZE: Int = 255
-    let VERTEX_COUNT: Int = 255
-    let MAX_HEIGHT: Float = 5.0
+    let GRID_SIZE: Int = 800
+    var VERTEX_COUNT: Int = 0
+    let MAX_HEIGHT: Float = 20.0
+    let MAX_PIXEL_COLOR = 255 * 255 * 255
     let bmp: NSBitmapImageRep!
     
     var heights = [[Float]]()
     
     init(device: MTLDevice, textureName: String, heightMapImage: String){
         
-        heights = Array(repeating: Array(repeating: 0, count: VERTEX_COUNT), count: VERTEX_COUNT)
         
         let url: URL = Bundle.main.url(forResource: heightMapImage, withExtension: nil)!
         let image = NSImage(contentsOf: url)
         bmp = image?.representations[0] as! NSBitmapImageRep
+        VERTEX_COUNT = Int((image?.size.width)!)
+
+        heights = Array(repeating: Array(repeating: 0, count: VERTEX_COUNT), count: VERTEX_COUNT)
         
         
         
@@ -23,6 +26,7 @@ class Terrain: Primitive{
     }
     
     override func buildVertices() {
+        print(VERTEX_COUNT)
         for z in 0..<VERTEX_COUNT{
             for x in 0..<VERTEX_COUNT{
                 let vX: Float = Float(x) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
@@ -97,9 +101,9 @@ class Terrain: Primitive{
         var pixel: Int = 0
         bmp.getPixel(&pixel, atX: x, y: z)
         var height: Float = Float(pixel)
-        
-        height /= 255
-        height *= Float(MAX_HEIGHT)
+        height += Float(255)
+        height /= Float(255 / 2)
+        height *= MAX_HEIGHT
 
         return height
     }

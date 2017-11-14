@@ -28,7 +28,7 @@ class GameScene: Scene{
         sun = Model(device: device, modelName: "sun", textureName: "")
         sun.materialColor = float4(0.9, 0.85,0.2,1)
         sun.scale = float3(0.5)
-        sun.position = float3(0,30,0)
+        sun.position = float3(0,mainTerrain.GetHeightOfTerrain(worldX: grass.position.x, worldZ: grass.position.z) + 4,0)
         light.position = sun.position
         add(child: sun)
         
@@ -40,9 +40,11 @@ class GameScene: Scene{
         add(child: mainTerrain)
     }
 
+    var time: Float = 0
     override func updateModels(deltaTime: Float) {
         super.updateModels(deltaTime: deltaTime)
         tree.rotation.y += deltaTime
+        time += deltaTime
     }
 }
 

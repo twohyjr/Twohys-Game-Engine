@@ -52,7 +52,7 @@ class Scene: Node{
     }
     
     func updateCamera(deltaTime: Float){
-        camera.update()
+        camera.update(terrain: mainTerrain)
     }
     
     func doRender(renderCommandEncoder: MTLRenderCommandEncoder){

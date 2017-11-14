@@ -31,7 +31,7 @@ class Camera: Node{
         self.player = player
     }
     
-    func update(){
+    func update(terrain: Terrain){
         calculateZoom()
         calculatePitch()
         calculateAngleAroundPlayer()
@@ -40,6 +40,10 @@ class Camera: Node{
         let verticalDistance = calculateVerticalDistance()
         calculateCameraPosition(horizontalDistance: horizontalDistance, verticalDistance: verticalDistance)
         yaw = -(player.rotation.y + angleAroundPlayer)
+        let height = terrain.GetHeightOfTerrain(worldX: self.position.x, worldZ: self.position.z)
+        if(self.position.y <= height){
+            self.position.y = height + 0.2
+        }
         
     }
     

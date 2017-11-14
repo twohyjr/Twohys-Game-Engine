@@ -5,7 +5,7 @@ class Player: Armadillo{
     var RUN_SPEED: Float = 20
     var TURN_SPEED: Float = 3
     var GRAVITY: Float = -50
-    var JUMP_POWER: Float = 10
+    var JUMP_POWER: Float = 20
     var TERRAIN_HEIGHT: Float = 0
     
     var currentSpeed: Float = 0

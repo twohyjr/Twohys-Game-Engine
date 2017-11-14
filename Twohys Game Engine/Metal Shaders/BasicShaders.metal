@@ -193,7 +193,7 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
     color = color * float4(ambientColor + diffuseColor, 1);
 //
 //
-//    color = mix(float4(vIn.skyColor, 1), color, visibility);
+    color = mix(float4(vIn.skyColor, 1), color, visibility);
 //
     
     return half4(color.x, color.y, color.z, 1);

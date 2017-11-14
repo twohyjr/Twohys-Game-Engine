@@ -32,8 +32,8 @@ class GameScene: Scene{
         light.position = sun.position
         add(child: sun)
         
-        fog.density = 0.00001
-        fog.gradient = 0.2
+        fog.density = 0.015
+        fog.gradient = 2.0
         
         add(child: tree)
         add(child: grass)

@@ -11,13 +11,22 @@ class Scene: Node{
 
     init(device: MTLDevice){
         super.init()
-        player = Player(device: device)
         
-        camera = Camera(player: player)
+        if(player !== nil){
+            
+            camera = Camera(player: player)
+        }else{
+            camera = Camera()
+        }
         
         buildScene(device: device)
         
-        add(child: player)
+        if(player !== nil){
+            add(child: player)
+        }
+        if(mainTerrain !== nil){
+            add(child: mainTerrain)
+        }
     }
 
     func buildScene(device: MTLDevice){ }
@@ -52,7 +61,9 @@ class Scene: Node{
     }
     
     func updateCamera(deltaTime: Float){
-        camera.update(terrain: mainTerrain)
+        if(mainTerrain !== nil){
+            camera.update(terrain: mainTerrain)            
+        }
     }
     
     func doRender(renderCommandEncoder: MTLRenderCommandEncoder){
@@ -73,7 +84,9 @@ class Scene: Node{
     func render(renderCommandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
         checkKeyInput()
         
-        updateModels(deltaTime: deltaTime)
+        if(player !== nil){
+            updateModels(deltaTime: deltaTime)
+        }
         
         updateCamera(deltaTime: deltaTime)
         

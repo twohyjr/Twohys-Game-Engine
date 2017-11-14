@@ -14,6 +14,7 @@
 		BD12E1281FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */; };
 		BD418EEC1FB8A5FF00AE9D33 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD418EEB1FB8A5FF00AE9D33 /* ImageHandler.swift */; };
 		BD418EF01FBA80A200AE9D33 /* heightmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD418EEF1FBA80A200AE9D33 /* heightmap.jpg */; };
+		BD418EF21FBA964900AE9D33 /* ModelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD418EF11FBA964900AE9D33 /* ModelScene.swift */; };
 		BD5D34691FA7EF0100F5CC24 /* f16.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD5D34681FA7EF0100F5CC24 /* f16.obj */; };
 		BD5D346B1FA7EF3A00F5CC24 /* F16s.bmp in Resources */ = {isa = PBXBuildFile; fileRef = BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */; };
 		BD5D34711FA8E13000F5CC24 /* ModelInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */; };
@@ -82,6 +83,7 @@
 		BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturableFlashPipelineState.swift; sourceTree = "<group>"; };
 		BD418EEB1FB8A5FF00AE9D33 /* ImageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 		BD418EEF1FBA80A200AE9D33 /* heightmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = heightmap.jpg; sourceTree = "<group>"; };
+		BD418EF11FBA964900AE9D33 /* ModelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelScene.swift; sourceTree = "<group>"; };
 		BD5D34681FA7EF0100F5CC24 /* f16.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = f16.obj; path = "../../../../../../Desktop/f16 2/f16.obj"; sourceTree = "<group>"; };
 		BD5D346A1FA7EF3A00F5CC24 /* F16s.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = F16s.bmp; path = "../../../../../../Desktop/f16 2/F16s.bmp"; sourceTree = "<group>"; };
 		BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInstances.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				BDF087CC1F9EEDE700F68ACD /* Scene.swift */,
 				BDFB856A1FA16B15004820BC /* CircleScene.swift */,
 				BD041C021FAA3B080045CD1B /* GameScene.swift */,
+				BD418EF11FBA964900AE9D33 /* ModelScene.swift */,
 				BDCB36371FA1914500716697 /* PlaygroundScene1.swift */,
 			);
 			path = "Scene Files";
@@ -562,6 +565,7 @@
 				BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */,
 				BDF087C91F9EEB9300F68ACD /* Primitive.swift in Sources */,
 				BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */,
+				BD418EF21FBA964900AE9D33 /* ModelScene.swift in Sources */,
 				BDB6FCB81F92A2CE00A15655 /* MainView.swift in Sources */,
 				BDB027691FA54F6D0064A544 /* Terrain.swift in Sources */,
 				BDB6FC8D1F92A15B00A15655 /* Twohys_Game_Engine.xcdatamodeld in Sources */,

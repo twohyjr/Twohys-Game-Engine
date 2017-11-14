@@ -31,6 +31,10 @@ class Camera: Node{
         self.player = player
     }
     
+    override init(){
+        super.init()
+    }
+    
     func update(terrain: Terrain){
         calculateZoom()
         calculatePitch()
@@ -44,7 +48,6 @@ class Camera: Node{
         if(self.position.y <= height){
             self.position.y = height + 0.2
         }
-        
     }
     
     private func calculateCameraPosition(horizontalDistance: Float, verticalDistance: Float){

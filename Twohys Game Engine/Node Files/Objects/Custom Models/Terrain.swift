@@ -2,35 +2,30 @@ import MetalKit
 
 class Terrain: Primitive{
     
-    let GRID_SIZE: Int = 800
-    var VERTEX_COUNT: Int = 0
-    let MAX_HEIGHT: Float = 20.0
-    let MAX_PIXEL_COLOR = 255 * 255 * 255
-    let bmp: NSBitmapImageRep!
+    public var gridSize: Int = 0
+    private var vertexCount: Int = 0
+    
+    private var maxHeight: Float = 20.0
+    
+    private var bmp: NSBitmapImageRep!
     
     var heights = [[Float]]()
     
-    init(device: MTLDevice, textureName: String, heightMapImage: String){
-        
-        
+    init(device: MTLDevice, gridSize: Int, textureName: String, heightMapImage: String){
+        self.gridSize = gridSize
         let url: URL = Bundle.main.url(forResource: heightMapImage, withExtension: nil)!
         let image = NSImage(contentsOf: url)
         bmp = image?.representations[0] as! NSBitmapImageRep
-        VERTEX_COUNT = Int((image?.size.width)!)
-
-        heights = Array(repeating: Array(repeating: 0, count: VERTEX_COUNT), count: VERTEX_COUNT)
-        
-        
-        
+        vertexCount = Int((image?.size.width)!)
+        heights = Array(repeating: Array(repeating: 0, count: vertexCount), count: vertexCount)
         super.init(device: device, textureName: textureName)
     }
     
     override func buildVertices() {
-        print(VERTEX_COUNT)
-        for z in 0..<VERTEX_COUNT{
-            for x in 0..<VERTEX_COUNT{
-                let vX: Float = Float(x) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
-                let vZ: Float = Float(z) / Float(Float(VERTEX_COUNT) - Float(1)) * Float(GRID_SIZE)
+        for z in 0..<vertexCount{
+            for x in 0..<vertexCount{
+                let vX: Float = Float(x) / Float(Float(vertexCount) - Float(1)) * Float(gridSize)
+                let vZ: Float = Float(z) / Float(Float(vertexCount) - Float(1)) * Float(gridSize)
                 let height = getHeight(x: x, z: z)
                 heights[x][z] = height
                 let vY: Float = height
@@ -50,11 +45,11 @@ class Terrain: Primitive{
             }
         }
         
-        for gz in 0..<VERTEX_COUNT-1{
-            for gx in 0..<VERTEX_COUNT-1{
-                let topLeft: UInt32 = UInt32(gz * VERTEX_COUNT + gx)
+        for gz in 0..<vertexCount-1{
+            for gx in 0..<vertexCount-1{
+                let topLeft: UInt32 = UInt32(gz * vertexCount + gx)
                 let topRight: UInt32 = (topLeft + UInt32(1))
-                let bottomLeft: UInt32 = UInt32(((gz + 1) * VERTEX_COUNT) + gx)
+                let bottomLeft: UInt32 = UInt32(((gz + 1) * vertexCount) + gx)
                 let bottomRight: UInt32 = (bottomLeft + UInt32(1))
                 indices.append(topLeft)
                 indices.append(bottomLeft)
@@ -69,7 +64,7 @@ class Terrain: Primitive{
     public func GetHeightOfTerrain(worldX: Float, worldZ: Float)->Float{
         let terrainX: Float = worldX - self.position.x
         let terrainZ: Float = worldZ - self.position.z
-        let gridSquareSize: Float = Float(GRID_SIZE) / Float(heights.count - 1)
+        let gridSquareSize: Float = Float(gridSize) / Float(heights.count - 1)
         let gridX: Int = Int(floor(terrainX / gridSquareSize))
         let gridZ: Int = Int(floor(terrainZ / gridSquareSize))
         if(gridX >= heights.count - 1 || gridZ >= heights.count - 1 || gridX < 0 || gridZ < 0){
@@ -103,7 +98,7 @@ class Terrain: Primitive{
         var height: Float = Float(pixel)
         height += Float(255)
         height /= Float(255 / 2)
-        height *= MAX_HEIGHT
+        height *= maxHeight
 
         return height
     }

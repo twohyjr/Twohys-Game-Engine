@@ -9,9 +9,9 @@ class GameScene: Scene{
     override func buildScene(device: MTLDevice) {
         super.buildScene(device: device)
         
-        mainTerrain = Terrain(device: device, textureName: "grass.png", heightMapImage: "heightmap.jpg")
-        mainTerrain.position.x = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
-        mainTerrain.position.z = -Float(mainTerrain.GRID_SIZE) / Float(2.0)
+        mainTerrain = Terrain(device: device, gridSize: 800, textureName: "grass.png", heightMapImage: "heightmap.jpg")
+        mainTerrain.position.x = -Float(mainTerrain.gridSize) / Float(2.0)
+        mainTerrain.position.z = -Float(mainTerrain.gridSize) / Float(2.0)
         mainTerrain.position.y = -1
         mainTerrain.materialColor = float4(0.40)
         
@@ -37,7 +37,6 @@ class GameScene: Scene{
         
         add(child: tree)
         add(child: grass)
-        add(child: mainTerrain)
     }
 
     var time: Float = 0

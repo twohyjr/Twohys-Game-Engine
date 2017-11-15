@@ -15,8 +15,8 @@ class Armadillo: Model{
     }
     
     func initialize(){
-        self.shininess = 60
-        self.specularIntensity = 10
+        self.shininess = 0.1
+        self.specularIntensity = 0.1
         self.materialColor = float4(0.3, 0.5, 0.4, 1.0)
     }
     

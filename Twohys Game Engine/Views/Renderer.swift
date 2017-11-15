@@ -30,7 +30,7 @@ class Renderer: NSObject{
         
         commandQueue = device.makeCommandQueue()
         FlashPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
-        scene = ModelScene(device: device)
+        scene = GameScene(device: device)
         scene.camera.aspectRatio = Float(mtkView.drawableSize.width) / Float(mtkView.drawableSize.height)
         buildDepthStencilState(device: device)
         buildSamplerState(device: device)

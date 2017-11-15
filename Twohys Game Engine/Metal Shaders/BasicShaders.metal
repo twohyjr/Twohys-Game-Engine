@@ -147,7 +147,7 @@ fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
     }
 
     
-    color = color * float4(ambientColor + diffuseColor + specularColor, 1);
+    color = color * float4(ambientColor + diffuseColor, 1);
     
     
     

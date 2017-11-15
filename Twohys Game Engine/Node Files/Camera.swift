@@ -35,7 +35,7 @@ class Camera: Node{
         super.init()
     }
     
-    func update(height: Float){
+    func update(){
         calculateZoom()
         calculatePitch()
         calculateAngleAroundPlayer()
@@ -44,9 +44,6 @@ class Camera: Node{
         let verticalDistance = calculateVerticalDistance()
         calculateCameraPosition(horizontalDistance: horizontalDistance, verticalDistance: verticalDistance)
         yaw = -(player.rotation.y + angleAroundPlayer)
-        if(self.position.y <= height){
-            self.position.y = height + 0.2
-        }
     }
     
     private func calculateCameraPosition(horizontalDistance: Float, verticalDistance: Float){

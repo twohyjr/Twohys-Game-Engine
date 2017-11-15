@@ -14,12 +14,12 @@ struct VertexOut{
     float4 color;
     float2 textureCoordinate;
     float3 surfaceNormal;
-    float3 eyePosition;
     float shininess;
     float specularIntensity;
     float visibility;
     float3 skyColor;
-    float3 worldPosition;
+    float4 worldPosition;
+    float3 toCameraVector;
 };
 
 struct ModelConstants{
@@ -36,6 +36,7 @@ struct SceneConstants{
     float fogDensity;
     float fogGradient;
     float4x4 viewMatrix;
+    float4x4 inverseViewMatrix;
 };
 
 
@@ -50,38 +51,28 @@ struct Light{
 vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
                               constant SceneConstants &sceneConstants [[ buffer(1) ]],
                               constant ModelConstants &modelConstants [[ buffer(2) ]]){
-    
+
     VertexOut vOut;
     
     float4x4 transformationMatrix = modelConstants.modelMatrix;
-    float4 worldPosition =  transformationMatrix * float4(vIn.position,1);
-    vOut.position = sceneConstants.projectionMatrix * sceneConstants.viewMatrix *  worldPosition;
+    float4 worldPosition = transformationMatrix * float4(vIn.position, 1.0);
+    vOut.position = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * worldPosition;
+    vOut.worldPosition = worldPosition;
+    vOut.surfaceNormal = (transformationMatrix * float4(vIn.normal, 0.0)).xyz;
+    vOut.toCameraVector = (sceneConstants.inverseViewMatrix * float4(0.0,0.0,0.0,1.0)).xyz - worldPosition.xyz;
     
-    vOut.surfaceNormal =  -(transformationMatrix * float4(vIn.normal,0)).xyz;
-    vOut.worldPosition = worldPosition.xyz;
-    
-    
-    float distance = length(vOut.position.xyz);
-    float visibility = exp(-pow((distance * sceneConstants.fogDensity),sceneConstants.fogGradient));
-    visibility = clamp(visibility, 0.0, 1.0);
-    
-    vOut.visibility = visibility;
-    
-    vOut.textureCoordinate = vIn.textureCoordinate;
-    
-    
-//    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
-    vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = modelConstants.shininess;
+    vOut.color = modelConstants.materialColor;
+    vOut.textureCoordinate = vIn.textureCoordinate;
     vOut.specularIntensity = modelConstants.specularIntensity;
     vOut.skyColor = sceneConstants.skyColor;
     
-    if(vIn.color.x == 0 && vIn.color.y == 0 && vIn.color.z == 0){
-        vOut.color = modelConstants.materialColor;
-    }else{
-        vOut.color = vIn.color;
-    }
-
+    //FOG
+    float distance = length(vOut.position.xyz);
+    float visibility = exp(-pow((distance * sceneConstants.fogDensity),sceneConstants.fogGradient));
+    visibility = clamp(visibility, 0.0, 1.0);
+    vOut.visibility = visibility;
+    
     return vOut;
 }
 
@@ -103,8 +94,6 @@ vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
     
     vOut.textureCoordinate = vIn.textureCoordinate;
     vOut.surfaceNormal = constants.normalMatrix * vIn.normal;
-    //    vOut.surfaceNormal = worldPosition.xyz * vIn.normal;
-    vOut.eyePosition = worldPosition.xyz;
     vOut.shininess = constants.shininess;
     vOut.specularIntensity = constants.specularIntensity;
     vOut.skyColor = sceneConstants.skyColor;
@@ -119,42 +108,39 @@ vertex VertexOut instanceVertexShader(const VertexIn vIn [[ stage_in ]],
 
 fragment half4 fragmentShader(VertexOut vIn [[ stage_in ]],
                                constant Light &light [[ buffer(1) ]]){
+
     float4 color = vIn.color;
-    float visibility = vIn.visibility;
-    float3 unitEye = normalize(vIn.eyePosition);
-    float3 lightPosition = light.position;
-    float3 toLightVector = light.position - vIn.worldPosition;
     
+    float visibility = vIn.visibility;
+    float3 toLightVector = light.position - vIn.worldPosition.xyz;
     
     float3 unitNormal = normalize(vIn.surfaceNormal);
     float3 unitLightVector = normalize(toLightVector);
     
-    //Ambient Color
-    float3 ambientColor = light.color * light.ambientIntensity;
+    float3 ambient = light.color * light.ambientIntensity;
     
-    //Diffuse Color
-    float diffuseFactor = saturate(-dot(unitNormal, unitLightVector));
-    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
+    float nDot1 = dot(unitNormal, unitLightVector);
+    float brightness = max(nDot1, 0.0);
+    float3 diffuse = brightness * light.color * light.brightness;
     
+    float3 unitVectorToCamera = normalize(vIn.toCameraVector);
+    float3 lightDirection = -unitLightVector;
+    float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
     
-    //Specular Color
-    float3 reflection = reflect(lightPosition, unitNormal);
-    float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
-    float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
+    float specularFactor = saturate(dot(reflectedLightDirection, unitVectorToCamera));
+    specularFactor = max(specularFactor, 0.0);
+    float dampedFactor = pow(specularFactor, vIn.shininess);
+    float3 finalSpecular = dampedFactor * vIn.specularIntensity * light.color;
+    
+    color = color * (float4(diffuse, 1.0) + float4(finalSpecular, 1.0) + float4(ambient,1)) * light.brightness;
     
     if (color.a == 0.0){
         discard_fragment();
     }
-
-    
-    color = color * float4(ambientColor + diffuseColor, 1);
-    
-    
     
     color = mix(float4(vIn.skyColor, 1), color, visibility);
-    
-    
-    return half4(color.x, color.y, color.z, 1)* light.brightness;
+
+    return half4(color.x, color.y, color.z, 1);
 }
 
 fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
@@ -162,40 +148,34 @@ fragment half4 texturedFragmentShader(VertexOut vIn [[ stage_in ]],
                                           texture2d<float> texture [[ texture(0) ]],
                                           constant Light &light [[ buffer(1) ]]){
     float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
-    color *= 2.0;
     float visibility = vIn.visibility;
-    //    float3 unitEye = normalize(vIn.eyePosition);
-    //    float3 lightPosition = light.position;
-    float3 toLightVector = light.position - vIn.worldPosition;
-//
-
+    float3 toLightVector = light.position - vIn.worldPosition.xyz;
+    
     float3 unitNormal = normalize(vIn.surfaceNormal);
     float3 unitLightVector = normalize(toLightVector);
-//
-    //Ambient Color
-    float3 ambientColor = light.color * light.ambientIntensity;
-
-    //Diffuse Color
-    float diffuseFactor = saturate(-dot(unitNormal, unitLightVector));
-    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
     
+    float3 ambient = light.color * light.ambientIntensity;
     
-    //    //Specular Color
-    //    float3 reflection = reflect(lightPosition, unitNormal);
-    //    float specularFactor = pow(saturate(-dot(reflection, unitEye)), vIn.shininess);
-    //    float3 specularColor = light.color * vIn.specularIntensity * specularFactor;
+    float nDot1 = dot(unitNormal, unitLightVector);
+    float brightness = max(nDot1, 0.0);
+    float3 diffuse = brightness * light.color;
+    
+    float3 unitVectorToCamera = normalize(vIn.toCameraVector);
+    float3 lightDirection = -unitLightVector;
+    float3 reflectedLightDirection = reflect(lightDirection, unitNormal);
+    
+    float specularFactor = saturate(dot(reflectedLightDirection, unitVectorToCamera));
+    specularFactor = max(specularFactor, 0.0);
+    float dampedFactor = pow(specularFactor, vIn.shininess);
+    float3 finalSpecular = dampedFactor * vIn.specularIntensity * light.color;
+    
+    color = color * (float4(diffuse, 1.0) + float4(finalSpecular, 1.0) + float4(ambient,1)) * light.brightness;
     
     if (color.a == 0.0){
         discard_fragment();
     }
-//
-//
-    color = color * float4(ambientColor + diffuseColor, 1);
-//
-//
-    color = mix(float4(vIn.skyColor, 1), color, visibility);
-//
     
+    color = mix(float4(vIn.skyColor, 1), color, visibility);
     return half4(color.x, color.y, color.z, 1);
 }
 

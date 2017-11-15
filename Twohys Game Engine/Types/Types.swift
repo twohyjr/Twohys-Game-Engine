@@ -21,13 +21,14 @@ struct SceneConstants{
     var fogDensity: Float = 0.0
     var fogGradient: Float = 0.0
     var viewMatrix: matrix_float4x4 = matrix_identity_float4x4
+    var inverseViewMatrix: matrix_float4x4 = matrix_identity_float4x4
 }
 
 struct Light{
     var position: float3 = float3(0.0)
     var color: float3 = float3(1)
     var brightness: Float = 1.0
-    var ambientIntensity: Float = 0.8
+    var ambientIntensity: Float = 0.3
     var diffuseIntensity: Float = 1.0
 }
 

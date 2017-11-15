@@ -28,11 +28,16 @@ class GameScene: Scene{
         sun = Model(device: device, modelName: "sun", textureName: "")
         sun.materialColor = float4(0.9, 0.85,0.2,1)
         sun.scale = float3(0.5)
-        sun.position = float3(0,mainTerrain.GetHeightOfTerrain(worldX: grass.position.x, worldZ: grass.position.z) + 4,0)
+        sun.position = float3(0,mainTerrain.GetHeightOfTerrain(worldX: grass.position.x, worldZ: grass.position.z) + 50,30)
         light.position = sun.position
+        light.brightness = 1.5
         add(child: sun)
         
-        fog.density = 0.015
+        player.specularIntensity = 1.0
+        player.shininess = 10.0
+
+        
+        fog.density = 0.001
         fog.gradient = 2.0
         
         add(child: tree)

@@ -54,11 +54,7 @@ class Scene: Node{
     }
     
     func updateCamera(deltaTime: Float){
-        if(mainTerrain !== nil){
-            camera.update(height: mainTerrain.GetHeightOfTerrain(worldX: self.position.x, worldZ: self.position.z))
-        }else{
-            camera.update(height: 0)
-        }
+        camera.update()
     }
     
     func doRender(renderCommandEncoder: MTLRenderCommandEncoder){
@@ -66,6 +62,7 @@ class Scene: Node{
         sceneConstants.fogGradient = fog.gradient
         sceneConstants.fogDensity = fog.density
         sceneConstants.viewMatrix = camera.viewMatrix
+        sceneConstants.inverseViewMatrix = camera.viewMatrix.inverse
         
         
         renderCommandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, index: 1)

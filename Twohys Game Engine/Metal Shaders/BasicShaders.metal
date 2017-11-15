@@ -54,6 +54,7 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
 
     VertexOut vOut;
     
+    //Vertex Position Descriptors
     float4x4 transformationMatrix = modelConstants.modelMatrix;
     float4 worldPosition = transformationMatrix * float4(vIn.position, 1.0);
     vOut.position = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * worldPosition;
@@ -61,6 +62,7 @@ vertex VertexOut vertexShader(const VertexIn vIn [[ stage_in ]],
     vOut.surfaceNormal = (transformationMatrix * float4(vIn.normal, 0.0)).xyz;
     vOut.toCameraVector = (sceneConstants.inverseViewMatrix * float4(0.0,0.0,0.0,1.0)).xyz - worldPosition.xyz;
     
+    //Coloring
     vOut.shininess = modelConstants.shininess;
     vOut.color = modelConstants.materialColor;
     vOut.textureCoordinate = vIn.textureCoordinate;

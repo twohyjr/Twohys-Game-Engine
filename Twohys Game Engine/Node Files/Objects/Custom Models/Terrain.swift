@@ -13,10 +13,14 @@ class Terrain: Primitive{
     
     init(device: MTLDevice, gridSize: Int, textureName: String, heightMapImage: String){
         self.gridSize = gridSize
-        let url: URL = Bundle.main.url(forResource: heightMapImage, withExtension: nil)!
-        let image = NSImage(contentsOf: url)
-        bmp = image?.representations[0] as! NSBitmapImageRep
-        vertexCount = Int((image?.size.width)!)
+        if(heightMapImage != ""){
+            let url: URL = Bundle.main.url(forResource: heightMapImage, withExtension: nil)!
+            let image = NSImage(contentsOf: url)
+            bmp = image?.representations[0] as! NSBitmapImageRep
+            vertexCount = Int((image?.size.width)!)
+        }else{
+            vertexCount = 256
+        }
         heights = Array(repeating: Array(repeating: 0, count: vertexCount), count: vertexCount)
         super.init(device: device, textureName: textureName)
     }
@@ -62,6 +66,9 @@ class Terrain: Primitive{
     }
     
     public func GetHeightOfTerrain(worldX: Float, worldZ: Float)->Float{
+        if(bmp == nil){
+            return 0
+        }
         let terrainX: Float = worldX - self.position.x
         let terrainZ: Float = worldZ - self.position.z
         let gridSquareSize: Float = Float(gridSize) / Float(heights.count - 1)
@@ -89,6 +96,9 @@ class Terrain: Primitive{
     }
     
     private func getHeight(x: Int, z: Int)->Float{
+        if(bmp == nil){
+            return 0
+        }
         let imageHeight = bmp.pixelsHigh
         if(x < 0 || x >= imageHeight || z < 0 || z >= imageHeight){
             return 0.0

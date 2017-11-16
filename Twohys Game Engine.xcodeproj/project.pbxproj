@@ -48,6 +48,31 @@
 		BDE460DD1FA02C8D00F126CB /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE460DC1FA02C8D00F126CB /* Camera.swift */; };
 		BDEAAC8C1FBD315900128D70 /* TerrainShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDEAAC8B1FBD315900128D70 /* TerrainShader.metal */; };
 		BDEAAC8E1FBD31B300128D70 /* TerrainFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAAC8D1FBD31B300128D70 /* TerrainFlashPipelineState.swift */; };
+		BDEAACAB1FBE5D9200128D70 /* stall.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC921FBE5D9200128D70 /* stall.obj */; };
+		BDEAACAC1FBE5D9200128D70 /* fern.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC931FBE5D9200128D70 /* fern.png */; };
+		BDEAACAD1FBE5D9200128D70 /* blendMap.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC941FBE5D9200128D70 /* blendMap.png */; };
+		BDEAACAE1FBE5D9200128D70 /* stallTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC951FBE5D9200128D70 /* stallTexture.png */; };
+		BDEAACAF1FBE5D9200128D70 /* lowPolyTree.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC961FBE5D9200128D70 /* lowPolyTree.obj */; };
+		BDEAACB01FBE5D9200128D70 /* grassFlowers.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC971FBE5D9200128D70 /* grassFlowers.png */; };
+		BDEAACB11FBE5D9200128D70 /* exampleOBJ.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC981FBE5D9200128D70 /* exampleOBJ.obj */; };
+		BDEAACB21FBE5D9200128D70 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC991FBE5D9200128D70 /* dirt.png */; };
+		BDEAACB31FBE5D9200128D70 /* pinkFlowers.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC9A1FBE5D9200128D70 /* pinkFlowers.png */; };
+		BDEAACB41FBE5D9200128D70 /* dragon.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC9B1FBE5D9200128D70 /* dragon.obj */; };
+		BDEAACB51FBE5D9200128D70 /* bunny.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC9C1FBE5D9200128D70 /* bunny.obj */; };
+		BDEAACB61FBE5D9200128D70 /* lowPolyTree.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC9D1FBE5D9200128D70 /* lowPolyTree.png */; };
+		BDEAACB71FBE5D9200128D70 /* mud.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC9E1FBE5D9200128D70 /* mud.png */; };
+		BDEAACB81FBE5D9200128D70 /* path.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAC9F1FBE5D9200128D70 /* path.png */; };
+		BDEAACB91FBE5D9200128D70 /* fern.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA01FBE5D9200128D70 /* fern.obj */; };
+		BDEAACBA1FBE5D9200128D70 /* grassy2.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA11FBE5D9200128D70 /* grassy2.png */; };
+		BDEAACBB1FBE5D9200128D70 /* grassModel.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA21FBE5D9200128D70 /* grassModel.obj */; };
+		BDEAACBC1FBE5D9200128D70 /* Tree1.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA31FBE5D9200128D70 /* Tree1.obj */; };
+		BDEAACBD1FBE5D9200128D70 /* grassTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA41FBE5D9200128D70 /* grassTexture.png */; };
+		BDEAACBE1FBE5D9200128D70 /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA51FBE5D9200128D70 /* tree.png */; };
+		BDEAACBF1FBE5D9200128D70 /* flower.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA61FBE5D9200128D70 /* flower.png */; };
+		BDEAACC01FBE5D9200128D70 /* tree.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA71FBE5D9200128D70 /* tree.obj */; };
+		BDEAACC11FBE5D9200128D70 /* grass.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA81FBE5D9200128D70 /* grass.obj */; };
+		BDEAACC21FBE5D9200128D70 /* grassy.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACA91FBE5D9200128D70 /* grassy.png */; };
+		BDEAACC31FBE5D9200128D70 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAACAA1FBE5D9200128D70 /* white.png */; };
 		BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */; };
 		BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */; };
 		BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */; };
@@ -127,6 +152,31 @@
 		BDE460DC1FA02C8D00F126CB /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		BDEAAC8B1FBD315900128D70 /* TerrainShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TerrainShader.metal; sourceTree = "<group>"; };
 		BDEAAC8D1FBD31B300128D70 /* TerrainFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainFlashPipelineState.swift; sourceTree = "<group>"; };
+		BDEAAC921FBE5D9200128D70 /* stall.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stall.obj; sourceTree = "<group>"; };
+		BDEAAC931FBE5D9200128D70 /* fern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fern.png; sourceTree = "<group>"; };
+		BDEAAC941FBE5D9200128D70 /* blendMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blendMap.png; sourceTree = "<group>"; };
+		BDEAAC951FBE5D9200128D70 /* stallTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stallTexture.png; sourceTree = "<group>"; };
+		BDEAAC961FBE5D9200128D70 /* lowPolyTree.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowPolyTree.obj; sourceTree = "<group>"; };
+		BDEAAC971FBE5D9200128D70 /* grassFlowers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassFlowers.png; sourceTree = "<group>"; };
+		BDEAAC981FBE5D9200128D70 /* exampleOBJ.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exampleOBJ.obj; sourceTree = "<group>"; };
+		BDEAAC991FBE5D9200128D70 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
+		BDEAAC9A1FBE5D9200128D70 /* pinkFlowers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinkFlowers.png; sourceTree = "<group>"; };
+		BDEAAC9B1FBE5D9200128D70 /* dragon.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dragon.obj; sourceTree = "<group>"; };
+		BDEAAC9C1FBE5D9200128D70 /* bunny.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bunny.obj; sourceTree = "<group>"; };
+		BDEAAC9D1FBE5D9200128D70 /* lowPolyTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lowPolyTree.png; sourceTree = "<group>"; };
+		BDEAAC9E1FBE5D9200128D70 /* mud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mud.png; sourceTree = "<group>"; };
+		BDEAAC9F1FBE5D9200128D70 /* path.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = path.png; sourceTree = "<group>"; };
+		BDEAACA01FBE5D9200128D70 /* fern.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fern.obj; sourceTree = "<group>"; };
+		BDEAACA11FBE5D9200128D70 /* grassy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassy2.png; sourceTree = "<group>"; };
+		BDEAACA21FBE5D9200128D70 /* grassModel.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grassModel.obj; sourceTree = "<group>"; };
+		BDEAACA31FBE5D9200128D70 /* Tree1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tree1.obj; sourceTree = "<group>"; };
+		BDEAACA41FBE5D9200128D70 /* grassTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassTexture.png; sourceTree = "<group>"; };
+		BDEAACA51FBE5D9200128D70 /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
+		BDEAACA61FBE5D9200128D70 /* flower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flower.png; sourceTree = "<group>"; };
+		BDEAACA71FBE5D9200128D70 /* tree.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tree.obj; sourceTree = "<group>"; };
+		BDEAACA81FBE5D9200128D70 /* grass.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grass.obj; sourceTree = "<group>"; };
+		BDEAACA91FBE5D9200128D70 /* grassy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassy.png; sourceTree = "<group>"; };
+		BDEAACAA1FBE5D9200128D70 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineStateProvider.swift; sourceTree = "<group>"; };
 		BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineState.swift; sourceTree = "<group>"; };
 		BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableFlashPipelineState.swift; sourceTree = "<group>"; };
@@ -167,6 +217,7 @@
 		BD12E1231FA2CB4D00EC67C6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BDEAAC911FBE5D9200128D70 /* res */,
 				BDB792E61FA79FE200A8367F /* Models */,
 				BD12E1241FA2CB5400EC67C6 /* Images */,
 			);
@@ -376,6 +427,38 @@
 			path = "Custom Models";
 			sourceTree = "<group>";
 		};
+		BDEAAC911FBE5D9200128D70 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				BDEAAC921FBE5D9200128D70 /* stall.obj */,
+				BDEAAC931FBE5D9200128D70 /* fern.png */,
+				BDEAAC941FBE5D9200128D70 /* blendMap.png */,
+				BDEAAC951FBE5D9200128D70 /* stallTexture.png */,
+				BDEAAC961FBE5D9200128D70 /* lowPolyTree.obj */,
+				BDEAAC971FBE5D9200128D70 /* grassFlowers.png */,
+				BDEAAC981FBE5D9200128D70 /* exampleOBJ.obj */,
+				BDEAAC991FBE5D9200128D70 /* dirt.png */,
+				BDEAAC9A1FBE5D9200128D70 /* pinkFlowers.png */,
+				BDEAAC9B1FBE5D9200128D70 /* dragon.obj */,
+				BDEAAC9C1FBE5D9200128D70 /* bunny.obj */,
+				BDEAAC9D1FBE5D9200128D70 /* lowPolyTree.png */,
+				BDEAAC9E1FBE5D9200128D70 /* mud.png */,
+				BDEAAC9F1FBE5D9200128D70 /* path.png */,
+				BDEAACA01FBE5D9200128D70 /* fern.obj */,
+				BDEAACA11FBE5D9200128D70 /* grassy2.png */,
+				BDEAACA21FBE5D9200128D70 /* grassModel.obj */,
+				BDEAACA31FBE5D9200128D70 /* Tree1.obj */,
+				BDEAACA41FBE5D9200128D70 /* grassTexture.png */,
+				BDEAACA51FBE5D9200128D70 /* tree.png */,
+				BDEAACA61FBE5D9200128D70 /* flower.png */,
+				BDEAACA71FBE5D9200128D70 /* tree.obj */,
+				BDEAACA81FBE5D9200128D70 /* grass.obj */,
+				BDEAACA91FBE5D9200128D70 /* grassy.png */,
+				BDEAACAA1FBE5D9200128D70 /* white.png */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		BDF087BC1F9EDD4A00F68ACD /* Maths */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,16 +589,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDEAACBB1FBE5D9200128D70 /* grassModel.obj in Resources */,
+				BDEAACB71FBE5D9200128D70 /* mud.png in Resources */,
+				BDEAACB11FBE5D9200128D70 /* exampleOBJ.obj in Resources */,
+				BDEAACAD1FBE5D9200128D70 /* blendMap.png in Resources */,
 				BD041C091FAAB1920045CD1B /* grass.png in Resources */,
+				BDEAACB01FBE5D9200128D70 /* grassFlowers.png in Resources */,
 				BD5D346B1FA7EF3A00F5CC24 /* F16s.bmp in Resources */,
 				BD97303C1FB527970055658E /* sun.obj in Resources */,
+				BDEAACB31FBE5D9200128D70 /* pinkFlowers.png in Resources */,
 				BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */,
+				BDEAACBA1FBE5D9200128D70 /* grassy2.png in Resources */,
+				BDEAACB51FBE5D9200128D70 /* bunny.obj in Resources */,
+				BDEAACBF1FBE5D9200128D70 /* flower.png in Resources */,
 				BD9730351FB3DBD60055658E /* tall-grass.png in Resources */,
+				BDEAACAE1FBE5D9200128D70 /* stallTexture.png in Resources */,
 				BDB6FC921F92A15B00A15655 /* Main.storyboard in Resources */,
 				BD5D34691FA7EF0100F5CC24 /* f16.obj in Resources */,
 				BDB792EA1FA7DB8C00A8367F /* armadillo.obj in Resources */,
+				BDEAACB21FBE5D9200128D70 /* dirt.png in Resources */,
+				BDEAACB81FBE5D9200128D70 /* path.png in Resources */,
+				BDEAACC21FBE5D9200128D70 /* grassy.png in Resources */,
+				BDEAACAC1FBE5D9200128D70 /* fern.png in Resources */,
+				BDEAACC01FBE5D9200128D70 /* tree.obj in Resources */,
+				BDEAACC11FBE5D9200128D70 /* grass.obj in Resources */,
+				BDEAACBD1FBE5D9200128D70 /* grassTexture.png in Resources */,
 				BD9730391FB3E7850055658E /* lowpolytree.obj in Resources */,
 				BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */,
+				BDEAACAB1FBE5D9200128D70 /* stall.obj in Resources */,
+				BDEAACB61FBE5D9200128D70 /* lowPolyTree.png in Resources */,
+				BDEAACC31FBE5D9200128D70 /* white.png in Resources */,
+				BDEAACBE1FBE5D9200128D70 /* tree.png in Resources */,
+				BDEAACBC1FBE5D9200128D70 /* Tree1.obj in Resources */,
+				BDEAACB91FBE5D9200128D70 /* fern.obj in Resources */,
+				BDEAACB41FBE5D9200128D70 /* dragon.obj in Resources */,
+				BDEAACAF1FBE5D9200128D70 /* lowPolyTree.obj in Resources */,
 				BD418EF01FBA80A200AE9D33 /* heightmap.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

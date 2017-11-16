@@ -1,17 +1,28 @@
 import MetalKit
 
-class Terrain: Primitive{
+
+
+class Terrain: Node{
+    var _renderPipelineState: MTLRenderPipelineState!
+    var modelConstants = ModelConstants()
     
+    var vertices: [Vertex] = []
+    var vertexBuffer: MTLBuffer!
+    
+    var indices: [UInt32] = []
+    var indexBuffer: MTLBuffer!
+    
+    var backgroundTexture: MTLTexture?
+
     public var gridSize: Int = 0
     private var vertexCount: Int = 0
-    
     private var maxHeight: Float = 20.0
-    
     private var bmp: NSBitmapImageRep!
-    
     var heights = [[Float]]()
     
     init(device: MTLDevice, gridSize: Int, textureName: String, heightMapImage: String){
+        super.init()
+
         self.gridSize = gridSize
         if(heightMapImage != ""){
             let url: URL = Bundle.main.url(forResource: heightMapImage, withExtension: nil)!
@@ -22,10 +33,19 @@ class Terrain: Primitive{
             vertexCount = 256
         }
         heights = Array(repeating: Array(repeating: 0, count: vertexCount), count: vertexCount)
-        super.init(device: device, textureName: textureName)
+
+        buildVertices()
+        buildBuffers(device: device)
+        if let backgroundTexture = setTexture(device: device, imageName: textureName){
+            self.backgroundTexture = backgroundTexture
+            _renderPipelineState = FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.TERRAIN)
+            
+        }else{
+            _renderPipelineState = FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.RENDERABLE)
+        }
     }
     
-    override func buildVertices() {
+    func buildVertices() {
         for z in 0..<vertexCount{
             for x in 0..<vertexCount{
                 let vX: Float = Float(x) / Float(Float(vertexCount) - Float(1)) * Float(gridSize)
@@ -62,6 +82,13 @@ class Terrain: Primitive{
                 indices.append(bottomLeft)
                 indices.append(bottomRight)
             }
+        }
+    }
+    
+    func buildBuffers(device: MTLDevice){
+        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [MTLResourceOptions.storageModeManaged])
+        if(indices.count > 0){
+            indexBuffer = device.makeBuffer(bytes: indices, length: MemoryLayout<UInt32>.size * indices.count, options: [])
         }
     }
     
@@ -122,9 +149,32 @@ class Terrain: Primitive{
         normal = normalize(normal)
         return normal
     }
-    
-    
-    
-    
+}
+
+extension Terrain: Renderable{
+    func draw(renderCommandEncoder: MTLRenderCommandEncoder, modelMatrix: matrix_float4x4) {
+        
+        modelConstants.modelMatrix = modelMatrix
+        modelConstants.normalMatrix = modelMatrix.upperLeftMatrix()
+        modelConstants.shininess = self.shininess
+        modelConstants.specularIntensity = self.specularIntensity
+        modelConstants.materialColor = self.materialColor
+        
+        renderCommandEncoder.setRenderPipelineState(_renderPipelineState)
+        
+        renderCommandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 2)
+        renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        
+        renderCommandEncoder.setFragmentTexture(backgroundTexture, index: 0)
+                
+        if(indices.count > 0){
+            renderCommandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint32, indexBuffer: indexBuffer, indexBufferOffset: 0)
+        }else{
+            renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
+        }
+    }
+}
+
+extension Terrain: Texturable{
     
 }

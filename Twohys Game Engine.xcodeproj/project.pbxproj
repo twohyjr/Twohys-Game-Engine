@@ -46,6 +46,8 @@
 		BDD7BEA01FAE25BE00A12D19 /* MouseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD7BE9F1FAE25BE00A12D19 /* MouseHandler.swift */; };
 		BDE3FB461FA6C3BB00BBFF7E /* PerlinGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */; };
 		BDE460DD1FA02C8D00F126CB /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE460DC1FA02C8D00F126CB /* Camera.swift */; };
+		BDEAAC8C1FBD315900128D70 /* TerrainShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BDEAAC8B1FBD315900128D70 /* TerrainShader.metal */; };
+		BDEAAC8E1FBD31B300128D70 /* TerrainFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAAC8D1FBD31B300128D70 /* TerrainFlashPipelineState.swift */; };
 		BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */; };
 		BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */; };
 		BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */; };
@@ -123,6 +125,8 @@
 		BDD7BE9F1FAE25BE00A12D19 /* MouseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseHandler.swift; sourceTree = "<group>"; };
 		BDE3FB451FA6C3BB00BBFF7E /* PerlinGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerlinGenerator.swift; sourceTree = "<group>"; };
 		BDE460DC1FA02C8D00F126CB /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		BDEAAC8B1FBD315900128D70 /* TerrainShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TerrainShader.metal; sourceTree = "<group>"; };
+		BDEAAC8D1FBD31B300128D70 /* TerrainFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainFlashPipelineState.swift; sourceTree = "<group>"; };
 		BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineStateProvider.swift; sourceTree = "<group>"; };
 		BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineState.swift; sourceTree = "<group>"; };
 		BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableFlashPipelineState.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 			children = (
 				BDF087C81F9EEB9300F68ACD /* Primitive.swift */,
 				BDB792E41FA79B9900A8367F /* Model.swift */,
+				BDB027681FA54F6D0064A544 /* Terrain.swift */,
 				BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */,
 				BD5D34721FA8E13C00F5CC24 /* PrimitiveInstances.swift */,
 				BD97303D1FB626E70055658E /* MapTexture.swift */,
@@ -320,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB6FCBD1F92A81000A15655 /* BasicShaders.metal */,
+				BDEAAC8B1FBD315900128D70 /* TerrainShader.metal */,
 			);
 			path = "Metal Shaders";
 			sourceTree = "<group>";
@@ -363,7 +369,6 @@
 		BDB792EF1FA7E3D400A8367F /* Custom Models */ = {
 			isa = PBXGroup;
 			children = (
-				BDB027681FA54F6D0064A544 /* Terrain.swift */,
 				BDF087CA1F9EECAB00F68ACD /* Circle.swift */,
 				BDCB363F1FA2516200716697 /* Quad.swift */,
 				BDCB36391FA1926F00716697 /* Cube.swift */,
@@ -389,6 +394,7 @@
 				BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */,
 				BDFB85661FA035D4004820BC /* InstancesFlashPipelineState.swift */,
 				BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */,
+				BDEAAC8D1FBD31B300128D70 /* TerrainFlashPipelineState.swift */,
 			);
 			path = FlashPipelineStates;
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 				BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */,
 				BDB792ED1FA7E1CA00A8367F /* Armadillo.swift in Sources */,
 				BDCB36401FA2516200716697 /* Quad.swift in Sources */,
+				BDEAAC8E1FBD31B300128D70 /* TerrainFlashPipelineState.swift in Sources */,
 				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,
 				BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */,
 				BD97303E1FB626E70055658E /* MapTexture.swift in Sources */,
@@ -562,6 +569,7 @@
 				BDF087CB1F9EECAB00F68ACD /* Circle.swift in Sources */,
 				BDB9BB451F9EAC90009385F8 /* Maths.swift in Sources */,
 				BD041C031FAA3B080045CD1B /* GameScene.swift in Sources */,
+				BDEAAC8C1FBD315900128D70 /* TerrainShader.metal in Sources */,
 				BDB6FCC11F92AC9B00A15655 /* Types.swift in Sources */,
 				BDF087C91F9EEB9300F68ACD /* Primitive.swift in Sources */,
 				BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */,

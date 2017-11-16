@@ -4,6 +4,7 @@ public enum FlashPipelineStateType {
     case RENDERABLE
     case INSTANCES
     case TEXTUREABLE
+    case TERRAIN
 }
 
 class FlashPipelineStateProvider{
@@ -26,6 +27,8 @@ class FlashPipelineStateProvider{
                     _pipelineStates.updateValue(InstancesFlashPipelineState(device: _device, mtkView: _mtkView), forKey: flashPipelineStateType)
                 case FlashPipelineStateType.TEXTUREABLE:
                     _pipelineStates.updateValue(TexturableFlashPipelineState(device: _device, mtkView: _mtkView), forKey: flashPipelineStateType)
+                case FlashPipelineStateType.TERRAIN:
+                    _pipelineStates.updateValue(TerrainFlashPipelineState(device: _device, mtkView: _mtkView), forKey: flashPipelineStateType)
             }
         }
         return (_pipelineStates[flashPipelineStateType]!.renderPipelineState)

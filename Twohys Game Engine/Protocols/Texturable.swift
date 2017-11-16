@@ -1,7 +1,7 @@
 import MetalKit
 
 protocol Texturable{
-    var texture: MTLTexture? { get set }
+    
 }
 
 extension Texturable{

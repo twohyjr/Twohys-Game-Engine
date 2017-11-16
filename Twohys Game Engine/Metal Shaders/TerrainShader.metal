@@ -22,7 +22,7 @@ struct Light{
     float diffuseIntensity;
 };
 
-fragment half4 multi_textured_terrain_shader(VertexOut vIn [[ stage_in ]],
+fragment half4 multi_textured_terrain_fragment_shader(VertexOut vIn [[ stage_in ]],
                                       sampler sampler2d [[ sampler(0) ]],
                                       texture2d<float> texture [[ texture(0) ]],
                                       constant Light &light [[ buffer(1) ]]){

@@ -55,5 +55,5 @@ fragment half4 multi_textured_terrain_shader(VertexOut vIn [[ stage_in ]],
     }
     
     color = mix(float4(vIn.skyColor, 1), color, visibility);
-    return half4(1, 0, 0, 1);
+    return half4(color.x, color.y, color.z, 1);
 }

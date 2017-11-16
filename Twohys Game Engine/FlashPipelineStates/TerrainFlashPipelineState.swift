@@ -5,7 +5,7 @@ class TerrainFlashPipelineState: FlashPipelineState{
     var _device: MTLDevice!
     var _mtkView: MTKView!
     var _vertexFunctionName: String = "vertexShader"
-    var _fragmentFunctionName: String = "texturedFragmentShader"
+    var _fragmentFunctionName: String = "multi_textured_terrain_fragment_shader"
     
     var vertexDescriptor: MTLVertexDescriptor{
         let vertexDescriptor = MTLVertexDescriptor()

@@ -13,6 +13,8 @@ class Terrain: Node{
     var indexBuffer: MTLBuffer!
     
     var backgroundTexture: MTLTexture?
+    
+    var terrainTextures: [MTLTexture?] = []
 
     public var gridSize: Int = 0
     private var vertexCount: Int = 0
@@ -20,7 +22,7 @@ class Terrain: Node{
     private var bmp: NSBitmapImageRep!
     var heights = [[Float]]()
     
-    init(device: MTLDevice, gridSize: Int, textureName: String, heightMapImage: String){
+    init(device: MTLDevice, gridSize: Int, textureName: String, heightMapImage: String, otherTextureNames: [String] = ["bright.png","heightmap.jpg"]){
         super.init()
 
         self.gridSize = gridSize
@@ -34,6 +36,7 @@ class Terrain: Node{
         }
         heights = Array(repeating: Array(repeating: 0, count: vertexCount), count: vertexCount)
 
+        buildTerrainTextures(device: device, terrainNames: otherTextureNames)
         buildVertices()
         buildBuffers(device: device)
         if let backgroundTexture = setTexture(device: device, imageName: textureName){
@@ -42,6 +45,18 @@ class Terrain: Node{
             
         }else{
             _renderPipelineState = FlashPipelineStateProvider.getFlashPipelineState(flashPipelineStateType: FlashPipelineStateType.RENDERABLE)
+        }
+    }
+    
+    func buildTerrainTextures(device: MTLDevice, terrainNames: [String]){
+        terrainNames.forEach { name in
+            appendTexture(device: device, name: name)
+        }
+    }
+    
+    func appendTexture(device: MTLDevice, name: String){
+        if let texture = setTexture(device: device, imageName: name){
+            self.terrainTextures.append(texture)
         }
     }
     
@@ -166,7 +181,14 @@ extension Terrain: Renderable{
         renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         
         renderCommandEncoder.setFragmentTexture(backgroundTexture, index: 0)
-                
+        
+        for i in 1..<terrainTextures.count + 1{
+            renderCommandEncoder.setFragmentTexture(terrainTextures[i-1], index: i)
+        }
+        
+        
+        renderCommandEncoder.setFragmentTextures(terrainTextures, range: 0..<terrainTextures.count)
+
         if(indices.count > 0){
             renderCommandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint32, indexBuffer: indexBuffer, indexBufferOffset: 0)
         }else{

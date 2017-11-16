@@ -24,9 +24,11 @@ struct Light{
 
 fragment half4 multi_textured_terrain_fragment_shader(VertexOut vIn [[ stage_in ]],
                                       sampler sampler2d [[ sampler(0) ]],
-                                      texture2d<float> texture [[ texture(0) ]],
+                                      texture2d<float> texture1 [[ texture(0) ]],
+                                      texture2d<float> texture2 [[ texture(1) ]],
+                                      texture2d<float> texture3 [[ texture(2) ]],
                                       constant Light &light [[ buffer(1) ]]){
-    float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
+    float4 color = texture2.sample(sampler2d, vIn.textureCoordinate);
     float visibility = vIn.visibility;
     float3 toLightVector = light.position - vIn.worldPosition.xyz;
     
@@ -57,3 +59,7 @@ fragment half4 multi_textured_terrain_fragment_shader(VertexOut vIn [[ stage_in 
     color = mix(float4(vIn.skyColor, 1), color, visibility);
     return half4(color.x, color.y, color.z, 1);
 }
+
+
+
+

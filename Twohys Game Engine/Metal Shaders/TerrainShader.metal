@@ -24,20 +24,31 @@ struct Light{
 
 fragment half4 multi_textured_terrain_fragment_shader(VertexOut vIn [[ stage_in ]],
                                       sampler sampler2d [[ sampler(0) ]],
-<<<<<<< HEAD
                                       texture2d<float> backgroundTexture [[ texture(0) ]],
                                       texture2d<float> rTexture [[ texture(1) ]],
                                       texture2d<float> gTexture [[ texture(2) ]],
                                       texture2d<float> bTexture [[ texture(3) ]],
                                       texture2d<float> blendMap [[ texture(4) ]],
-                                      texture2d<float> texture [[ texture(0) ]],
-=======
-                                      texture2d<float> texture1 [[ texture(0) ]],
-                                      texture2d<float> texture2 [[ texture(1) ]],
-                                      texture2d<float> texture3 [[ texture(2) ]],
->>>>>>> parent of 2f96873... Added Images and set different textures
                                       constant Light &light [[ buffer(1) ]]){
-    float4 color = texture.sample(sampler2d, vIn.textureCoordinate);
+    
+    
+    
+        float4 blendMapColor = blendMap.sample(sampler2d, vIn.textureCoordinate);
+    
+        float backTextureAmount = 1 - (blendMapColor.r + blendMapColor.g + blendMapColor.b);
+        float2 tiledCoords = vIn.textureCoordinate;
+        float4 backgroundTextureColor = backgroundTexture.sample(sampler2d, tiledCoords) * backTextureAmount;
+        float4 rTextureColor = rTexture.sample(sampler2d, tiledCoords) * blendMapColor.r;
+        float4 gTextureColor = gTexture.sample(sampler2d, tiledCoords) * blendMapColor.g;
+        float4 bTextureColor = bTexture.sample(sampler2d, tiledCoords) * blendMapColor.b;
+    
+        float4 color = backgroundTextureColor + rTextureColor + gTextureColor + bTextureColor;
+    
+    
+    
+    
+    
+//    float4 color = backgroundTexture.sample(sampler2d, vIn.textureCoordinate);
     float visibility = vIn.visibility;
     float3 toLightVector = light.position - vIn.worldPosition.xyz;
     

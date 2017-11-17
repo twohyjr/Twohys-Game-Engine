@@ -33,22 +33,22 @@ fragment half4 multi_textured_terrain_fragment_shader(VertexOut vIn [[ stage_in 
     
     
     
-        float4 blendMapColor = blendMap.sample(sampler2d, vIn.textureCoordinate);
-    
-        float backTextureAmount = 1 - (blendMapColor.r + blendMapColor.g + blendMapColor.b);
-        float2 tiledCoords = vIn.textureCoordinate;
-        float4 backgroundTextureColor = backgroundTexture.sample(sampler2d, tiledCoords) * backTextureAmount;
-        float4 rTextureColor = rTexture.sample(sampler2d, tiledCoords) * blendMapColor.r;
-        float4 gTextureColor = gTexture.sample(sampler2d, tiledCoords) * blendMapColor.g;
-        float4 bTextureColor = bTexture.sample(sampler2d, tiledCoords) * blendMapColor.b;
-    
-        float4 color = backgroundTextureColor + rTextureColor + gTextureColor + bTextureColor;
-    
-    
-    
-    
-    
-//    float4 color = backgroundTexture.sample(sampler2d, vIn.textureCoordinate);
+//        float4 blendMapColor = blendMap.sample(sampler2d, vIn.textureCoordinate);
+//
+//        float backTextureAmount = 1 - (blendMapColor.r + blendMapColor.g + blendMapColor.b);
+//        float2 tiledCoords = vIn.textureCoordinate;
+//        float4 backgroundTextureColor = backgroundTexture.sample(sampler2d, tiledCoords) * backTextureAmount;
+//        float4 rTextureColor = rTexture.sample(sampler2d, tiledCoords) * blendMapColor.r;
+//        float4 gTextureColor = gTexture.sample(sampler2d, tiledCoords) * blendMapColor.g;
+//        float4 bTextureColor = bTexture.sample(sampler2d, tiledCoords) * blendMapColor.b;
+//
+//        float4 color = backgroundTextureColor + rTextureColor + gTextureColor + bTextureColor;
+//
+//
+//
+//
+//
+    float4 color = backgroundTexture.sample(sampler2d, vIn.textureCoordinate);
     float visibility = vIn.visibility;
     float3 toLightVector = light.position - vIn.worldPosition.xyz;
     

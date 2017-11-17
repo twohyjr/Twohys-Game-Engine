@@ -9,7 +9,7 @@ class GameScene: Scene{
     override func buildScene(device: MTLDevice) {
         super.buildScene(device: device)
         
-        mainTerrain = Terrain(device: device, gridSize: 800, textureName: "grass.png", heightMapImage: "")
+        mainTerrain = Terrain(device: device, gridSize: 800, backgroundTexture: "grass.png", heightMapImage: "")
         mainTerrain.position.x = -Float(mainTerrain.gridSize) / Float(2.0)
         mainTerrain.position.z = -Float(mainTerrain.gridSize) / Float(2.0)
         mainTerrain.position.y = -1

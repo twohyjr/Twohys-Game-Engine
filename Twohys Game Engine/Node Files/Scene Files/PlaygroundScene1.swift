@@ -13,7 +13,7 @@ class PlaygroundScene1: Scene{
         circle.shininess = 20
         
         
-        object = Terrain(device: device, gridSize: 800, textureName: "grass.png", heightMapImage: "")
+        object = Terrain(device: device, gridSize: 800, backgroundTexture: "grass.png", heightMapImage: "")
         object.position.z = -5
         object.scale = float3(2)
         add(child: object)

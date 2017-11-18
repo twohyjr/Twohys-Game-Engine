@@ -71,35 +71,32 @@ class Renderer: NSObject{
     }
     
     func initialize(){
-//        let commandBuffer = commandQueue.makeCommandBuffer()
-//
-//        let computeCommandEncoder = commandBuffer?.makeComputeCommandEncoder()
-//        computeCommandEncoder?.setComputePipelineState(computePipelineState)
-//        computeCommandEncoder?.setBuffer(outComputeBuffer, offset: 0, index: 0)
-//
-//        let w = computePipelineState.threadExecutionWidth
-//        let h = computePipelineState.maxTotalThreadsPerThreadgroup / w
-//        let threadsPerThreadgroup = MTLSizeMake(w, h, 1)
-//
-//        let threadsPerGrid = MTLSize(width: (mapTexture.texture?.width)!,
-//                                     height: (mapTexture.texture?.height)!,
-//                                     depth: 1)
-//
-//        computeCommandEncoder?.setTexture(mapTexture.texture, index: 0)
-//        computeCommandEncoder?.setSamplerState(samplerState, index: 0)
-//        computeCommandEncoder?.dispatchThreadgroups(threadsPerGrid,
-//                                              threadsPerThreadgroup: threadsPerThreadgroup)
-//        computeCommandEncoder?.endEncoding()
-//        commandBuffer?.addCompletedHandler{ commandBuffer in
-//            let data = NSData(bytes: self.outComputeBuffer.contents(), length: MemoryLayout<float4>.size)
-//            var out: float4 = float4(0)
-//            data.getBytes(&out, length: MemoryLayout<float4>.size)
-//            print("data: \(out)")
-//        }
-//        commandBuffer?.commit()
-        
-        
-        
+        let commandBuffer = commandQueue.makeCommandBuffer()
+
+        let computeCommandEncoder = commandBuffer?.makeComputeCommandEncoder()
+        computeCommandEncoder?.setComputePipelineState(computePipelineState)
+        computeCommandEncoder?.setBuffer(outComputeBuffer, offset: 0, index: 0)
+
+        let w = computePipelineState.threadExecutionWidth
+        let h = computePipelineState.maxTotalThreadsPerThreadgroup / w
+        let threadsPerThreadgroup = MTLSizeMake(w, h, 1)
+
+        let threadsPerGrid = MTLSize(width: (mapTexture.texture?.width)!,
+                                     height: (mapTexture.texture?.height)!,
+                                     depth: 1)
+
+        computeCommandEncoder?.setTexture(mapTexture.texture, index: 0)
+        computeCommandEncoder?.setSamplerState(samplerState, index: 0)
+        computeCommandEncoder?.dispatchThreadgroups(threadsPerGrid,
+                                              threadsPerThreadgroup: threadsPerThreadgroup)
+        computeCommandEncoder?.endEncoding()
+        commandBuffer?.addCompletedHandler{ commandBuffer in
+            let data = NSData(bytes: self.outComputeBuffer.contents(), length: MemoryLayout<float4>.size)
+            var out: float4 = float4(0)
+            data.getBytes(&out, length: MemoryLayout<float4>.size)
+            print("data: \(out)")
+        }
+        commandBuffer?.commit()
     }
 }
 

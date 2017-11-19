@@ -119,6 +119,7 @@ extension Renderer: MTKViewDelegate{
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
         renderCommandEncoder?.setDepthStencilState(depthStencilState)
         renderCommandEncoder?.setFragmentSamplerState(samplerState, index: 0)
+//        renderCommandEncoder?.setTriangleFillMode(.lines)
         
         let deltaTime: Float = (Float(1.0) / Float(view.preferredFramesPerSecond))
         scene.render(renderCommandEncoder: renderCommandEncoder!, deltaTime: deltaTime)

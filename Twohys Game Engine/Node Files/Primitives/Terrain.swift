@@ -20,7 +20,7 @@ class Terrain: Node{
     private var bmp: NSBitmapImageRep!
     var heights = [[Float]]()
     
-    init(device: MTLDevice, gridSize: Int, backgroundTexture: String, heightMapImage: String, textureNames: [String] = ["grassy.png","mud.png","mud.png","mud.png", "blendMap.png"]){
+    init(device: MTLDevice, gridSize: Int, backgroundTexture: String = "", heightMapImage: String = "", textureNames: [String] = ["grassy.png","mud.png","mud.png","mud.png", "blendMap.png"]){
         super.init()
 
         self.gridSize = gridSize

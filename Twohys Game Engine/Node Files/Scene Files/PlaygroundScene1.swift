@@ -35,8 +35,14 @@ class PlaygroundScene1: Scene{
         if(InputHandler.isKeyPressed(key: KEY_CODES.Key_E)){
             camera.position.y += deltaTime * speed
         }
+        if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.LEFT)){
+            camera.yaw += MouseHandler.getDX() / 100
+        }
         if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.RIGHT)){
-            camera.yaw += deltaTime * speed
+            camera.pitch += MouseHandler.getDY() / 100
+        }
+        if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.RIGHT)){
+            camera.pitch += MouseHandler.getDY() / 100
         }
     }
 }

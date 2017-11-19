@@ -43,8 +43,6 @@ class GameScene: Scene{
         add(child: player)
         add(child: mainTerrain)
     }
-    
-    
 
     var time: Float = 0
     override func updateModels(deltaTime: Float) {

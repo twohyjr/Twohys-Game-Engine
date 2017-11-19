@@ -2,7 +2,7 @@ import MetalKit
 
 class Armadillo: Model{
     
-    let ModelName: String = "Dwarf_2_Low"
+    let ModelName: String = "armadillo"
     
     init(device: MTLDevice, textureName: String) {
         super.init(device: device, modelName: ModelName, textureName: textureName)

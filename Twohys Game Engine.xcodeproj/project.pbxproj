@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BD041C031FAA3B080045CD1B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD041C021FAA3B080045CD1B /* GameScene.swift */; };
 		BD041C091FAAB1920045CD1B /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = BD041C081FAAB1920045CD1B /* grass.png */; };
+		BD0C96151FC10D0000AA33E7 /* NewTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0C96141FC10D0000AA33E7 /* NewTerrain.swift */; };
 		BD12E1221FA255AB00EC67C6 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1211FA255AB00EC67C6 /* Texturable.swift */; };
 		BD12E1261FA2CBC500EC67C6 /* bright.png in Resources */ = {isa = PBXBuildFile; fileRef = BD12E1251FA2CBC500EC67C6 /* bright.png */; };
 		BD12E1281FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */; };
@@ -107,6 +108,7 @@
 /* Begin PBXFileReference section */
 		BD041C021FAA3B080045CD1B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BD041C081FAAB1920045CD1B /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass.png; path = ../../../../../../Desktop/grass.png; sourceTree = "<group>"; };
+		BD0C96141FC10D0000AA33E7 /* NewTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTerrain.swift; sourceTree = "<group>"; };
 		BD12E1211FA255AB00EC67C6 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		BD12E1251FA2CBC500EC67C6 /* bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bright.png; path = ../../../../../../Desktop/bright.png; sourceTree = "<group>"; };
 		BD12E1271FA2CC6F00EC67C6 /* TexturableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturableFlashPipelineState.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */,
 				BD5D34721FA8E13C00F5CC24 /* PrimitiveInstances.swift */,
 				BD97303D1FB626E70055658E /* MapTexture.swift */,
+				BD0C96141FC10D0000AA33E7 /* NewTerrain.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				BDE460DD1FA02C8D00F126CB /* Camera.swift in Sources */,
 				BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */,
 				BDB792ED1FA7E1CA00A8367F /* Armadillo.swift in Sources */,
+				BD0C96151FC10D0000AA33E7 /* NewTerrain.swift in Sources */,
 				BDCB36401FA2516200716697 /* Quad.swift in Sources */,
 				BDEAAC8E1FBD31B300128D70 /* TerrainFlashPipelineState.swift in Sources */,
 				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,

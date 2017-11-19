@@ -9,7 +9,7 @@ class GameScene: Scene{
     override func buildScene(device: MTLDevice) {
         super.buildScene(device: device)
         
-        mainTerrain = Terrain(device: device, gridSize: 800, backgroundTexture: "grass.png", heightMapImage: "")
+        mainTerrain = Terrain(device: device, gridSize: 800, backgroundTexture: "grass.png", heightMapImage: "heightmap.jpg")
         mainTerrain.position.x = -Float(mainTerrain.gridSize) / Float(2.0)
         mainTerrain.position.z = -Float(mainTerrain.gridSize) / Float(2.0)
         mainTerrain.position.y = -1
@@ -35,7 +35,6 @@ class GameScene: Scene{
         player.specularIntensity = 1.0
         player.shininess = 10.0
 
-        
         fog.density = 0.001
         fog.gradient = 2.0
         

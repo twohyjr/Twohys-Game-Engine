@@ -177,11 +177,13 @@ extension Terrain: Renderable{
         renderCommandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, index: 2)
         renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         
-        renderCommandEncoder.setFragmentTexture(terrainTextures[0], index: 0)
-        renderCommandEncoder.setFragmentTexture(terrainTextures[1], index: 1)
-        renderCommandEncoder.setFragmentTexture(terrainTextures[2], index: 2)
-        renderCommandEncoder.setFragmentTexture(terrainTextures[3], index: 3)
-        renderCommandEncoder.setFragmentTexture(terrainTextures[4], index: 4)
+        if(terrainTextures.count > 0){
+            renderCommandEncoder.setFragmentTexture(terrainTextures[0], index: 0)
+            renderCommandEncoder.setFragmentTexture(terrainTextures[1], index: 1)
+            renderCommandEncoder.setFragmentTexture(terrainTextures[2], index: 2)
+            renderCommandEncoder.setFragmentTexture(terrainTextures[3], index: 3)
+            renderCommandEncoder.setFragmentTexture(terrainTextures[4], index: 4)            
+        }
                 
         if(indices.count > 0){
             renderCommandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint32, indexBuffer: indexBuffer, indexBufferOffset: 0)

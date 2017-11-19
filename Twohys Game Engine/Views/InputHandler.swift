@@ -9,6 +9,8 @@ enum KEY_CODES: Int {
     case Key_S = 1
     case Key_A = 0
     case Key_D = 2
+    case Key_Q = 12
+    case Key_E = 14
     case Key_1 = 18
     case Key_2 = 19
     case Key_3 = 20

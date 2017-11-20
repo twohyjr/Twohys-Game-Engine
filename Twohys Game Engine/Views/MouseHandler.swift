@@ -42,7 +42,7 @@ class MouseHandler{
     }
     
     //Returns the overall position of the mouse on the current window
-    public static func getMouseXYPosition()->float2{
+    public static func getMouseWindowPosition()->float2{
         return overallMousePosition
     }
     

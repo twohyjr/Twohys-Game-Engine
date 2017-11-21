@@ -5,7 +5,6 @@ class Renderer: NSObject{
     var renderPipelineState: MTLRenderPipelineState!
     var computePipelineState: MTLComputePipelineState!
     
-    
     var commandQueue: MTLCommandQueue!
     var renderPipelineStateProvider: FlashPipelineStateProvider!
     
@@ -30,7 +29,7 @@ class Renderer: NSObject{
         
         commandQueue = device.makeCommandQueue()
         FlashPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
-        scene = PlaygroundScene1(device: device)
+        scene = CircleCollisionScene(device: device)
         scene.camera.aspectRatio = Float(mtkView.drawableSize.width) / Float(mtkView.drawableSize.height)
         buildDepthStencilState(device: device)
         buildSamplerState(device: device)

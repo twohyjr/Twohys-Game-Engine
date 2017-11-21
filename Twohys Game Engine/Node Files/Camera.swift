@@ -35,15 +35,17 @@ class Camera: Node{
         super.init()
     }
     
-    func update(){
-        calculateZoom()
-        calculatePitch()
-        calculateAngleAroundPlayer()
-        
-        let horizontalDistance = calculateHorizontalDistance()
-        let verticalDistance = calculateVerticalDistance()
-        calculateCameraPosition(horizontalDistance: horizontalDistance, verticalDistance: verticalDistance)
-        yaw = -(player.rotation.y + angleAroundPlayer)
+    func update(useFlyingCamera: Bool){
+        if(!useFlyingCamera){
+            calculateZoom()
+            calculatePitch()
+            calculateAngleAroundPlayer()
+            
+            let horizontalDistance = calculateHorizontalDistance()
+            let verticalDistance = calculateVerticalDistance()
+            calculateCameraPosition(horizontalDistance: horizontalDistance, verticalDistance: verticalDistance)
+            yaw = -(player.rotation.y + angleAroundPlayer)            
+        }
     }
     
     private func calculateCameraPosition(horizontalDistance: Float, verticalDistance: Float){

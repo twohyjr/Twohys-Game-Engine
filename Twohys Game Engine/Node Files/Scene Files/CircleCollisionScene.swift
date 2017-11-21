@@ -1,6 +1,6 @@
 import MetalKit
 
-class PlaygroundScene1: Scene{
+class CircleCollisionScene: Scene{
     
     var speed: Float = 16.0
     
@@ -10,6 +10,9 @@ class PlaygroundScene1: Scene{
     
     override func buildScene(device: MTLDevice) {
         super.buildScene(device: device)
+        useFlyingCamera = true
+        cameraSpeed = 5.0
+        
         camera.position = float3(-10.3334, 4.33333, 18.7667)
         
         
@@ -61,38 +64,6 @@ class PlaygroundScene1: Scene{
             speed = -speed
         }
 //        print(circle2.radius + circle3.radius)
-    }
-    
-    
-    
-    override func updateCamera(deltaTime: Float) {
-        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_W)){
-            camera.position.z -= deltaTime * speed
-        }
-        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_S)){
-            camera.position.z += deltaTime * speed
-        }
-        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_A)){
-            camera.position.x -= deltaTime * speed
-        }
-        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_D)){
-            camera.position.x += deltaTime * speed
-        }
-        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Q)){
-            camera.position.y -= deltaTime * speed
-        }
-        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_E)){
-            camera.position.y += deltaTime * speed
-        }
-        if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.LEFT)){
-            camera.yaw += MouseHandler.getDX() / 100
-        }
-        if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.RIGHT)){
-            camera.pitch += MouseHandler.getDY() / 100
-        }
-        if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.RIGHT)){
-            camera.pitch += MouseHandler.getDY() / 100
-        }
     }
 }
 

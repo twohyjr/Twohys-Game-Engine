@@ -8,6 +8,8 @@ class Scene: Node{
     var fog = Fog()
     var player: Player!
     var mainTerrain: Terrain!
+    var useFlyingCamera: Bool = false
+    var cameraSpeed: Float = 2.0
 
     init(device: MTLDevice){
         super.init()
@@ -54,7 +56,36 @@ class Scene: Node{
     }
     
     func updateCamera(deltaTime: Float){
-        camera.update()
+        if(useFlyingCamera){
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Key_W)){
+                camera.position.z -= deltaTime * cameraSpeed
+            }
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Key_S)){
+                camera.position.z += deltaTime * cameraSpeed
+            }
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Key_A)){
+                camera.position.x -= deltaTime * cameraSpeed
+            }
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Key_D)){
+                camera.position.x += deltaTime * cameraSpeed
+            }
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Q)){
+                camera.position.y -= deltaTime * cameraSpeed
+            }
+            if(InputHandler.isKeyPressed(key: KEY_CODES.Key_E)){
+                camera.position.y += deltaTime * cameraSpeed
+            }
+            if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.LEFT)){
+                camera.yaw += MouseHandler.getDX() / 100
+            }
+            if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.RIGHT)){
+                camera.pitch += MouseHandler.getDY() / 100
+            }
+            if(MouseHandler.isMouseButtonPressed(button: MOUSE_BUTTON_CODES.RIGHT)){
+                camera.pitch += MouseHandler.getDY() / 100
+            }
+        }
+        camera.update(useFlyingCamera: useFlyingCamera)
     }
     
     func doRender(renderCommandEncoder: MTLRenderCommandEncoder){

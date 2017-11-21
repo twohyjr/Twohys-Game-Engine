@@ -34,7 +34,7 @@ class CircleCollisionScene: Scene{
         circle3.position.z = mainTerrain.position.z + (Float(mainTerrain.gridSize) / 2)
         circle3.position.x = -20
         circle3.materialColor = float4(0,0,0,1)
-        
+
         add(child: circle1)
         add(child: circle2)
         add(child: circle3)
@@ -56,6 +56,7 @@ class CircleCollisionScene: Scene{
 //            circle2.position.x -= deltaTime * speed
 //        }
         circle2.position.x += deltaTime * speed
+        camera.position.x = circle2.position.x
         
         let distance1 = getDistance(x1: circle1.position.x, y1: circle1.position.y, x2: circle2.position.x, y2: circle2.position.y)
         let distance2 = getDistance(x1: circle3.position.x, y1: circle3.position.y, x2: circle2.position.x, y2: circle2.position.y)

@@ -21,8 +21,6 @@ class Renderer: NSObject{
     
     private var frameStartTime: CFAbsoluteTime!
     private var frameNumber = 0
-    
-    var mapTexture: MapTexture!
 
     init(device: MTLDevice, mtkView: MTKView){
         super.init()
@@ -34,7 +32,6 @@ class Renderer: NSObject{
         buildDepthStencilState(device: device)
         buildSamplerState(device: device)
         frameStartTime = CFAbsoluteTimeGetCurrent()
-        mapTexture = MapTexture(device: device, imageName: "bright.png")
         createComputeStuff(device: device)
         initialize()
     }
@@ -80,14 +77,14 @@ class Renderer: NSObject{
         let h = computePipelineState.maxTotalThreadsPerThreadgroup / w
         let threadsPerThreadgroup = MTLSizeMake(w, h, 1)
 
-        let threadsPerGrid = MTLSize(width: (mapTexture.texture?.width)!,
-                                     height: (mapTexture.texture?.height)!,
-                                     depth: 1)
-
-        computeCommandEncoder?.setTexture(mapTexture.texture, index: 0)
+//        let threadsPerGrid = MTLSize(width: (mapTexture.texture?.width)!,
+//                                     height: (mapTexture.texture?.height)!,
+//                                     depth: 1)
+//
+//        computeCommandEncoder?.setTexture(mapTexture.texture, index: 0)
         computeCommandEncoder?.setSamplerState(samplerState, index: 0)
-        computeCommandEncoder?.dispatchThreadgroups(threadsPerGrid,
-                                              threadsPerThreadgroup: threadsPerThreadgroup)
+//        computeCommandEncoder?.dispatchThreadgroups(threadsPerGrid,
+//                                              threadsPerThreadgroup: threadsPerThreadgroup)
         computeCommandEncoder?.endEncoding()
         commandBuffer?.addCompletedHandler{ commandBuffer in
             let data = NSData(bytes: self.outComputeBuffer.contents(), length: MemoryLayout<float4>.size)

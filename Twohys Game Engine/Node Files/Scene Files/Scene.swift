@@ -19,6 +19,30 @@ class Scene: Node{
         buildScene(device: device)
         
     }
+    
+    func checkCollision(){
+        for child1 in children{
+            for child2 in children{
+                if(child1 != child2){
+                    if let subChild1 = child1 as? Circle{
+                        if let subChild2 = child2 as? Circle{
+                            let distance1 = getDistance(x1: subChild1.position.x, y1: subChild1.position.y, x2: subChild1.position.x, y2: subChild1.position.y)
+                            
+                            if(distance1 <= (subChild1.radius + subChild2.radius)){
+                               // print("collide")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    private func getDistance(x1: Float, y1: Float, x2: Float, y2: Float)->Float{
+        let xDistance = x2 - x1
+        let yDistance = y2 - y1
+        
+        return sqrt(pow(xDistance, 2) + pow(yDistance, 2))
+    }
 
     func buildScene(device: MTLDevice){ }
     
@@ -49,6 +73,7 @@ class Scene: Node{
                 player.update(deltaTime: deltaTime, terrain: mainTerrain)
             }
         }
+
     }
     
     func updateModels(deltaTime: Float){

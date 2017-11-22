@@ -2,8 +2,6 @@ import MetalKit
 
 class CircleCollisionScene: Scene{
     
-    var speed: Float = 16.0
-    
     var circle1: Circle!
     var circle2: Circle!
     var circle3: Circle!
@@ -41,12 +39,7 @@ class CircleCollisionScene: Scene{
 //        add(child: mainTerrain)
     }
     
-    private func getDistance(x1: Float, y1: Float, x2: Float, y2: Float)->Float{
-        let xDistance = x2 - x1
-        let yDistance = y2 - y1
-        
-        return sqrt(pow(xDistance, 2) + pow(yDistance, 2))
-    }
+
     
     override func updateModels(deltaTime: Float) {
 //        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Right)){
@@ -55,16 +48,8 @@ class CircleCollisionScene: Scene{
 //        if(InputHandler.isKeyPressed(key: KEY_CODES.Key_Arrow_Left)){
 //            circle2.position.x -= deltaTime * speed
 //        }
-        circle2.position.x += deltaTime * speed
-        camera.position.x = circle2.position.x
-        
-        let distance1 = getDistance(x1: circle1.position.x, y1: circle1.position.y, x2: circle2.position.x, y2: circle2.position.y)
-        let distance2 = getDistance(x1: circle3.position.x, y1: circle3.position.y, x2: circle2.position.x, y2: circle2.position.y)
-        
-        if(distance1 <= (circle1.radius + circle2.radius) || distance2 <= (circle2.radius + circle3.radius)){
-            speed = -speed
-        }
 //        print(circle2.radius + circle3.radius)
+                checkCollision()
     }
 }
 

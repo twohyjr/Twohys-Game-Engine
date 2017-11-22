@@ -1,6 +1,6 @@
 import MetalKit
 
-class Node{
+class Node: NSObject{
     
     var children: [Node] = []
     

@@ -65,7 +65,6 @@ class Scene: Node{
     
     func updateModels(deltaTime: Float){
         updatePlayer(deltaTime: deltaTime)
-        player.position.y = mainTerrain.GetHeightOfTerrain(worldX: player.position.x, worldZ: player.position.y)
     }
     
     func updateCamera(deltaTime: Float){

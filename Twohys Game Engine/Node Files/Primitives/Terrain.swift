@@ -32,7 +32,7 @@ class Terrain: Node{
         }else{
             vertexCount = 256
         }
-        heights = Array(repeating: Array(repeating: 0, count: vertexCount), count: vertexCount)
+        heights = Array(repeating: Array(repeating: 0, count: vertexCount + 1), count: vertexCount + 1)
 
         buildVertices()
         buildBuffers(device: device)
@@ -66,11 +66,21 @@ class Terrain: Node{
                 let xOriginPoint = Float(Float(column) / Float(vertexCount)) * Float(step)
                 let yOriginPoint = Float(Float(row) / Float(vertexCount)) * Float(step)
                 
+                let heightTopRight = getHeight(x: row, z: column + 1)
+                let heightTopLeft = getHeight(x: row, z: column)
+                let heightBottomLeft = getHeight(x: row + 1, z: column)
+                let heightBottomRight = getHeight(x: row + 1, z: column + 1)
+
+                heights[column + 1][row] = heightTopRight
+                heights[column][row] = heightTopLeft
+                heights[column][row + 1] = heightBottomLeft
+                heights[column + 1][row + 1] = heightBottomRight
+                
                 //Vertex Positions
-                let vTopRight = float3(xOriginPoint + stepValue, getHeight(x: row, z: column + 1), yOriginPoint)
-                let vTopLeft = float3(xOriginPoint, getHeight(x: row, z: column), yOriginPoint)
-                let vBottomLeft = float3(xOriginPoint, getHeight(x: row + 1, z: column), yOriginPoint + stepValue)
-                let vBottomRight = float3(xOriginPoint + stepValue, getHeight(x: row + 1, z: column + 1), yOriginPoint + stepValue)
+                let vTopRight = float3(xOriginPoint + stepValue, heightTopRight, yOriginPoint)
+                let vTopLeft = float3(xOriginPoint, heightTopLeft, yOriginPoint)
+                let vBottomLeft = float3(xOriginPoint, heightBottomLeft, yOriginPoint + stepValue)
+                let vBottomRight = float3(xOriginPoint + stepValue, heightBottomRight, yOriginPoint + stepValue)
                 
                 //Texture Coordinates
                 let tTopRight = float2(1, 0)
@@ -125,9 +135,9 @@ class Terrain: Node{
         
         var result: Float = 0.0
         if(xCoord <= (1 - zCoord)){
-            result = Maths.barryCentric(float3(0, heights[gridX][gridZ], 0), float3(1,
-                    heights[gridX + 1][gridZ], 0), float3(0,
-                    heights[gridX][gridZ + 1], 1), float2(xCoord, zCoord))
+            result = Maths.barryCentric(float3(0, heights[gridX][gridZ], 0),
+                                        float3(1,heights[gridX + 1][gridZ], 0),
+                                        float3(0, heights[gridX][gridZ + 1], 1), float2(xCoord, zCoord))
         }else{
             result = Maths.barryCentric(float3(1, heights[gridX + 1][gridZ], 0), float3(1,
                     heights[gridX + 1][gridZ + 1], 1), float3(0,

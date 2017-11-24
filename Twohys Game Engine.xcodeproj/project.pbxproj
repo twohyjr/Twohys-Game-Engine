@@ -17,6 +17,8 @@
 		BD5226DA1FC4AB5700F6521C /* armadillo.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD5226D91FC4AB5700F6521C /* armadillo.obj */; };
 		BD5226DC1FC878CB00F6521C /* brain.png in Resources */ = {isa = PBXBuildFile; fileRef = BD5226DB1FC878CB00F6521C /* brain.png */; };
 		BD5226DE1FC89A4E00F6521C /* colors.png in Resources */ = {isa = PBXBuildFile; fileRef = BD5226DD1FC89A4E00F6521C /* colors.png */; };
+		BD5226E01FC8E5DC00F6521C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5226DF1FC8E5DC00F6521C /* SettingsViewController.swift */; };
+		BD5226E21FC8E70700F6521C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5226E11FC8E70700F6521C /* Preferences.swift */; };
 		BD5D34711FA8E13000F5CC24 /* ModelInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */; };
 		BD5D34731FA8E13C00F5CC24 /* PrimitiveInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5D34721FA8E13C00F5CC24 /* PrimitiveInstances.swift */; };
 		BD97303C1FB527970055658E /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD97303B1FB527970055658E /* sun.obj */; };
@@ -111,6 +113,8 @@
 		BD5226D91FC4AB5700F6521C /* armadillo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = armadillo.obj; sourceTree = "<group>"; };
 		BD5226DB1FC878CB00F6521C /* brain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brain.png; sourceTree = "<group>"; };
 		BD5226DD1FC89A4E00F6521C /* colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors.png; sourceTree = "<group>"; };
+		BD5226DF1FC8E5DC00F6521C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BD5226E11FC8E70700F6521C /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInstances.swift; sourceTree = "<group>"; };
 		BD5D34721FA8E13C00F5CC24 /* PrimitiveInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveInstances.swift; sourceTree = "<group>"; };
 		BD9730331FB3C4FA0055658E /* libswiftsimd.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftsimd.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftsimd.tbd; sourceTree = SDKROOT; };
@@ -364,6 +368,8 @@
 				BDD7BE9F1FAE25BE00A12D19 /* MouseHandler.swift */,
 				BDB0276A1FA550F70064A544 /* InputHandler.swift */,
 				BD418EEB1FB8A5FF00AE9D33 /* ImageHandler.swift */,
+				BD5226DF1FC8E5DC00F6521C /* SettingsViewController.swift */,
+				BD5226E11FC8E70700F6521C /* Preferences.swift */,
 			);
 			name = Window;
 			path = Views;
@@ -647,6 +653,7 @@
 				BDCB36401FA2516200716697 /* Quad.swift in Sources */,
 				BDEAAC8E1FBD31B300128D70 /* TerrainFlashPipelineState.swift in Sources */,
 				BDB6FCBE1F92A81000A15655 /* BasicShaders.metal in Sources */,
+				BD5226E21FC8E70700F6521C /* Preferences.swift in Sources */,
 				BDF087CD1F9EEDE700F68ACD /* Scene.swift in Sources */,
 				BD97303E1FB626E70055658E /* MapTexture.swift in Sources */,
 				BDFB856B1FA16B15004820BC /* CircleScene.swift in Sources */,
@@ -663,6 +670,7 @@
 				BDFB85671FA035D4004820BC /* InstancesFlashPipelineState.swift in Sources */,
 				BDCB36381FA1914500716697 /* CircleCollisionScene.swift in Sources */,
 				BDB6FCBB1F92A36500A15655 /* Renderer.swift in Sources */,
+				BD5226E01FC8E5DC00F6521C /* SettingsViewController.swift in Sources */,
 				BDB6FC881F92A15B00A15655 /* AppDelegate.swift in Sources */,
 				BDD7BE9E1FACE18A00A12D19 /* Player.swift in Sources */,
 				BDD7BEA01FAE25BE00A12D19 /* MouseHandler.swift in Sources */,

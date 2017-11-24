@@ -14,6 +14,7 @@ class GameScene: Scene{
         mainTerrain.position.z = -Float(mainTerrain.gridSize) / Float(2.0)
         mainTerrain.position.y = -1
         
+        
         grass = Quad(device: device, textureName: "fern.png")
         grass.position.z = -1
         grass.position.x = -4
@@ -22,7 +23,8 @@ class GameScene: Scene{
         
         tree = Model(device: device, modelName: "lowPolyTree", textureName: "")
         tree.materialColor = float4(0.2,0.63,0.13, 1)
-        tree.position = float3(4, mainTerrain.GetHeightOfTerrain(worldX: tree.position.x, worldZ: tree.position.z) + 1, -1)
+        tree.scale = float3(0.3)
+        tree.position = float3(4, mainTerrain.GetHeightOfTerrain(worldX: tree.position.x, worldZ: tree.position.z) - 3, -1)
         
         sun = Model(device: device, modelName: "sun", textureName: "")
         sun.materialColor = float4(0.9, 0.85,0.2,1)
@@ -47,7 +49,6 @@ class GameScene: Scene{
     var time: Float = 0
     override func updateModels(deltaTime: Float) {
         super.updateModels(deltaTime: deltaTime)
-        tree.rotation.y += deltaTime
         time += deltaTime
     }
 }

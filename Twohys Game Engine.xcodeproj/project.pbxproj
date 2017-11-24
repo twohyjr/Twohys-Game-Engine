@@ -15,6 +15,8 @@
 		BD418EF01FBA80A200AE9D33 /* heightmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD418EEF1FBA80A200AE9D33 /* heightmap.jpg */; };
 		BD418EF21FBA964900AE9D33 /* ModelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD418EF11FBA964900AE9D33 /* ModelScene.swift */; };
 		BD5226DA1FC4AB5700F6521C /* armadillo.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD5226D91FC4AB5700F6521C /* armadillo.obj */; };
+		BD5226DC1FC878CB00F6521C /* brain.png in Resources */ = {isa = PBXBuildFile; fileRef = BD5226DB1FC878CB00F6521C /* brain.png */; };
+		BD5226DE1FC89A4E00F6521C /* colors.png in Resources */ = {isa = PBXBuildFile; fileRef = BD5226DD1FC89A4E00F6521C /* colors.png */; };
 		BD5D34711FA8E13000F5CC24 /* ModelInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */; };
 		BD5D34731FA8E13C00F5CC24 /* PrimitiveInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5D34721FA8E13C00F5CC24 /* PrimitiveInstances.swift */; };
 		BD97303C1FB527970055658E /* sun.obj in Resources */ = {isa = PBXBuildFile; fileRef = BD97303B1FB527970055658E /* sun.obj */; };
@@ -107,6 +109,8 @@
 		BD418EEF1FBA80A200AE9D33 /* heightmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = heightmap.jpg; sourceTree = "<group>"; };
 		BD418EF11FBA964900AE9D33 /* ModelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelScene.swift; sourceTree = "<group>"; };
 		BD5226D91FC4AB5700F6521C /* armadillo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = armadillo.obj; sourceTree = "<group>"; };
+		BD5226DB1FC878CB00F6521C /* brain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brain.png; sourceTree = "<group>"; };
+		BD5226DD1FC89A4E00F6521C /* colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors.png; sourceTree = "<group>"; };
 		BD5D34701FA8E13000F5CC24 /* ModelInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInstances.swift; sourceTree = "<group>"; };
 		BD5D34721FA8E13C00F5CC24 /* PrimitiveInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveInstances.swift; sourceTree = "<group>"; };
 		BD9730331FB3C4FA0055658E /* libswiftsimd.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftsimd.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftsimd.tbd; sourceTree = SDKROOT; };
@@ -222,6 +226,8 @@
 				BDEAAD071FBE681D00128D70 /* grass.png */,
 				BDEAAD0A1FBE681D00128D70 /* tallGrass.png */,
 				BD418EEF1FBA80A200AE9D33 /* heightmap.jpg */,
+				BD5226DB1FC878CB00F6521C /* brain.png */,
+				BD5226DD1FC89A4E00F6521C /* colors.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				BD97303C1FB527970055658E /* sun.obj in Resources */,
 				BDEAAD191FBE681D00128D70 /* pinkFlowers.png in Resources */,
 				BDB6FC8F1F92A15B00A15655 /* Assets.xcassets in Resources */,
+				BD5226DC1FC878CB00F6521C /* brain.png in Resources */,
 				BDEAAD201FBE681D00128D70 /* grass.png in Resources */,
 				BDEAAD1B1FBE681D00128D70 /* bunny.obj in Resources */,
 				BDEAAD251FBE681D00128D70 /* flower.png in Resources */,
@@ -594,6 +601,7 @@
 				BDEAAD181FBE681D00128D70 /* dirt.png in Resources */,
 				BDEAAD1E1FBE681D00128D70 /* path.png in Resources */,
 				BDEAAD281FBE681D00128D70 /* grassy.png in Resources */,
+				BD5226DE1FC89A4E00F6521C /* colors.png in Resources */,
 				BDEAAD121FBE681D00128D70 /* fern.png in Resources */,
 				BDEAAD261FBE681D00128D70 /* tree.obj in Resources */,
 				BDEAAD271FBE681D00128D70 /* grass.obj in Resources */,

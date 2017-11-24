@@ -27,7 +27,7 @@ class Renderer: NSObject{
         
         commandQueue = device.makeCommandQueue()
         FlashPipelineStateProvider.setDeviceAndView(device: device, mtkView: mtkView)
-        scene = CircleCollisionScene(device: device)
+        scene = GameScene(device: device)
         scene.camera.aspectRatio = Float(mtkView.drawableSize.width) / Float(mtkView.drawableSize.height)
         buildDepthStencilState(device: device)
         buildSamplerState(device: device)
@@ -90,7 +90,6 @@ class Renderer: NSObject{
             let data = NSData(bytes: self.outComputeBuffer.contents(), length: MemoryLayout<float4>.size)
             var out: float4 = float4(0)
             data.getBytes(&out, length: MemoryLayout<float4>.size)
-            print("data: \(out)")
         }
         commandBuffer?.commit()
     }

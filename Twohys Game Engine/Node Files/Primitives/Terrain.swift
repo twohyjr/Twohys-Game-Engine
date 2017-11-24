@@ -58,41 +58,44 @@ class Terrain: Node{
     }
     
     func buildVertices() {
-        for z in 0..<vertexCount{
-            for x in 0..<vertexCount{
-                let vX: Float = Float(x) / Float(Float(vertexCount) - Float(1)) * Float(gridSize)
-                let vZ: Float = Float(z) / Float(Float(vertexCount) - Float(1)) * Float(gridSize)
-                let height = getHeight(x: x, z: z)
-                heights[x][z] = height
-                let vY: Float = height
+        let step = gridSize
+        let stepValue = Float(step) / Float(vertexCount)
+        for row in 0..<vertexCount{
+            for column in 0..<vertexCount{
                 
-                let tX: Float = fmod(Float(x), 2.0)
-                let tZ: Float = fmod(Float(z), 2.0)
+                let xOriginPoint = Float(Float(column) / Float(vertexCount)) * Float(step)
+                let yOriginPoint = Float(Float(row) / Float(vertexCount)) * Float(step)
                 
-                let position: float3 = float3(vX, vY, vZ)
+                //Vertex Positions
+                let vTopRight = float3(xOriginPoint + stepValue, getHeight(x: row, z: column + 1), yOriginPoint)
+                let vTopLeft = float3(xOriginPoint, getHeight(x: row, z: column), yOriginPoint)
+                let vBottomLeft = float3(xOriginPoint, getHeight(x: row + 1, z: column), yOriginPoint + stepValue)
+                let vBottomRight = float3(xOriginPoint + stepValue, getHeight(x: row + 1, z: column + 1), yOriginPoint + stepValue)
                 
+                //Texture Coordinates
+                let tTopRight = float2(1, 0)
+                let tTopLeft = float2(0, 0)
+                let tBottomLeft = float2(0 ,1)
+                let tBottomRight = float2(1, 1)
+                
+                //Vertex Color
                 let color: float4 = float4(1)
                 
-                let textureCoordinate: float2  = float2(tX, tZ)
+                //Vertex Normals
+                let normals: float3 = float3(0,1,0)
                 
-                let normals: float3 = calculateNormal(x: x, z: z)
                 
-                vertices.append(Vertex(position: position, color: color,  normal: normals, textureCoordinate: textureCoordinate))
-            }
-        }
-        
-        for gz in 0..<vertexCount-1{
-            for gx in 0..<vertexCount-1{
-                let topLeft: UInt32 = UInt32(gz * vertexCount + gx)
-                let topRight: UInt32 = (topLeft + UInt32(1))
-                let bottomLeft: UInt32 = UInt32(((gz + 1) * vertexCount) + gx)
-                let bottomRight: UInt32 = (bottomLeft + UInt32(1))
-                indices.append(topLeft)
-                indices.append(bottomLeft)
-                indices.append(topRight)
-                indices.append(topRight)
-                indices.append(bottomLeft)
-                indices.append(bottomRight)
+                //Append Triangle 1
+                vertices.append(Vertex(position: vTopRight, color: color,  normal: normals, textureCoordinate: tTopRight))
+                vertices.append(Vertex(position: vTopLeft, color: color,  normal: normals, textureCoordinate: tTopLeft))
+                vertices.append(Vertex(position: vBottomLeft, color: color,  normal: normals, textureCoordinate: tBottomLeft))
+
+                //Append Triangle 2
+                vertices.append(Vertex(position: vTopRight, color: color,  normal: normals, textureCoordinate: tTopRight))
+                vertices.append(Vertex(position: vBottomLeft, color: color,  normal: normals, textureCoordinate: tBottomLeft))
+                vertices.append(Vertex(position: vBottomRight, color: color,  normal: normals, textureCoordinate: tBottomRight))
+
+                
             }
         }
     }
@@ -139,11 +142,17 @@ class Terrain: Node{
             return 0
         }
         let imageHeight = bmp.pixelsHigh
-        if(x < 0 || x >= imageHeight || z < 0 || z >= imageHeight){
-            return 0.0
+        var trueX = x
+        var trueZ = z
+        if(trueX >= imageHeight){
+            trueX = imageHeight - 1
         }
+        if(trueZ >= imageHeight){
+            trueZ = imageHeight - 1
+        }
+        
         var pixel: Int = 0
-        bmp.getPixel(&pixel, atX: x, y: z)
+        bmp.getPixel(&pixel, atX: trueX, y: trueZ)
         var height: Float = Float(pixel)
         height += Float(255)
         height /= Float(255 / 2)

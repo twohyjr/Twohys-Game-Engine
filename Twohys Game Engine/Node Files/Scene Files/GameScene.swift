@@ -14,13 +14,13 @@ class GameScene: Scene{
         mainTerrain.position.z = -Float(mainTerrain.gridSize) / Float(2.0)
         mainTerrain.position.y = -1
         
-        grass = Quad(device: device, textureName: "tall-grass.png")
+        grass = Quad(device: device, textureName: "fern.png")
         grass.position.z = -1
         grass.position.x = -4
         grass.position.y = mainTerrain.GetHeightOfTerrain(worldX: grass.position.x, worldZ: grass.position.z) - 0.5
         grass.scale = float3(0.7)
         
-        tree = Model(device: device, modelName: "lowpolytree", textureName: "")
+        tree = Model(device: device, modelName: "lowPolyTree", textureName: "")
         tree.materialColor = float4(0.2,0.63,0.13, 1)
         tree.position = float3(4, mainTerrain.GetHeightOfTerrain(worldX: tree.position.x, worldZ: tree.position.z) + 1, -1)
         

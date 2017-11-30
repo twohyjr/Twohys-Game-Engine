@@ -72,7 +72,6 @@
 		BDEAAD271FBE681D00128D70 /* grass.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAD0E1FBE681D00128D70 /* grass.obj */; };
 		BDEAAD281FBE681D00128D70 /* grassy.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAD0F1FBE681D00128D70 /* grassy.png */; };
 		BDEAAD291FBE681D00128D70 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAD101FBE681D00128D70 /* white.png */; };
-		BDEAAD2B1FBE704200128D70 /* Dwarf_2_Low.obj in Resources */ = {isa = PBXBuildFile; fileRef = BDEAAD2A1FBE704200128D70 /* Dwarf_2_Low.obj */; };
 		BDF087BE1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */; };
 		BDF087C01F9EDF5D00F68ACD /* FlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */; };
 		BDF087C21F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */; };
@@ -176,7 +175,6 @@
 		BDEAAD0E1FBE681D00128D70 /* grass.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grass.obj; sourceTree = "<group>"; };
 		BDEAAD0F1FBE681D00128D70 /* grassy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassy.png; sourceTree = "<group>"; };
 		BDEAAD101FBE681D00128D70 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
-		BDEAAD2A1FBE704200128D70 /* Dwarf_2_Low.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dwarf_2_Low.obj; sourceTree = "<group>"; };
 		BDF087BD1F9EDE3400F68ACD /* FlashPipelineStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineStateProvider.swift; sourceTree = "<group>"; };
 		BDF087BF1F9EDF5D00F68ACD /* FlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashPipelineState.swift; sourceTree = "<group>"; };
 		BDF087C11F9EE1FC00F68ACD /* RenderableFlashPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableFlashPipelineState.swift; sourceTree = "<group>"; };
@@ -441,7 +439,6 @@
 				BDEAACFF1FBE681D00128D70 /* dirt.png */,
 				BDEAAD001FBE681D00128D70 /* pinkFlowers.png */,
 				BDEAAD011FBE681D00128D70 /* dragon.obj */,
-				BDEAAD2A1FBE704200128D70 /* Dwarf_2_Low.obj */,
 				BDEAAD021FBE681D00128D70 /* bunny.obj */,
 				BDEAAD031FBE681D00128D70 /* lowPolyTree.png */,
 				BDEAAD041FBE681D00128D70 /* mud.png */,
@@ -616,7 +613,6 @@
 				BDEAAD1C1FBE681D00128D70 /* lowPolyTree.png in Resources */,
 				BDEAAD291FBE681D00128D70 /* white.png in Resources */,
 				BDEAAD241FBE681D00128D70 /* tree.png in Resources */,
-				BDEAAD2B1FBE704200128D70 /* Dwarf_2_Low.obj in Resources */,
 				BDEAAD221FBE681D00128D70 /* Tree1.obj in Resources */,
 				BDEAAD1F1FBE681D00128D70 /* fern.obj in Resources */,
 				BDEAAD1A1FBE681D00128D70 /* dragon.obj in Resources */,

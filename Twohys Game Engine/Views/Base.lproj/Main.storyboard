@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="54F-20-hFC">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="0TN-7Y-8al">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
@@ -681,50 +681,24 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="hMh-K6-a17">
+        <!--View Controller-->
+        <scene sceneID="Ki3-Cx-9FS">
             <objects>
-                <viewController id="54F-20-hFC" customClass="SettingsViewController" customModule="Twohys_Game_Engine" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="2zB-IH-yeE">
-                        <rect key="frame" x="0.0" y="0.0" width="1280" height="807"/>
+                <viewController id="0TN-7Y-8al" sceneMemberID="viewController">
+                    <view key="view" id="1P7-Yq-D2y">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="O8G-b8-WTH" customClass="MainView" customModule="Twohys_Game_Engine" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="150" width="1280" height="720"/>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kyd-hD-aay" customClass="MainView" customModule="Twohys_Game_Engine" customModuleProvider="target">
+                                <rect key="frame" x="97" y="102" width="163" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ofr-M7-LaG">
-                                <rect key="frame" x="1165" y="125" width="97" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mouse Position" id="ufW-ul-bSG">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGj-Rs-6Or">
-                                <rect key="frame" x="1195" y="108" width="37" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="K3J-gc-O2C">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="O8G-b8-WTH" firstAttribute="leading" secondItem="2zB-IH-yeE" secondAttribute="leading" id="PIE-hw-1K2"/>
-                            <constraint firstAttribute="bottom" secondItem="O8G-b8-WTH" secondAttribute="bottom" constant="150" id="YkT-wY-G8c"/>
-                            <constraint firstItem="O8G-b8-WTH" firstAttribute="top" secondItem="2zB-IH-yeE" secondAttribute="top" constant="-63" id="i11-bV-bOd"/>
-                            <constraint firstAttribute="trailing" secondItem="O8G-b8-WTH" secondAttribute="trailing" id="pAJ-8J-igP"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="txtMousePosition" destination="NGj-Rs-6Or" id="2Q1-N6-Ikr"/>
-                    </connections>
                 </viewController>
-                <customObject id="ypV-9h-Yn9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="veS-Tg-8wG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="502.5"/>
+            <point key="canvasLocation" x="69" y="241"/>
         </scene>
     </scenes>
 </document>

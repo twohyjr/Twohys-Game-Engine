@@ -14,7 +14,7 @@ class MouseHandler{
     private static var mousePositionDelta = float2(0)
 
     private static var scrollWheelPosition: Float = 0
-    private static var lastWheelPosition: Float = 0.0
+    private static var lastWheelPosition: Float = 0.0 
     
     private static var scrollWheelChange: Float = 0.0
 

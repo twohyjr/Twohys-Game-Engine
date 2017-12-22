@@ -5,7 +5,7 @@ class InstancesFlashPipelineState: FlashPipelineState{
     var _device: MTLDevice!
     var _mtkView: MTKView!
     var _vertexFunctionName: String = "instanceVertexShader"
-    var _fragmentFunctionName: String = "fragmentShader" 
+    var _fragmentFunctionName: String = "fragmentShader"
     
     var vertexDescriptor: MTLVertexDescriptor{
         let vertexDescriptor = MTLVertexDescriptor()
